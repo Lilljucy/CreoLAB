@@ -411,6 +411,10 @@ button {
   margin-bottom: 22px;
 }
 
+.hero h1.hero-h1-wide {
+  max-width: 22ch;
+}
+
 .hero h1 span {
   background: var(--gradient);
   -webkit-background-clip: text;
