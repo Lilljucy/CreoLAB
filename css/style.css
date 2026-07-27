@@ -43,9 +43,37 @@ font-display:auto;font-style:italic;font-weight:700;font-stretch:normal;
 }
 
 @font-face {
+  font-family: "Font Awesome 6 Brands";
+  src: url("../assets/fonts/fa-brands-400.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+
+.icon-fa {
+  font-family: "Font Awesome 6 Brands";
+  font-weight: 400;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+}
+
+.icon-fa.fa-instagram::before { content: "\f16d"; }
+.icon-fa.fa-facebook::before { content: "\f39e"; }
+.icon-fa.fa-whatsapp::before { content: "\f232"; }
+
+@font-face {
   font-family: "Axis Extrabold";
   src: url("../assets/fonts/AxisExtrabold.otf") format("opentype");
   font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat Bold";
+  src: url("../assets/fonts/MontserratBold.ttf") format("truetype");
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -98,9 +126,9 @@ body {
 }
 
 h1, h2, h3, h4 {
-  font-family: "Axis Extrabold", "bilo", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: "Montserrat Bold", "bilo", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.2;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 a {
@@ -248,23 +276,22 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 46px;
-  height: 46px;
+  width: 54px;
+  height: 54px;
   border-radius: 999px;
-  background: #25d366 !important;
+  background: none !important;
   color: #fff !important;
   flex-shrink: 0;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
 .nav-whatsapp svg {
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
 }
 
 .nav-whatsapp:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 22px -10px rgba(37, 211, 102, 0.6);
 }
 
 .nav-toggle {
@@ -326,6 +353,7 @@ button {
   padding-block: 96px 80px;
   position: relative;
   overflow: clip;
+  text-align: center;
 }
 
 .hero::before {
@@ -353,6 +381,7 @@ button {
 .hero h1 {
   font-size: clamp(2.2rem, 5vw, 3.6rem);
   max-width: 18ch;
+  margin-inline: auto;
   margin-bottom: 22px;
 }
 
@@ -367,6 +396,7 @@ button {
   color: var(--text-muted);
   font-size: 1.15rem;
   max-width: 56ch;
+  margin-inline: auto;
   margin-bottom: 34px;
 }
 
@@ -374,6 +404,7 @@ button {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 /* Sections */
@@ -522,7 +553,7 @@ button {
 }
 
 .sm-name {
-  font-family: "Axis Extrabold", "bilo", sans-serif;
+  font-family: "Montserrat Bold", "bilo", sans-serif;
   font-size: 1rem;
 }
 
@@ -818,6 +849,10 @@ button {
   height: 18px;
 }
 
+.social-btn .icon-fa {
+  font-size: 17px;
+}
+
 .social-btn:hover {
   background: var(--gradient);
   border-color: transparent;
@@ -948,7 +983,7 @@ button {
   }
 
   .nav-links a.nav-whatsapp {
-    width: 46px;
+    width: 54px;
     align-self: flex-start;
     margin-top: 4px;
   }
