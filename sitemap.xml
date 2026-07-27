@@ -6,7 +6,27 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://www.creolab.hr/en/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/de/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
     <loc>https://www.creolab.hr/portfolio.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/en/portfolio.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/de/portfolio.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -16,7 +36,27 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.creolab.hr/en/kontakt.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/de/kontakt.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.creolab.hr/portfolio/bilokapic-destilerija.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/en/portfolio/bilokapic-destilerija.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/de/portfolio/bilokapic-destilerija.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -26,7 +66,27 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.creolab.hr/en/portfolio/caffe-bar-vanilla.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/de/portfolio/caffe-bar-vanilla.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.creolab.hr/portfolio/color-trgovina.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/en/portfolio/color-trgovina.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/de/portfolio/color-trgovina.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -36,7 +96,27 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.creolab.hr/en/portfolio/dopa-projekt.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/de/portfolio/dopa-projekt.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.creolab.hr/portfolio/ember-kamin.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/en/portfolio/ember-kamin.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/de/portfolio/ember-kamin.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -46,7 +126,27 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.creolab.hr/en/portfolio/mitrovic-vinarija.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/de/portfolio/mitrovic-vinarija.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.creolab.hr/portfolio/omega-knjigovodstvo.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/en/portfolio/omega-knjigovodstvo.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/de/portfolio/omega-knjigovodstvo.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -56,7 +156,27 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.creolab.hr/en/portfolio/platinum-grupa.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/de/portfolio/platinum-grupa.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.creolab.hr/portfolio/previsic-vinarija.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/en/portfolio/previsic-vinarija.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/de/portfolio/previsic-vinarija.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -66,7 +186,27 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.creolab.hr/en/portfolio/sax-win.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/de/portfolio/sax-win.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.creolab.hr/portfolio/soldo-vinarija.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/en/portfolio/soldo-vinarija.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/de/portfolio/soldo-vinarija.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -76,7 +216,27 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.creolab.hr/en/portfolio/triglav-osiguranje.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/de/portfolio/triglav-osiguranje.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.creolab.hr/portfolio/udruga-igrac.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/en/portfolio/udruga-igrac.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/de/portfolio/udruga-igrac.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -86,12 +246,42 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.creolab.hr/en/portfolio/vinarija-knezevic.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/de/portfolio/vinarija-knezevic.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.creolab.hr/portfolio/vismotus.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.creolab.hr/en/portfolio/vismotus.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/de/portfolio/vismotus.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.creolab.hr/portfolio/adria-motors.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/en/portfolio/adria-motors.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.creolab.hr/de/portfolio/adria-motors.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
