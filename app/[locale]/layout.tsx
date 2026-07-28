@@ -22,6 +22,7 @@ export async function generateMetadata({
   const t = getDict(locale);
 
   return {
+    metadataBase: new URL("https://creolab-design.com"),
     title: { default: t.meta.home.title, template: "%s" },
     description: t.meta.home.description,
   };
