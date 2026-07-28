@@ -4,6 +4,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { LOCALES, isLocale, getDict, DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
 
 export const dynamicParams = false;
@@ -46,6 +47,7 @@ export default async function LocaleLayout({
           {children}
           <Footer locale={locale} />
           <CookieBanner locale={locale} />
+          <GoogleAnalytics />
         </SmoothScroll>
       </body>
     </html>

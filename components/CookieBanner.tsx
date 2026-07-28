@@ -18,6 +18,7 @@ export default function CookieBanner({ locale }: { locale: Locale }) {
 
   function choose(value: string) {
     localStorage.setItem(STORAGE_KEY, value);
+    document.dispatchEvent(new CustomEvent("cookieconsent", { detail: value }));
     setVisible(false);
   }
 
