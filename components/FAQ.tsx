@@ -27,7 +27,7 @@ export default function FAQ({ locale }: { locale: Locale }) {
   );
 
   return (
-    <section id="faq" ref={sectionRef} className="relative px-6 pt-16 pb-40">
+    <section id="faq" ref={sectionRef} className="relative px-6 pt-16 pb-16">
       <div className="mx-auto max-w-3xl">
         <div className="mb-16 text-center">
           <span className="mb-4 inline-block text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]">

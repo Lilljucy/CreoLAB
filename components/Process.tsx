@@ -45,7 +45,7 @@ export default function Process({ locale }: { locale: Locale }) {
   );
 
   return (
-    <section ref={sectionRef} className="relative px-6 py-40">
+    <section ref={sectionRef} className="relative px-6 pt-40 pb-16">
       <div className="mx-auto max-w-5xl">
         <div className="mb-16 text-center">
           <span className="mb-4 inline-block text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]">

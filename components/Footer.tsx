@@ -6,7 +6,7 @@ export default function Footer({ locale }: { locale: Locale }) {
   const t = getDict(locale);
 
   return (
-    <footer id="contact" className="relative px-6 py-20">
+    <footer id="contact" className="relative px-6 pt-8 pb-20">
       <div className="mx-auto max-w-5xl">
         <div className="mb-16 text-center">
           <h2 className="mb-6 text-[clamp(2rem,5vw,3.5rem)]">

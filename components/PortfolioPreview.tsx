@@ -49,7 +49,7 @@ export default function PortfolioPreview({ locale }: { locale: Locale }) {
   const activeProject = FEATURED.find((p) => p.name === active);
 
   return (
-    <section id="work" ref={sectionRef} className="relative overflow-hidden px-6 pt-40 pb-16" onMouseMove={handleMove}>
+    <section id="work" ref={sectionRef} className="relative overflow-hidden px-6 pt-16 pb-16" onMouseMove={handleMove}>
       <div className="mx-auto max-w-4xl">
         <div className="mb-16 text-center">
           <span className="mb-4 inline-block text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]">
