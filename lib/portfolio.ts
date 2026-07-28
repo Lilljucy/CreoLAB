@@ -79,10 +79,10 @@ export const PROJECTS: Project[] = [
     slug: "soldo-vinarija",
     name: "Soldo Vinarija",
     category: { hr: "Dizajn etikete", en: "Label Design", de: "Etikettendesign" },
-    img: "/portfolio/soldo-vinarija.jpg",
+    img: "/portfolio-full/soldo-vinarija/02-logo-dizajn.jpg",
     gallery: [
-      "/portfolio-full/soldo-vinarija/01-logo-dizajn.jpg",
       "/portfolio-full/soldo-vinarija/02-logo-dizajn.jpg",
+      "/portfolio-full/soldo-vinarija/01-logo-dizajn.jpg",
       "/portfolio-full/soldo-vinarija/03-dizajn-etikete.jpg",
       "/portfolio-full/soldo-vinarija/04-dizajn-etikete.jpg",
       "/portfolio-full/soldo-vinarija/05-dizajn-etikete.jpg",
