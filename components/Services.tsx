@@ -53,7 +53,7 @@ export default function Services({ locale }: { locale: Locale }) {
   );
 
   return (
-    <section id="about" ref={sectionRef} className="relative px-6 pt-4 pb-40">
+    <section id="usluge" ref={sectionRef} className="relative px-6 pt-4 pb-40">
       <div className="mx-auto max-w-5xl">
         <div className="mb-16 text-center">
           <span className="mb-4 inline-block text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]">

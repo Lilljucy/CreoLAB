@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Hero from "@/components/Hero";
+import About from "@/components/About";
 import Services from "@/components/Services";
 import Stats from "@/components/Stats";
 import Process from "@/components/Process";
@@ -31,6 +32,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   return (
     <main>
       <Hero locale={locale} />
+      <About locale={locale} />
       <Services locale={locale} />
       <Stats locale={locale} />
       <Process locale={locale} />

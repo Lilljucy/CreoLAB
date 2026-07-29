@@ -39,14 +39,14 @@ export default function Hero({ locale }: { locale: Locale }) {
       )}
 
       <div className="relative z-10 mx-auto max-w-4xl text-center">
-        <span className="hero-eyebrow mb-8 inline-block rounded-full border border-[var(--border)] px-4 py-2 text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]">
+        <h1 className="hero-eyebrow mb-8 inline-block rounded-2xl border border-[var(--border)] px-4 py-2 text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]">
           {t.hero.eyebrow}
-        </span>
+        </h1>
 
-        <h1 className="mb-8 text-[clamp(2.5rem,7vw,5.5rem)]">
+        <h2 className="mb-8 text-[clamp(2.5rem,7vw,5.5rem)]">
           <span className="hero-heading-line block">{t.hero.line1}</span>
           <span className="hero-heading-line text-gradient block">{t.hero.line2}</span>
-        </h1>
+        </h2>
 
         <p className="hero-sub mx-auto mb-12 max-w-xl text-balance text-lg text-[var(--text-muted)]">
           {t.hero.sub}

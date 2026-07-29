@@ -31,6 +31,14 @@ type Dict = {
     ctaPrimary: string;
     ctaSecondary: string;
   };
+  about: {
+    eyebrow: string;
+    heading: string;
+    paragraphs: string[];
+    mission: { title: string; text: string };
+    vision: { title: string; text: string };
+    values: { title: string; items: string[] };
+  };
   services: {
     eyebrow: string;
     heading: string;
@@ -89,12 +97,37 @@ const DICT: Record<Locale, Dict> = {
       whatsappLabel: "Kontaktirajte nas putem WhatsAppa",
     },
     hero: {
-      eyebrow: "Kreativna agencija · Požega",
+      eyebrow: "Grafički dizajn, izrada web stranica i marketing · CreoLab Požega",
       line1: "Dizajn i marketing",
       line2: "koji grade vaš brend.",
-      sub: "CREOLAB je kreativna agencija specijalizirana za grafički dizajn, izradu web stranica i social media marketing.",
+      sub: "CREOLAB je specijaliziran za grafički dizajn, izradu web stranica i social media marketing.",
       ctaPrimary: "Pogledajte portfolio",
       ctaSecondary: "Kontaktirajte nas",
+    },
+    about: {
+      eyebrow: "O nama",
+      heading: "O CreoLabu – vaš partner za vizualni identitet i digitalni marketing",
+      paragraphs: [
+        "CreoLab iz Požege posvećen je stvaranju jakih, prepoznatljivih i modernih brendova. Vjerujemo da dobar grafički dizajn i funkcionalna web stranica nisu luksuz, već temeljan alat za rast svakog poslovanja.",
+        "Bilo da krećete od nule i trebate izradu logotipa i vizualnog identiteta, želite redizajn postojećeg loga kako bi pratio moderne standarde, ili trebate izradu responzivne web stranice koja pretvara posjetitelje u kupce – tu smo da vaše ideje pretvorimo u stvarnost.",
+        "Naš pristup spaja čistu estetiku, strategiju i jasne ciljeve. Nudimo cjelovitu uslugu – od ideje i dizajna ambalaže, pripreme za tisak, pa sve do vođenja društvenih mreža (Facebook i Instagram oglasi). Surađujemo s poduzetnicima, obrtima i tvrtkama u Požegi, Slavoniji i diljem Hrvatske koji žele napraviti korak dalje i istaknuti se na tržištu.",
+      ],
+      mission: {
+        title: "Naša misija",
+        text: "Pružiti poduzetnicima cjelovita dizajn i marketing rješenja – od izrade prepoznatljivog logotipa do optimizirane web stranice – koja jasno komuniciraju vrijednost vaših usluga i privlače prave klijente.",
+      },
+      vision: {
+        title: "Naša vizija",
+        text: "Postati vodeći partner za grafički dizajn i digitalni marketing malim i srednjim tvrtkama koje traže pouzdanu, brzu i posvećenu uslugu usmjerenu na stvarne rezultate.",
+      },
+      values: {
+        title: "Naši ciljevi i vrijednosti",
+        items: [
+          "Funkcionalan i moderan dizajn: stvaramo vizualni identitet i redizajn loga koji privlači pažnju i ostavlja profesionalan dojam.",
+          "Brza i jednostavna komunikacija: poštivanje rokova, jasni dogovori i personaliziran pristup svakom projektu.",
+          "Sve na jednom mjestu: od pripreme za tisak i dizajna ambalaže do web dizajna i upravljanja društvenim mrežama.",
+        ],
+      },
     },
     services: {
       eyebrow: "Naše usluge",
@@ -196,6 +229,11 @@ const DICT: Record<Locale, Dict> = {
           p: "Nudimo potpunu uslugu. Ako nemate spremne materijale, mi možemo preuzeti pisanje tekstova (SEO copywriting) te terensko fotografiranje i video snimanje. Ako već imate spremne materijale, rado ćemo ih uklopiti.",
           plain: "Nudimo potpunu uslugu — pisanje tekstova, fotografiranje i video snimanje, ili uklapamo vaše postojeće materijale.",
         },
+        {
+          q: "Radite li redizajn postojećeg logotipa i osvježavanje brenda?",
+          p: "Da! Ako je vaš postojeći logo zastario ili više ne predstavlja vašu tvrtku na pravi način, nudimo profesionalan redizajn logotipa. Zadržavamo prepoznatljivost vašeg brenda uz modernizaciju oblika, tipografije i boja, čineći ga spremnim za sve digitalne i tiskane medije.",
+          plain: "Da, nudimo profesionalan redizajn logotipa koji modernizira oblik, tipografiju i boje uz zadržavanje prepoznatljivosti brenda.",
+        },
       ],
     },
     footer: {
@@ -238,24 +276,24 @@ const DICT: Record<Locale, Dict> = {
     },
     meta: {
       home: {
-        title: "CREOLAB — Dizajn i marketing koji grade vaš brend",
+        title: "Grafički Dizajn, Izrada Web Stranica i Marketing | CreoLab Požega",
         description:
-          "CREOLAB je kreativna agencija u Požegi koja gradi vizualne identitete, web stranice i digitalna iskustva za brendove koji ne žele izgledati obično.",
+          "Trebate izradu ili redizajn logotipa, modernu web stranicu ili vođenje društvenih mreža? CreoLab nudi profesionalne usluge dizajna i marketinških rješenja. Zatražite ponudu!",
       },
       portfolio: {
         title: "Portfolio — CREOLAB",
         description:
-          "Stvarni projekti agencije CREOLAB — logo dizajn, brendiranje, ambalaža, dizajn etiketa i drugo za klijente iz cijele Hrvatske.",
+          "Stvarni projekti CREOLAB-a — logo dizajn, brendiranje, ambalaža, dizajn etiketa i drugo za klijente iz cijele Hrvatske.",
       },
       kontakt: {
         title: "Kontakt — CREOLAB",
         description:
-          "Kontaktirajte CREOLAB agenciju za grafički dizajn, web dizajn i social media marketing u Požegi.",
+          "Kontaktirajte CREOLAB za grafički dizajn, web dizajn i social media marketing u Požegi.",
       },
       privatnost: {
         title: "Politika privatnosti — CREOLAB",
         description:
-          "Politika privatnosti i kolačića agencije CREOLAB — koje podatke prikupljamo, kako ih koristimo i koja su vaša prava.",
+          "Politika privatnosti i kolačića CREOLAB-a — koje podatke prikupljamo, kako ih koristimo i koja su vaša prava.",
       },
     },
     backToPortfolio: "Natrag na portfolio",
@@ -270,12 +308,37 @@ const DICT: Record<Locale, Dict> = {
       whatsappLabel: "Contact us via WhatsApp",
     },
     hero: {
-      eyebrow: "Creative Agency · Požega, Croatia",
+      eyebrow: "Graphic Design, Web Development & Marketing · CreoLab Požega, Croatia",
       line1: "Design and marketing",
       line2: "that build your brand.",
-      sub: "CREOLAB is a creative agency specializing in graphic design, web development and social media marketing.",
+      sub: "CREOLAB specializes in graphic design, web development and social media marketing.",
       ctaPrimary: "View Portfolio",
       ctaSecondary: "Contact Us",
+    },
+    about: {
+      eyebrow: "About Us",
+      heading: "About CreoLab – your partner for visual identity and digital marketing",
+      paragraphs: [
+        "CreoLab, from Požega, is dedicated to building strong, recognizable and modern brands. We believe great graphic design and a functional website aren't a luxury — they're a fundamental tool for growing any business.",
+        "Whether you're starting from scratch and need a logo and visual identity, want to redesign an existing logo to meet modern standards, or need a responsive website that turns visitors into customers — we're here to turn your ideas into reality.",
+        "Our approach combines clean aesthetics, strategy and clear goals. We offer a complete service — from concept and packaging design, through print preparation, all the way to social media management (Facebook and Instagram ads). We work with entrepreneurs, craftspeople and companies in Požega, Slavonia and across Croatia who want to take the next step and stand out in the market.",
+      ],
+      mission: {
+        title: "Our Mission",
+        text: "To give entrepreneurs complete design and marketing solutions — from a recognizable logo to an optimized website — that clearly communicate the value of your services and attract the right clients.",
+      },
+      vision: {
+        title: "Our Vision",
+        text: "To become the leading graphic design and digital marketing partner for small and medium businesses looking for reliable, fast, dedicated service focused on real results.",
+      },
+      values: {
+        title: "Our Goals & Values",
+        items: [
+          "Functional, modern design: we create visual identities and logo redesigns that grab attention and leave a professional impression.",
+          "Fast, simple communication: respecting deadlines, clear agreements and a personalized approach to every project.",
+          "Everything in one place: from print preparation and packaging design to web design and social media management.",
+        ],
+      },
     },
     services: {
       eyebrow: "Our Services",
@@ -377,6 +440,11 @@ const DICT: Record<Locale, Dict> = {
           p: "We offer a full-service option. If you don't have materials ready, we can take care of copywriting (SEO copywriting) as well as on-location photography and video. If you already have materials ready, we're happy to work with them.",
           plain: "We offer a full-service option — copywriting, photography and video, or we work with your existing materials.",
         },
+        {
+          q: "Do you redesign existing logos and refresh brand identities?",
+          p: "Yes! If your current logo feels outdated or no longer represents your business the right way, we offer professional logo redesign. We preserve your brand's recognizability while modernizing its shape, typography and colors, making it ready for every digital and print medium.",
+          plain: "Yes, we offer professional logo redesign that modernizes shape, typography and color while keeping your brand recognizable.",
+        },
       ],
     },
     footer: {
@@ -421,7 +489,7 @@ const DICT: Record<Locale, Dict> = {
       home: {
         title: "CREOLAB — Design and marketing that build your brand",
         description:
-          "CREOLAB is a creative agency in Požega, Croatia, building visual identities, websites and digital experiences for brands that don't want to look ordinary.",
+          "CREOLAB, based in Požega, Croatia, builds visual identities, websites and digital experiences for brands that don't want to look ordinary.",
       },
       portfolio: {
         title: "Portfolio — CREOLAB",
@@ -430,7 +498,7 @@ const DICT: Record<Locale, Dict> = {
       },
       kontakt: {
         title: "Contact — CREOLAB",
-        description: "Contact CREOLAB, an agency for graphic design, web design and social media marketing in Požega, Croatia.",
+        description: "Contact CREOLAB for graphic design, web design and social media marketing in Požega, Croatia.",
       },
       privatnost: {
         title: "Privacy Policy — CREOLAB",
@@ -450,12 +518,37 @@ const DICT: Record<Locale, Dict> = {
       whatsappLabel: "Kontaktieren Sie uns über WhatsApp",
     },
     hero: {
-      eyebrow: "Kreativagentur · Požega, Kroatien",
+      eyebrow: "Grafikdesign, Webentwicklung & Marketing · CreoLab Požega, Kroatien",
       line1: "Design und Marketing,",
       line2: "die Ihre Marke aufbauen.",
-      sub: "CREOLAB ist eine Kreativagentur, spezialisiert auf Grafikdesign, Webentwicklung und Social-Media-Marketing.",
+      sub: "CREOLAB ist spezialisiert auf Grafikdesign, Webentwicklung und Social-Media-Marketing.",
       ctaPrimary: "Portfolio ansehen",
       ctaSecondary: "Kontaktieren Sie uns",
+    },
+    about: {
+      eyebrow: "Über uns",
+      heading: "Über CreoLab – Ihr Partner für visuelle Identität und digitales Marketing",
+      paragraphs: [
+        "CreoLab aus Požega widmet sich der Entwicklung starker, wiedererkennbarer und moderner Marken. Wir glauben, dass gutes Grafikdesign und eine funktionale Website kein Luxus sind, sondern ein grundlegendes Werkzeug für das Wachstum jedes Unternehmens.",
+        "Ob Sie bei null anfangen und ein Logo sowie eine visuelle Identität benötigen, ein bestehendes Logo nach modernen Standards neu gestalten möchten, oder eine responsive Website brauchen, die Besucher in Kunden verwandelt – wir sind da, um Ihre Ideen Wirklichkeit werden zu lassen.",
+        "Unser Ansatz verbindet klare Ästhetik, Strategie und klare Ziele. Wir bieten einen Rundum-Service – von Konzept und Verpackungsdesign über die Druckvorstufe bis hin zur Betreuung sozialer Medien (Facebook- und Instagram-Anzeigen). Wir arbeiten mit Unternehmern, Handwerksbetrieben und Firmen in Požega, Slawonien und ganz Kroatien zusammen, die den nächsten Schritt machen und sich am Markt abheben wollen.",
+      ],
+      mission: {
+        title: "Unsere Mission",
+        text: "Unternehmern umfassende Design- und Marketinglösungen zu bieten – von einem wiedererkennbaren Logo bis zu einer optimierten Website –, die den Wert Ihrer Leistungen klar kommunizieren und die richtigen Kunden anziehen.",
+      },
+      vision: {
+        title: "Unsere Vision",
+        text: "Der führende Partner für Grafikdesign und digitales Marketing für kleine und mittlere Unternehmen zu werden, die einen zuverlässigen, schnellen und engagierten, ergebnisorientierten Service suchen.",
+      },
+      values: {
+        title: "Unsere Ziele & Werte",
+        items: [
+          "Funktionales, modernes Design: Wir gestalten visuelle Identitäten und Logo-Redesigns, die Aufmerksamkeit erregen und einen professionellen Eindruck hinterlassen.",
+          "Schnelle, unkomplizierte Kommunikation: Einhaltung von Fristen, klare Absprachen und ein individueller Ansatz für jedes Projekt.",
+          "Alles aus einer Hand: von der Druckvorstufe und dem Verpackungsdesign bis zu Webdesign und Social-Media-Betreuung.",
+        ],
+      },
     },
     services: {
       eyebrow: "Unsere Leistungen",
@@ -557,6 +650,11 @@ const DICT: Record<Locale, Dict> = {
           p: "Wir bieten einen Rundum-Service an. Falls Sie keine fertigen Materialien haben, übernehmen wir gerne das Texten (SEO-Copywriting) sowie Foto- und Videoaufnahmen vor Ort. Wenn Sie bereits fertige Materialien haben, binden wir diese gerne ein.",
           plain: "Wir bieten einen Rundum-Service — Texten, Foto- und Videoaufnahmen, oder wir binden Ihre vorhandenen Materialien ein.",
         },
+        {
+          q: "Führen Sie ein Redesign bestehender Logos und eine Auffrischung des Markenauftritts durch?",
+          p: "Ja! Wenn Ihr bestehendes Logo veraltet wirkt oder Ihr Unternehmen nicht mehr richtig repräsentiert, bieten wir ein professionelles Logo-Redesign an. Wir bewahren den Wiedererkennungswert Ihrer Marke und modernisieren gleichzeitig Form, Typografie und Farben – bereit für alle digitalen und gedruckten Medien.",
+          plain: "Ja, wir bieten professionelles Logo-Redesign, das Form, Typografie und Farben modernisiert und dabei den Wiedererkennungswert Ihrer Marke bewahrt.",
+        },
       ],
     },
     footer: {
@@ -601,7 +699,7 @@ const DICT: Record<Locale, Dict> = {
       home: {
         title: "CREOLAB — Design und Marketing, die Ihre Marke aufbauen",
         description:
-          "CREOLAB ist eine Kreativagentur in Požega, Kroatien, die visuelle Identitäten, Websites und digitale Erlebnisse für Marken schafft, die nicht gewöhnlich wirken wollen.",
+          "CREOLAB aus Požega, Kroatien, schafft visuelle Identitäten, Websites und digitale Erlebnisse für Marken, die nicht gewöhnlich wirken wollen.",
       },
       portfolio: {
         title: "Portfolio — CREOLAB",
@@ -610,7 +708,7 @@ const DICT: Record<Locale, Dict> = {
       },
       kontakt: {
         title: "Kontakt — CREOLAB",
-        description: "Kontaktieren Sie CREOLAB, eine Agentur für Grafikdesign, Webdesign und Social-Media-Marketing in Požega, Kroatien.",
+        description: "Kontaktieren Sie CREOLAB für Grafikdesign, Webdesign und Social-Media-Marketing in Požega, Kroatien.",
       },
       privatnost: {
         title: "Datenschutzerklärung — CREOLAB",

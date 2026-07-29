@@ -25,7 +25,7 @@ const PRIVACY: Record<Locale, PrivacyContent> = {
       {
         heading: "1. Voditelj obrade podataka",
         paragraphs: [
-          "Voditelj obrade podataka je CREOLAB, agencija za grafički dizajn, web dizajn i social media marketing sa sjedištem u Požegi, Hrvatska. Za sva pitanja vezana uz privatnost i zaštitu podataka možete nas kontaktirati na {{email}} ili {{phone}}.",
+          "Voditelj obrade podataka je CREOLAB (grafički dizajn, web dizajn i social media marketing) sa sjedištem u Požegi, Hrvatska. Za sva pitanja vezana uz privatnost i zaštitu podataka možete nas kontaktirati na {{email}} ili {{phone}}.",
         ],
       },
       {
@@ -86,7 +86,7 @@ const PRIVACY: Record<Locale, PrivacyContent> = {
       {
         heading: "1. Data Controller",
         paragraphs: [
-          "The data controller is CREOLAB, an agency for graphic design, web design and social media marketing based in Požega, Croatia. For any privacy or data protection questions, contact us at {{email}} or {{phone}}.",
+          "The data controller is CREOLAB (graphic design, web design and social media marketing), based in Požega, Croatia. For any privacy or data protection questions, contact us at {{email}} or {{phone}}.",
         ],
       },
       {
@@ -147,7 +147,7 @@ const PRIVACY: Record<Locale, PrivacyContent> = {
       {
         heading: "1. Verantwortlicher",
         paragraphs: [
-          "Verantwortlicher für die Datenverarbeitung ist CREOLAB, eine Agentur für Grafikdesign, Webdesign und Social-Media-Marketing mit Sitz in Požega, Kroatien. Bei Fragen zum Datenschutz erreichen Sie uns unter {{email}} oder {{phone}}.",
+          "Verantwortlicher für die Datenverarbeitung ist CREOLAB (Grafikdesign, Webdesign und Social-Media-Marketing) mit Sitz in Požega, Kroatien. Bei Fragen zum Datenschutz erreichen Sie uns unter {{email}} oder {{phone}}.",
         ],
       },
       {
