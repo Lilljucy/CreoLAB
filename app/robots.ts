@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/*/privatnost",
     },
-    sitemap: "https://creolab-design.com/sitemap.xml",
+    sitemap: "https://creolab-design.hr/sitemap.xml",
   };
 }

@@ -2,7 +2,7 @@
 // Default target is the live production site; pass http://localhost:3000 to check a local dev server instead.
 import puppeteer from "puppeteer-core";
 
-const BASE_URL = process.argv[2] || "https://creolab-design.com";
+const BASE_URL = process.argv[2] || "https://creolab-design.hr";
 const CHROME_PATH = process.env.CHROME_PATH || "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
 
 const LOCALES = ["hr", "en", "de"];

@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { LOCALES } from "@/lib/i18n";
 import { PROJECTS } from "@/lib/portfolio";
 
-const BASE_URL = "https://creolab-design.com";
+const BASE_URL = "https://creolab-design.hr";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths = ["", "/portfolio", "/kontakt"];
