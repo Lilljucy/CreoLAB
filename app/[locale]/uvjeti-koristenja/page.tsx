@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { isLocale, getDict, DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
 import { buildAlternates } from "@/lib/alternates";
-import { getPrivacy } from "@/lib/privacyContent";
+import { getTerms } from "@/lib/termsContent";
 import { renderWithLinks } from "@/lib/legalRender";
 
 export async function generateMetadata({
@@ -14,17 +14,17 @@ export async function generateMetadata({
   const t = getDict(locale);
 
   return {
-    title: t.meta.privatnost.title,
-    description: t.meta.privatnost.description,
+    title: t.meta.uvjeti.title,
+    description: t.meta.uvjeti.description,
     robots: { index: false, follow: true },
-    alternates: buildAlternates(locale, "/privatnost"),
+    alternates: buildAlternates(locale, "/uvjeti-koristenja"),
   };
 }
 
-export default async function PrivatnostPage({ params }: { params: Promise<{ locale: string }> }) {
+export default async function UvjetiKoristenjaPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: rawLocale } = await params;
   const locale: Locale = isLocale(rawLocale) ? rawLocale : DEFAULT_LOCALE;
-  const content = getPrivacy(locale);
+  const content = getTerms(locale);
 
   return (
     <main className="px-6 pt-40 pb-32">
@@ -50,18 +50,6 @@ export default async function PrivatnostPage({ params }: { params: Promise<{ loc
               {section.paragraphs.map((p, i) => (
                 <p key={i}>{renderWithLinks(p)}</p>
               ))}
-              {section.rights && (
-                <>
-                  <ul>
-                    {section.rights.map((r) => (
-                      <li key={r.label}>
-                        <strong>{r.label}</strong> — {r.text}
-                      </li>
-                    ))}
-                  </ul>
-                  {section.rightsOutro && <p>{renderWithLinks(section.rightsOutro)}</p>}
-                </>
-              )}
             </div>
           ))}
         </div>

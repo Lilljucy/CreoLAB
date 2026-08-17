@@ -59,6 +59,7 @@ type Dict = {
     ctaHeadingGradient: string;
     copyrightSuffix: string;
     privacy: string;
+    terms: string;
     igLabel: string;
     fbLabel: string;
   };
@@ -82,6 +83,7 @@ type Dict = {
     portfolio: { title: string; description: string };
     kontakt: { title: string; description: string };
     privatnost: { title: string; description: string };
+    uvjeti: { title: string; description: string };
   };
   backToPortfolio: string;
   ctaProject: string;
@@ -241,11 +243,12 @@ const DICT: Record<Locale, Dict> = {
       ctaHeadingGradient: "svoj projekt?",
       copyrightSuffix: "Sva prava pridržana.",
       privacy: "Politika privatnosti",
+      terms: "Uvjeti korištenja",
       igLabel: "CREOLAB na Instagramu",
       fbLabel: "CREOLAB na Facebooku",
     },
     cookie: {
-      text: "Ova stranica trenutno ne koristi kolačiće za analitiku ili oglašavanje. Više informacija u",
+      text: "Koristimo kolačiće Google Analyticsa za razumijevanje posjećenosti stranice — postavljaju se samo uz vaš pristanak. Više informacija u",
       privacyLinkText: "Politici privatnosti",
       reject: "Samo nužni",
       accept: "Prihvaćam",
@@ -294,6 +297,10 @@ const DICT: Record<Locale, Dict> = {
         title: "Politika privatnosti — CREOLAB",
         description:
           "Politika privatnosti i kolačića CREOLAB-a — koje podatke prikupljamo, kako ih koristimo i koja su vaša prava.",
+      },
+      uvjeti: {
+        title: "Uvjeti korištenja — CREOLAB",
+        description: "Uvjeti korištenja web stranice i usluga CREOLAB-a.",
       },
     },
     backToPortfolio: "Natrag na portfolio",
@@ -452,11 +459,12 @@ const DICT: Record<Locale, Dict> = {
       ctaHeadingGradient: "your project?",
       copyrightSuffix: "All rights reserved.",
       privacy: "Privacy Policy",
+      terms: "Terms of Service",
       igLabel: "CREOLAB on Instagram",
       fbLabel: "CREOLAB on Facebook",
     },
     cookie: {
-      text: "This website does not currently use cookies for analytics or advertising. More information in our",
+      text: "We use Google Analytics cookies to understand site traffic — they are only set with your consent. More information in our",
       privacyLinkText: "Privacy Policy",
       reject: "Necessary only",
       accept: "Accept",
@@ -504,6 +512,10 @@ const DICT: Record<Locale, Dict> = {
         title: "Privacy Policy — CREOLAB",
         description:
           "CREOLAB's privacy and cookie policy — what data we collect, how we use it, and your rights.",
+      },
+      uvjeti: {
+        title: "Terms of Service — CREOLAB",
+        description: "Terms of Service for CREOLAB's website and services.",
       },
     },
     backToPortfolio: "Back to portfolio",
@@ -662,11 +674,12 @@ const DICT: Record<Locale, Dict> = {
       ctaHeadingGradient: "Ihr Projekt zu starten?",
       copyrightSuffix: "Alle Rechte vorbehalten.",
       privacy: "Datenschutzerklärung",
+      terms: "Nutzungsbedingungen",
       igLabel: "CREOLAB auf Instagram",
       fbLabel: "CREOLAB auf Facebook",
     },
     cookie: {
-      text: "Diese Website verwendet derzeit keine Cookies für Analyse- oder Werbezwecke. Weitere Informationen in unserer",
+      text: "Wir nutzen Google-Analytics-Cookies, um den Website-Traffic zu verstehen — sie werden nur mit Ihrer Einwilligung gesetzt. Weitere Informationen in unserer",
       privacyLinkText: "Datenschutzerklärung",
       reject: "Nur notwendige",
       accept: "Akzeptieren",
@@ -713,6 +726,10 @@ const DICT: Record<Locale, Dict> = {
       privatnost: {
         title: "Datenschutzerklärung — CREOLAB",
         description: "Die Datenschutz- und Cookie-Richtlinie von CREOLAB — welche Daten wir erheben, wie wir sie nutzen und Ihre Rechte.",
+      },
+      uvjeti: {
+        title: "Nutzungsbedingungen — CREOLAB",
+        description: "Nutzungsbedingungen für die Website und Leistungen von CREOLAB.",
       },
     },
     backToPortfolio: "Zurück zum Portfolio",

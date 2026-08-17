@@ -40,12 +40,28 @@ export default function Footer({ locale }: { locale: Locale }) {
           <p className="text-sm text-[var(--text-muted)]">
             {`© ${new Date().getFullYear()} CREOLAB. ${t.footer.copyrightSuffix}`}
           </p>
-          <Link
-            href={`/${locale}/privatnost`}
-            className="text-sm text-[var(--text-muted)] transition-colors hover:text-[var(--text)]"
-          >
-            {t.footer.privacy}
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link
+              href={`/${locale}/privatnost`}
+              className="text-sm text-[var(--text-muted)] transition-colors hover:text-[var(--text)]"
+            >
+              {t.footer.privacy}
+            </Link>
+            <Link
+              href={`/${locale}/uvjeti-koristenja`}
+              className="text-sm text-[var(--text-muted)] transition-colors hover:text-[var(--text)]"
+            >
+              {t.footer.terms}
+            </Link>
+            {locale === "de" && (
+              <Link
+                href={`/${locale}/impressum`}
+                className="text-sm text-[var(--text-muted)] transition-colors hover:text-[var(--text)]"
+              >
+                Impressum
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </footer>

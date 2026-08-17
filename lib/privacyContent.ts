@@ -20,7 +20,7 @@ const PRIVACY: Record<Locale, PrivacyContent> = {
     eyebrow: "Pravne informacije",
     h1Plain: "Politika ",
     h1Gradient: "privatnosti",
-    updated: "Zadnje ažurirano: srpanj 2026.",
+    updated: "Zadnje ažurirano: kolovoz 2026.",
     sections: [
       {
         heading: "1. Voditelj obrade podataka",
@@ -37,14 +37,17 @@ const PRIVACY: Record<Locale, PrivacyContent> = {
       {
         heading: "3. Kolačići (cookies)",
         paragraphs: [
-          "Kolačići su male tekstualne datoteke koje se pohranjuju na vašem uređaju radi funkcioniranja i poboljšanja web stranice. Trenutno ova stranica ne koristi kolačiće za analitiku ili oglašavanje. Ako u budućnosti uvedemo alate poput Google Analyticsa radi razumijevanja posjećenosti stranice, to ćemo učiniti isključivo uz vašu prethodnu privolu putem banera za kolačiće, a ovu politiku ćemo ažurirati s detaljima o korištenim kolačićima.",
-          "Svoj odabir možete promijeniti u bilo kojem trenutku brisanjem podataka o odabiru iz lokalne pohrane (localStorage) vašeg preglednika, nakon čega će vam se baner ponovno prikazati.",
+          "Kolačići su male tekstualne datoteke koje se pohranjuju na vašem uređaju. Za pamćenje vašeg odabira u baneru za kolačiće stranica koristi lokalnu pohranu (localStorage) vašeg preglednika — to nije kolačić u tehničkom smislu i ne zahtijeva privolu.",
+          "Ova stranica koristi Google Analytics radi razumijevanja posjećenosti (broj posjetitelja, najposjećenije stranice, izvori prometa). Kolačići Google Analyticsa postavljaju se isključivo ako u baneru odaberete „Prihvaćam” — dok ne date privolu, ti se kolačići ne učitavaju, a odabirom „Samo nužni” ostaju trajno isključeni.",
+          "Kolačići koje pritom Google Analytics postavlja su _ga (razlikovanje posjetitelja, traje do 2 godine) i _ga_XXXXXXX (pamćenje stanja sesije unutar alata, traje do 2 godine). Podatke obrađuje Google Ireland Limited, a mogu se prenositi i izvan Europskog gospodarskog prostora (npr. u SAD) na temelju standardnih ugovornih klauzula Europske komisije. Više informacija potražite u Googleovoj politici privatnosti (policies.google.com/privacy).",
+          "Svoj odabir možete promijeniti u bilo kojem trenutku brisanjem podataka o odabiru iz lokalne pohrane (localStorage) vašeg preglednika ili brisanjem kolačića preglednika, nakon čega će vam se baner ponovno prikazati.",
         ],
       },
       {
         heading: "4. Usluge trećih strana",
         paragraphs: [
-          "Za prikaz fontova na stranici koristimo samostalno hostirane font datoteke. Ova usluga ne postavlja kolačiće za praćenje niti prikuplja osobne podatke posjetitelja u svrhu oglašavanja.",
+          "Google Analytics: koristimo ovu uslugu tvrtke Google Ireland Limited radi analize posjećenosti stranice, isključivo uz vašu prethodnu privolu (vidi odjeljak 3.). U ovom odnosu Google djeluje kao izvršitelj obrade podataka.",
+          "Fontovi: za prikaz fontova na stranici koristimo samostalno hostirane font datoteke, bez povezivanja s vanjskim poslužiteljima za fontove, pa ova usluga ne postavlja kolačiće niti prikuplja osobne podatke posjetitelja.",
         ],
       },
       {
@@ -81,7 +84,7 @@ const PRIVACY: Record<Locale, PrivacyContent> = {
     eyebrow: "Legal",
     h1Plain: "Privacy ",
     h1Gradient: "Policy",
-    updated: "Last updated: July 2026.",
+    updated: "Last updated: August 2026.",
     sections: [
       {
         heading: "1. Data Controller",
@@ -98,14 +101,17 @@ const PRIVACY: Record<Locale, PrivacyContent> = {
       {
         heading: "3. Cookies",
         paragraphs: [
-          "Cookies are small text files stored on your device to help a website function and improve over time. This website currently does not use cookies for analytics or advertising. If we introduce tools like Google Analytics in the future to understand site traffic, we will do so only with your prior consent via the cookie banner, and we will update this policy with details of any cookies used.",
-          "You can change your choice at any time by clearing your consent selection from your browser's local storage, after which the banner will be shown again.",
+          "Cookies are small text files stored on your device. To remember your choice in the cookie banner, this website uses your browser's local storage (localStorage) — this is not a cookie in the technical sense and does not require consent.",
+          "This website uses Google Analytics to understand site traffic (number of visitors, most visited pages, traffic sources). Google Analytics cookies are only set if you click \"Accept\" in the banner — until you give consent, these cookies are not loaded, and choosing \"Necessary only\" keeps them permanently disabled.",
+          "The cookies Google Analytics sets are _ga (distinguishing visitors, lasts up to 2 years) and _ga_XXXXXXX (remembering session state within the tool, lasts up to 2 years). This data is processed by Google Ireland Limited and may be transferred outside the European Economic Area (e.g. to the US) under the European Commission's Standard Contractual Clauses. See Google's privacy policy (policies.google.com/privacy) for more information.",
+          "You can change your choice at any time by clearing your consent selection from your browser's local storage or by clearing your browser's cookies, after which the banner will be shown again.",
         ],
       },
       {
         heading: "4. Third-Party Services",
         paragraphs: [
-          "We use self-hosted font files to display fonts on this website. This service does not set tracking cookies or collect visitors' personal data for advertising purposes.",
+          "Google Analytics: we use this service from Google Ireland Limited to analyze site traffic, only with your prior consent (see section 3). Google acts as a data processor in this relationship.",
+          "Fonts: we use self-hosted font files to display fonts on this website, without connecting to external font servers, so this service does not set cookies or collect visitors' personal data.",
         ],
       },
       {
@@ -142,7 +148,7 @@ const PRIVACY: Record<Locale, PrivacyContent> = {
     eyebrow: "Rechtliches",
     h1Plain: "Datenschutz",
     h1Gradient: "erklärung",
-    updated: "Zuletzt aktualisiert: Juli 2026.",
+    updated: "Zuletzt aktualisiert: August 2026.",
     sections: [
       {
         heading: "1. Verantwortlicher",
@@ -159,14 +165,17 @@ const PRIVACY: Record<Locale, PrivacyContent> = {
       {
         heading: "3. Cookies",
         paragraphs: [
-          "Cookies sind kleine Textdateien, die auf Ihrem Gerät gespeichert werden, um eine Website funktionsfähig zu machen und zu verbessern. Diese Website verwendet derzeit keine Cookies für Analyse- oder Werbezwecke. Sollten wir künftig Tools wie Google Analytics einführen, um den Website-Traffic zu verstehen, geschieht dies ausschließlich mit Ihrer vorherigen Einwilligung über den Cookie-Banner, und wir werden diese Richtlinie mit Details zu den verwendeten Cookies aktualisieren.",
-          "Sie können Ihre Auswahl jederzeit ändern, indem Sie die gespeicherte Einwilligung aus dem lokalen Speicher (localStorage) Ihres Browsers löschen — der Banner wird Ihnen dann erneut angezeigt.",
+          "Cookies sind kleine Textdateien, die auf Ihrem Gerät gespeichert werden. Um Ihre Auswahl im Cookie-Banner zu speichern, nutzt diese Website den lokalen Speicher (localStorage) Ihres Browsers — dies ist im technischen Sinne kein Cookie und erfordert keine Einwilligung.",
+          "Diese Website nutzt Google Analytics, um den Website-Traffic zu verstehen (Besucherzahl, meistbesuchte Seiten, Traffic-Quellen). Cookies von Google Analytics werden ausschließlich gesetzt, wenn Sie im Banner auf „Akzeptieren” klicken — bis Sie Ihre Einwilligung erteilen, werden diese Cookies nicht geladen, und mit „Nur notwendige” bleiben sie dauerhaft deaktiviert.",
+          "Die dabei von Google Analytics gesetzten Cookies sind _ga (Unterscheidung von Besuchern, Laufzeit bis zu 2 Jahre) und _ga_XXXXXXX (Speicherung des Sitzungsstatus innerhalb des Tools, Laufzeit bis zu 2 Jahre). Diese Daten werden von Google Ireland Limited verarbeitet und können auch außerhalb des Europäischen Wirtschaftsraums (z. B. in die USA) übermittelt werden, gestützt auf die Standardvertragsklauseln der Europäischen Kommission. Weitere Informationen finden Sie in der Datenschutzerklärung von Google (policies.google.com/privacy).",
+          "Sie können Ihre Auswahl jederzeit ändern, indem Sie die gespeicherte Einwilligung aus dem lokalen Speicher (localStorage) Ihres Browsers oder die Cookies Ihres Browsers löschen — der Banner wird Ihnen dann erneut angezeigt.",
         ],
       },
       {
         heading: "4. Dienste Dritter",
         paragraphs: [
-          "Wir nutzen selbst gehostete Schriftdateien zur Darstellung von Schriftarten auf dieser Website. Dieser Dienst setzt keine Tracking-Cookies und erhebt keine personenbezogenen Daten der Besucher zu Werbezwecken.",
+          "Google Analytics: Wir nutzen diesen Dienst von Google Ireland Limited zur Analyse des Website-Traffics, ausschließlich mit Ihrer vorherigen Einwilligung (siehe Abschnitt 3). Google fungiert dabei als Auftragsverarbeiter.",
+          "Schriftarten: Zur Darstellung von Schriftarten auf dieser Website nutzen wir selbst gehostete Schriftdateien, ohne Verbindung zu externen Font-Servern. Dieser Dienst setzt daher keine Cookies und erhebt keine personenbezogenen Daten der Besucher.",
         ],
       },
       {
