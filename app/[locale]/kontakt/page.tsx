@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ContactCards from "@/components/ContactCards";
 import { isLocale, getDict, DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
 import { buildAlternates } from "@/lib/alternates";
+import { buildOpenGraph } from "@/lib/opengraph";
 
 export async function generateMetadata({
   params,
@@ -16,6 +17,7 @@ export async function generateMetadata({
     title: t.meta.kontakt.title,
     description: t.meta.kontakt.description,
     alternates: buildAlternates(locale, "/kontakt"),
+    ...buildOpenGraph(locale, "/kontakt", t.meta.kontakt.title, t.meta.kontakt.description),
   };
 }
 

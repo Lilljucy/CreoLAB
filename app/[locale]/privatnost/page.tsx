@@ -3,6 +3,7 @@ import { isLocale, getDict, DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
 import { buildAlternates } from "@/lib/alternates";
 import { getPrivacy } from "@/lib/privacyContent";
 import { renderWithLinks } from "@/lib/legalRender";
+import { buildOpenGraph } from "@/lib/opengraph";
 
 export async function generateMetadata({
   params,
@@ -18,6 +19,7 @@ export async function generateMetadata({
     description: t.meta.privatnost.description,
     robots: { index: false, follow: true },
     alternates: buildAlternates(locale, "/privatnost"),
+    ...buildOpenGraph(locale, "/privatnost", t.meta.privatnost.title, t.meta.privatnost.description),
   };
 }
 

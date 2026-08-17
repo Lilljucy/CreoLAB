@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import PortfolioGrid from "@/components/PortfolioGrid";
 import { isLocale, getDict, DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
 import { buildAlternates } from "@/lib/alternates";
+import { buildOpenGraph } from "@/lib/opengraph";
 
 export async function generateMetadata({
   params,
@@ -16,6 +17,7 @@ export async function generateMetadata({
     title: t.meta.portfolio.title,
     description: t.meta.portfolio.description,
     alternates: buildAlternates(locale, "/portfolio"),
+    ...buildOpenGraph(locale, "/portfolio", t.meta.portfolio.title, t.meta.portfolio.description, "/web-dizajn/02-portfolio.jpg"),
   };
 }
 

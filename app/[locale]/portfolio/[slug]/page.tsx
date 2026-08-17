@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { PROJECTS, getProject, categoryFor } from "@/lib/portfolio";
 import { isLocale, getDict, DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
 import { buildAlternates } from "@/lib/alternates";
+import { buildOpenGraph } from "@/lib/opengraph";
 
 export function generateStaticParams() {
   return PROJECTS.map((p) => ({ slug: p.slug }));
@@ -21,16 +22,19 @@ export async function generateMetadata({
   if (!project) return {};
 
   const category = categoryFor(project, locale);
+  const title = `${project.name} — CREOLAB`;
+  const description = `${category}: ${project.name}. ${
+    locale === "en"
+      ? "See the project in the CREOLAB portfolio."
+      : locale === "de"
+        ? "Sehen Sie sich das Projekt im CREOLAB-Portfolio an."
+        : "Pogledajte projekt u CREOLAB portfoliju."
+  }`;
   return {
-    title: `${project.name} — CREOLAB`,
-    description: `${category}: ${project.name}. ${
-      locale === "en"
-        ? "See the project in the CREOLAB portfolio."
-        : locale === "de"
-          ? "Sehen Sie sich das Projekt im CREOLAB-Portfolio an."
-          : "Pogledajte projekt u CREOLAB portfoliju."
-    }`,
+    title,
+    description,
     alternates: buildAlternates(locale, `/portfolio/${slug}`),
+    ...buildOpenGraph(locale, `/portfolio/${slug}`, title, description, project.gallery[0]),
   };
 }
 

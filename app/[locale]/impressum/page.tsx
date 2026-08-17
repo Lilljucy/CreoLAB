@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLocale, DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
 import { buildAlternates } from "@/lib/alternates";
+import { buildOpenGraph } from "@/lib/opengraph";
 
 export function generateStaticParams() {
   return [{ locale: "de" }];
@@ -14,12 +15,15 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale: rawLocale } = await params;
   const locale: Locale = isLocale(rawLocale) ? rawLocale : DEFAULT_LOCALE;
+  const title = "Impressum — CREOLAB";
+  const description = "Impressum und Anbieterkennzeichnung von CREOLAB gemäß § 5 TMG.";
 
   return {
-    title: "Impressum — CREOLAB",
-    description: "Impressum und Anbieterkennzeichnung von CREOLAB gemäß § 5 TMG.",
+    title,
+    description,
     robots: { index: false, follow: true },
     alternates: buildAlternates(locale, "/impressum"),
+    ...buildOpenGraph(locale, "/impressum", title, description),
   };
 }
 

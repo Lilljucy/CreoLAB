@@ -8,6 +8,7 @@ import PortfolioPreview from "@/components/PortfolioPreview";
 import FAQ from "@/components/FAQ";
 import { isLocale, getDict, DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
 import { buildAlternates } from "@/lib/alternates";
+import { buildOpenGraph } from "@/lib/opengraph";
 
 export async function generateMetadata({
   params,
@@ -22,6 +23,7 @@ export async function generateMetadata({
     title: t.meta.home.title,
     description: t.meta.home.description,
     alternates: buildAlternates(locale, ""),
+    ...buildOpenGraph(locale, "", t.meta.home.title, t.meta.home.description),
   };
 }
 
