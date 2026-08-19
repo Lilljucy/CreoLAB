@@ -1,6 +1,6 @@
 import { type Locale } from "./i18n";
 
-const SITE_NAME = "CREOLAB";
+const SITE_NAME = "CREOlab";
 const DEFAULT_IMAGE = "/web-dizajn/01-naslovnica.jpg";
 
 const OG_LOCALE: Record<Locale, string> = {

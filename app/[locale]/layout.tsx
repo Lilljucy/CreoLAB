@@ -26,6 +26,14 @@ export async function generateMetadata({
     metadataBase: new URL("https://creolab-design.hr"),
     title: { default: t.meta.home.title, template: "%s" },
     description: t.meta.home.description,
+    icons: {
+      icon: [
+        { url: "/icon.svg", type: "image/svg+xml" },
+        { url: "/icon0.png", type: "image/png", sizes: "512x512" },
+        { url: "/favicon.ico", type: "image/x-icon", sizes: "16x16 32x32 48x48 256x256" },
+      ],
+      apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+    },
   };
 }
 
@@ -35,7 +43,8 @@ const ORGANIZATION_JSON_LD = {
     {
       "@type": "Organization",
       "@id": "https://creolab-design.hr/#organization",
-      name: "CREOLAB",
+      name: "CREOlab",
+      alternateName: "CREOLAB",
       url: "https://creolab-design.hr/",
       logo: "https://creolab-design.hr/icon.svg",
       image: "https://creolab-design.hr/web-dizajn/01-naslovnica.jpg",
@@ -56,7 +65,7 @@ const ORGANIZATION_JSON_LD = {
     {
       "@type": "WebSite",
       "@id": "https://creolab-design.hr/#website",
-      name: "CREOLAB",
+      name: "CREOlab",
       url: "https://creolab-design.hr/",
       publisher: { "@id": "https://creolab-design.hr/#organization" },
       inLanguage: ["hr", "en", "de"],
