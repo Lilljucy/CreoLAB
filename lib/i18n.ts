@@ -22,6 +22,8 @@ type Dict = {
     contact: string;
     cta: string;
     whatsappLabel: string;
+    openMenu: string;
+    closeMenu: string;
   };
   hero: {
     eyebrow: string;
@@ -97,6 +99,8 @@ const DICT: Record<Locale, Dict> = {
       contact: "Kontakt",
       cta: "Zatražite ponudu",
       whatsappLabel: "Kontaktirajte nas putem WhatsAppa",
+      openMenu: "Otvorite izbornik",
+      closeMenu: "Zatvorite izbornik",
     },
     hero: {
       eyebrow: "Grafički dizajn, izrada web stranica i marketing · CreoLab Požega",
@@ -313,6 +317,8 @@ const DICT: Record<Locale, Dict> = {
       contact: "Contact",
       cta: "Request a Quote",
       whatsappLabel: "Contact us via WhatsApp",
+      openMenu: "Open menu",
+      closeMenu: "Close menu",
     },
     hero: {
       eyebrow: "Graphic Design, Web Development & Marketing · CreoLab Požega, Croatia",
@@ -528,6 +534,8 @@ const DICT: Record<Locale, Dict> = {
       contact: "Kontakt",
       cta: "Angebot anfordern",
       whatsappLabel: "Kontaktieren Sie uns über WhatsApp",
+      openMenu: "Menü öffnen",
+      closeMenu: "Menü schließen",
     },
     hero: {
       eyebrow: "Grafikdesign, Webentwicklung & Marketing · CreoLab Požega, Kroatien",
