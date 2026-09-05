@@ -132,6 +132,7 @@ export default async function ProjectPage({
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
+                  style={project.galleryFocus?.[i] ? { objectPosition: project.galleryFocus[i] } : undefined}
                   priority={i === 0}
                 />
               </div>

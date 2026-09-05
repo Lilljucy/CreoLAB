@@ -3,60 +3,56 @@
 import puppeteer from "puppeteer-core";
 
 const CHROME_PATH = process.env.CHROME_PATH || "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
+const SETTLE_MS = 1500;
 
-const TARGETS = [
-  {
-    url: "https://tastethejourney.creolab-design.hr/",
-    out: new URL("../public/web-dizajn/05-taste-the-journey.jpg", import.meta.url),
-  },
-];
-
-// Landmark text to scroll to for each extra vinarija-soldo.hr section screenshot.
-const SOLDO_SECTIONS = [
-  { label: "hero", text: null, out: "04-vinarija-soldo.jpg" },
-  { label: "vina", text: "Izdvajamo", out: "06-vinarija-soldo-vina.jpg" },
-  { label: "o nama", text: "Naša priča", out: "07-vinarija-soldo-onama.jpg" },
-  { label: "zasto soldo", text: "Zašto Soldo", out: "08-vinarija-soldo-zasto.jpg" },
-  { label: "kontakt", text: "Kontaktirajte nas", out: "09-vinarija-soldo-kontakt.jpg" },
-];
-
-async function screenshotSoldo(page) {
-  console.log("Screenshotting https://vinarija-soldo.hr/index.html (multiple sections)");
-  await page.goto("https://vinarija-soldo.hr/index.html", { waitUntil: "networkidle0", timeout: 30000 });
-
+async function dismissGates(page) {
   const ageGate = await page.$("#age-gate-yes");
-  if (ageGate) {
+  if (ageGate && (await ageGate.boundingBox())) {
     await ageGate.click();
     await new Promise((r) => setTimeout(r, 1000));
   }
   const cookieAccept = await page.$("#cookie-accept");
-  if (cookieAccept) {
+  if (cookieAccept && (await cookieAccept.boundingBox())) {
     await cookieAccept.click();
     await new Promise((r) => setTimeout(r, 500));
   }
-
-  for (const { label, text, out } of SOLDO_SECTIONS) {
-    if (text) {
-      const found = await page.evaluate((needle) => {
-        const all = Array.from(document.querySelectorAll("body *"));
-        const el = all.find((e) => e.children.length === 0 && e.textContent?.trim() === needle);
-        if (!el) return false;
-        el.scrollIntoView({ block: "center" });
-        return true;
-      }, text);
-      if (!found) {
-        console.log(`  (landmark "${text}" not found for ${label}, skipping)`);
-        continue;
-      }
-    } else {
-      await page.evaluate(() => window.scrollTo(0, 0));
-    }
-    await new Promise((r) => setTimeout(r, 1500));
-    const out_ = new URL(`../public/web-dizajn/${out}`, import.meta.url);
-    await page.screenshot({ path: out_, type: "jpeg", quality: 88 });
-    console.log(`  saved ${label} -> ${out_}`);
-  }
 }
+
+async function scrollToText(page, text) {
+  return page.evaluate((needle) => {
+    // Skip elements inside a fixed/sticky header — those never actually move the page.
+    const all = Array.from(document.querySelectorAll("body *"));
+    const el = all.find((e) => {
+      if (e.children.length !== 0 || e.textContent?.trim() !== needle) return false;
+      const style = getComputedStyle(e);
+      return style.position !== "fixed" && style.position !== "sticky" && !e.closest("header");
+    });
+    if (!el) return false;
+    el.scrollIntoView({ block: "center" });
+    return true;
+  }, text);
+}
+
+async function scrollByPx(page, px) {
+  await page.evaluate((y) => window.scrollTo(0, y), px);
+}
+
+async function shoot(page, outName) {
+  await new Promise((r) => setTimeout(r, SETTLE_MS));
+  const out = new URL(`../public/web-dizajn/${outName}`, import.meta.url);
+  await page.screenshot({ path: out, type: "jpeg", quality: 88 });
+  console.log(`  saved -> ${out}`);
+}
+
+// Each entry: { url, gate: true = run dismissGates after nav, scrollTo?: landmark text, out }
+const SOLDO_SHOTS = [
+  { url: "https://vinarija-soldo.hr/index.html", gate: true, scrollTo: null, out: "04-vinarija-soldo-pocetna.jpg" },
+  { url: "https://vinarija-soldo.hr/index.html", gate: false, scrollTo: "Zašto Soldo", out: "06-vinarija-soldo-zasto.jpg" },
+  { url: "https://vinarija-soldo.hr/o-nama.html", gate: true, scrollTo: null, out: "07-vinarija-soldo-onama.jpg" },
+  { url: "https://vinarija-soldo.hr/vina.html", gate: true, scrollTo: null, out: "08-vinarija-soldo-vina.jpg" },
+  { url: "https://vinarija-soldo.hr/vina.html", gate: false, scrollY: 1080, out: "09-vinarija-soldo-vina-detalj.jpg" },
+  { url: "https://vinarija-soldo.hr/kontakt.html", gate: true, scrollTo: null, out: "10-vinarija-soldo-kontakt.jpg" },
+];
 
 async function main() {
   const browser = await puppeteer.launch({
@@ -67,21 +63,37 @@ async function main() {
   const page = await browser.newPage();
   await page.setViewport({ width: 1440, height: 1080 });
 
-  await screenshotSoldo(page);
-
-  for (const { url, out } of TARGETS) {
-    console.log(`Screenshotting ${url}`);
-    try {
+  console.log("Screenshotting vinarija-soldo.hr (multiple real pages)");
+  let lastUrl = null;
+  for (const { url, gate, scrollTo, scrollY, out } of SOLDO_SHOTS) {
+    if (url !== lastUrl) {
       await page.goto(url, { waitUntil: "networkidle0", timeout: 30000 });
-
-      // tastethejourney shows a splash/loading animation before the real content
-      await new Promise((r) => setTimeout(r, 3500));
-
-      await page.screenshot({ path: out, type: "jpeg", quality: 88 });
-      console.log(`  saved -> ${out}`);
-    } catch (err) {
-      console.error(`  FAILED: ${err.message}`);
+      lastUrl = url;
+      if (gate) await dismissGates(page);
+      await page.evaluate(() => window.scrollTo(0, 0));
     }
+    if (scrollTo) {
+      const found = await scrollToText(page, scrollTo);
+      if (!found) {
+        console.log(`  (landmark "${scrollTo}" not found on ${url}, screenshotting top instead)`);
+        await page.evaluate(() => window.scrollTo(0, 0));
+      }
+    } else if (scrollY) {
+      await scrollByPx(page, scrollY);
+    } else {
+      await page.evaluate(() => window.scrollTo(0, 0));
+    }
+    await shoot(page, out);
+  }
+
+  console.log("Screenshotting https://tastethejourney.creolab-design.hr/");
+  try {
+    await page.goto("https://tastethejourney.creolab-design.hr/", { waitUntil: "networkidle0", timeout: 30000 });
+    // shows a splash/loading animation before the real content
+    await new Promise((r) => setTimeout(r, 3500));
+    await shoot(page, "05-taste-the-journey.jpg");
+  } catch (err) {
+    console.error(`  FAILED: ${err.message}`);
   }
 
   await browser.close();

@@ -21,13 +21,12 @@ const GRAPHIC_IMAGES = [
 
 const WEB_IMAGES = [
   { src: "/web-dizajn/01-naslovnica.jpg", alt: "Naslovnica web stranice CreoLab s glavnim pozivom na akciju" },
-  { src: "/web-dizajn/02-portfolio.jpg", alt: "Portfolio stranica web stranice CreoLab s pregledom projekata" },
-  { src: "/web-dizajn/03-kontakt.jpg", alt: "Kontakt stranica web stranice CreoLab s podacima za kontakt" },
-  { src: "/web-dizajn/04-vinarija-soldo.jpg", alt: "Naslovnica web stranice vinarije Soldo s fotografijom vinograda" },
-  { src: "/web-dizajn/06-vinarija-soldo-vina.jpg", alt: "Stranica vina web stranice vinarije Soldo s bocama iz ponude" },
-  { src: "/web-dizajn/07-vinarija-soldo-onama.jpg", alt: "Odjeljak O nama web stranice vinarije Soldo s pričom o vinariji" },
-  { src: "/web-dizajn/08-vinarija-soldo-zasto.jpg", alt: "Odjeljak Zašto Soldo web stranice vinarije s fotografijama vinograda" },
-  { src: "/web-dizajn/09-vinarija-soldo-kontakt.jpg", alt: "Kontakt odjeljak web stranice vinarije Soldo s radnim vremenom podruma" },
+  { src: "/web-dizajn/04-vinarija-soldo-pocetna.jpg", alt: "Naslovnica web stranice vinarije Soldo s fotografijom vinograda" },
+  { src: "/web-dizajn/06-vinarija-soldo-zasto.jpg", alt: "Odjeljak Zašto Soldo web stranice vinarije s fotografijama vinograda" },
+  { src: "/web-dizajn/07-vinarija-soldo-onama.jpg", alt: "Stranica O nama web stranice vinarije Soldo s pričom o vinariji" },
+  { src: "/web-dizajn/08-vinarija-soldo-vina.jpg", alt: "Stranica ponude vina web stranice vinarije Soldo" },
+  { src: "/web-dizajn/09-vinarija-soldo-vina-detalj.jpg", alt: "Vinoteka na stranici vina vinarije Soldo s bocama i filterima" },
+  { src: "/web-dizajn/10-vinarija-soldo-kontakt.jpg", alt: "Kontakt stranica web stranice vinarije Soldo s kartom i radnim vremenom" },
   { src: "/web-dizajn/05-taste-the-journey.jpg", alt: "Anketa Taste the Journey za ocjenjivanje gastronomskog doživljaja" },
 ];
 
@@ -74,7 +73,7 @@ export default function Services({ locale }: { locale: Locale }) {
           <div className="service-card glass overflow-hidden rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1">
             <h3 className="mb-1 text-xl">{t.services.web.title}</h3>
             <p className="mb-4 text-sm text-[var(--text-muted)]">{t.services.web.desc}</p>
-            <CardCarousel images={WEB_IMAGES} cycleSeconds={36} />
+            <CardCarousel images={WEB_IMAGES} cycleSeconds={32} />
           </div>
 
           <div className="service-card glass flex flex-col overflow-hidden rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1">

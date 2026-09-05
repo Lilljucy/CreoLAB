@@ -9,6 +9,7 @@ export type Project = {
   img: string;
   gallery: string[];
   galleryAlt: string[];
+  galleryFocus?: Record<number, string>;
   story?: Partial<Record<Locale, ProjectStory>>;
 };
 
@@ -186,6 +187,7 @@ export const PROJECTS: Project[] = [
       "Boca ružičastog vina Soldo Rosé uz bazen",
       "Boca vina Soldo Graševina i čaša vina ispred božićnog drvca",
     ],
+    galleryFocus: { 1: "right" },
     story: {
       hr: {
         challenge:
