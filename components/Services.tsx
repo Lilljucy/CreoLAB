@@ -23,6 +23,8 @@ const WEB_IMAGES = [
   { src: "/web-dizajn/01-naslovnica.jpg", alt: "Naslovnica web stranice CreoLab s glavnim pozivom na akciju" },
   { src: "/web-dizajn/02-portfolio.jpg", alt: "Portfolio stranica web stranice CreoLab s pregledom projekata" },
   { src: "/web-dizajn/03-kontakt.jpg", alt: "Kontakt stranica web stranice CreoLab s podacima za kontakt" },
+  { src: "/web-dizajn/04-vinarija-soldo.jpg", alt: "Naslovnica web stranice vinarije Soldo s fotografijom vinograda" },
+  { src: "/web-dizajn/05-taste-the-journey.jpg", alt: "Anketa Taste the Journey za ocjenjivanje gastronomskog doživljaja" },
 ];
 
 export default function Services({ locale }: { locale: Locale }) {
@@ -68,7 +70,7 @@ export default function Services({ locale }: { locale: Locale }) {
           <div className="service-card glass overflow-hidden rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1">
             <h3 className="mb-1 text-xl">{t.services.web.title}</h3>
             <p className="mb-4 text-sm text-[var(--text-muted)]">{t.services.web.desc}</p>
-            <CardCarousel images={WEB_IMAGES} cycleSeconds={12} />
+            <CardCarousel images={WEB_IMAGES} cycleSeconds={20} />
           </div>
 
           <div className="service-card glass flex flex-col overflow-hidden rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1">

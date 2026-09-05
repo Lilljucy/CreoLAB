@@ -111,12 +111,18 @@ export default async function ProjectPage({
           </div>
         )}
 
-        <div className="grid gap-6 sm:grid-cols-2">
+        <div
+          className={
+            project.gallery.length === 1
+              ? "flex justify-center"
+              : "grid gap-6 sm:grid-cols-2"
+          }
+        >
           {project.gallery.map((src, i) => (
             <div
               key={src}
               className={`glass relative overflow-hidden rounded-2xl ${
-                project.gallery.length === 1 || i === 0 ? "sm:col-span-2" : ""
+                project.gallery.length === 1 ? "w-full sm:w-1/2" : ""
               }`}
             >
               <div className="relative aspect-[4/3] w-full">
