@@ -44,6 +44,8 @@ export default function About({ locale }: { locale: Locale }) {
           </div>
         </div>
 
+        <div className="about-reveal mb-10 h-px w-full bg-[var(--border)]" />
+
         <div className="grid gap-6 sm:grid-cols-2">
           {cards.map((card) => (
             <div key={card.title} className="about-reveal glass rounded-2xl p-6">
@@ -55,6 +57,16 @@ export default function About({ locale }: { locale: Locale }) {
 
         <div className="about-reveal glass mt-6 rounded-2xl p-6">
           <h3 className="mb-3 text-lg">{t.about.values.title}</h3>
+          <div className="mb-5 flex flex-wrap gap-2">
+            {t.about.values.items.map((item) => {
+              const [label] = item.split(": ");
+              return (
+                <span key={label} className="inline-flex pill-badge">
+                  {label}
+                </span>
+              );
+            })}
+          </div>
           <ul className="flex flex-col gap-2 text-sm text-[var(--text-muted)]">
             {t.about.values.items.map((item) => {
               const [label, ...rest] = item.split(": ");

@@ -1,12 +1,26 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { getDict, type Locale } from "@/lib/i18n";
 
 gsap.registerPlugin(ScrollTrigger);
+
+function faqAnswerText(item: {
+  intro?: string;
+  p?: string;
+  items?: { label: string; text: string }[];
+}): string {
+  if (item.items) {
+    return [item.intro, ...item.items.map((li) => `${li.label} — ${li.text}`)]
+      .filter(Boolean)
+      .join(" ");
+  }
+  return item.p ?? "";
+}
 
 export default function FAQ({ locale }: { locale: Locale }) {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -28,12 +42,21 @@ export default function FAQ({ locale }: { locale: Locale }) {
 
   return (
     <section id="faq" ref={sectionRef} className="relative px-6 pt-16 pb-16">
-      <div className="mx-auto max-w-3xl">
-        <div className="mb-16 text-center">
-          <span className="mb-4 inline-block text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]">
-            {t.faq.eyebrow}
-          </span>
-          <h2 className="text-[clamp(2rem,4vw,3rem)]">{t.faq.heading}</h2>
+      <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-2 md:items-start">
+        <div className="md:sticky md:top-32">
+          <span className="inline-flex pill-badge mb-4">{t.faq.eyebrow}</span>
+          <h2 className="mb-4 text-[clamp(2rem,4vw,3rem)]">{t.faq.heading}</h2>
+          <p className="mb-8 text-[var(--text-muted)]">{t.faq.sub}</p>
+
+          <div className="relative mb-6 hidden aspect-[4/3] overflow-hidden rounded-2xl md:block">
+            <Image src="/portfolio/platinum-grupa.jpg" alt="" fill sizes="40vw" className="object-cover" />
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            <span className="inline-flex pill-badge">{t.services.graphic.title}</span>
+            <span className="inline-flex pill-badge">{t.services.web.title}</span>
+            <span className="inline-flex pill-badge">{t.services.social.title}</span>
+          </div>
         </div>
 
         <div className="flex flex-col gap-4">
@@ -80,7 +103,7 @@ export default function FAQ({ locale }: { locale: Locale }) {
               name: item.q,
               acceptedAnswer: {
                 "@type": "Answer",
-                text: item.plain,
+                text: faqAnswerText(item),
               },
             })),
           }),

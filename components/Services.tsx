@@ -6,36 +6,34 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CardCarousel from "./CardCarousel";
 import { getDict, type Locale } from "@/lib/i18n";
+import { SOCIAL_CLIENTS } from "@/lib/clients";
+import { uniqueCategories } from "@/lib/portfolio";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const GRAPHIC_IMAGES = [
-  "/portfolio/bilokapic-destilerija.jpg",
-  "/portfolio/platinum-grupa.jpg",
-  "/portfolio/previsic-vinarija.jpg",
-  "/portfolio-full/soldo-vinarija/02-logo-dizajn.jpg",
-  "/portfolio/triglav-osiguranje.jpg",
+  { src: "/portfolio/bilokapic-destilerija.jpg", alt: "Logo destilerije Bilokapić utisnut zlatotiskom na tamnom papiru" },
+  { src: "/portfolio/platinum-grupa.jpg", alt: "Memorandum i vizitka Platinum Grupe na radnom stolu" },
+  { src: "/portfolio/previsic-vinarija.jpg", alt: "Logo vinarije Previšić utisnut zlatotiskom na papiru" },
+  { src: "/portfolio-full/soldo-vinarija/02-logo-dizajn.jpg", alt: "Logo vinarije Soldo utisnut zlatotiskom na tamnom papiru" },
+  { src: "/portfolio/triglav-osiguranje.jpg", alt: "Plakat Triglav osiguranja s obitelji u prirodi na uličnom štandu" },
 ];
 
 const WEB_IMAGES = [
-  "/web-dizajn/01-naslovnica.jpg",
-  "/web-dizajn/02-portfolio.jpg",
-  "/web-dizajn/03-kontakt.jpg",
-];
-
-const SOCIAL_CLIENTS = [
-  { name: "Fitness Klub Play", handle: "@fitnessklubplay", url: "https://www.instagram.com/fitnessklubplay/" },
-  { name: "Triglav Osiguranje", handle: "@triglav.osiguranje.hrvatska", url: "https://www.instagram.com/triglav.osiguranje.hrvatska/" },
-  { name: "Caffe Bar Vanilla", handle: "@vanilla__bar", url: "https://www.instagram.com/vanilla__bar/" },
-  { name: "Soldo Vinarija", handle: "@vinarija_soldo", url: "https://www.instagram.com/vinarija_soldo/" },
-  { name: "Sax-Win", handle: "@sax.win", url: "https://www.instagram.com/sax.win/" },
-  { name: "Pub Mackey", handle: "@pubmackey_pz", url: "https://www.instagram.com/pubmackey_pz/" },
-  { name: "Color Trgovina", handle: "@colortrgovina", url: "https://www.instagram.com/colortrgovina/" },
+  { src: "/web-dizajn/01-naslovnica.jpg", alt: "Naslovnica web stranice CreoLab s glavnim pozivom na akciju" },
+  { src: "/web-dizajn/02-portfolio.jpg", alt: "Portfolio stranica web stranice CreoLab s pregledom projekata" },
+  { src: "/web-dizajn/03-kontakt.jpg", alt: "Kontakt stranica web stranice CreoLab s podacima za kontakt" },
 ];
 
 export default function Services({ locale }: { locale: Locale }) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const t = getDict(locale);
+  const tags = [
+    t.services.graphic.title,
+    t.services.web.title,
+    t.services.social.title,
+    ...uniqueCategories(locale),
+  ];
 
   useGSAP(
     () => {
@@ -56,26 +54,24 @@ export default function Services({ locale }: { locale: Locale }) {
     <section id="usluge" ref={sectionRef} className="relative px-6 pt-4 pb-40">
       <div className="mx-auto max-w-5xl">
         <div className="mb-16 text-center">
-          <span className="mb-4 inline-block text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]">
-            {t.services.eyebrow}
-          </span>
+          <span className="inline-flex pill-badge mb-4">{t.services.eyebrow}</span>
           <h2 className="text-[clamp(2rem,4vw,3rem)]">{t.services.heading}</h2>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
-          <div className="service-card shine-card glass overflow-hidden rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1">
+          <div className="service-card glass overflow-hidden rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1">
             <h3 className="mb-1 text-xl">{t.services.graphic.title}</h3>
             <p className="mb-4 text-sm text-[var(--text-muted)]">{t.services.graphic.desc}</p>
             <CardCarousel images={GRAPHIC_IMAGES} />
           </div>
 
-          <div className="service-card shine-card glass overflow-hidden rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1">
+          <div className="service-card glass overflow-hidden rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1">
             <h3 className="mb-1 text-xl">{t.services.web.title}</h3>
             <p className="mb-4 text-sm text-[var(--text-muted)]">{t.services.web.desc}</p>
             <CardCarousel images={WEB_IMAGES} cycleSeconds={12} />
           </div>
 
-          <div className="service-card shine-card glass flex flex-col overflow-hidden rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1">
+          <div className="service-card glass flex flex-col overflow-hidden rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1">
             <h3 className="mb-1 text-xl">{t.services.social.title}</h3>
             <p className="mb-4 text-sm text-[var(--text-muted)]">{t.services.social.desc}</p>
             <div className="relative aspect-4/3 overflow-hidden rounded-2xl">
@@ -101,6 +97,16 @@ export default function Services({ locale }: { locale: Locale }) {
                 </a>
               ))}
             </div>
+          </div>
+        </div>
+
+        <div className="mt-12 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+          <div className="marquee-track">
+            {[...tags, ...tags].map((tag, i) => (
+              <span key={`${tag}-${i}`} className="pill-badge mx-2 inline-flex shrink-0">
+                {tag}
+              </span>
+            ))}
           </div>
         </div>
       </div>

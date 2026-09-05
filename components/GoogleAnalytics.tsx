@@ -1,27 +1,26 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import Script from "next/script";
 
 const GA_ID = "G-1E07SV9Y6G";
 const STORAGE_KEY = "creolab-aura-cookie-consent";
 
+function subscribe(callback: () => void) {
+  document.addEventListener("cookieconsent", callback);
+  return () => document.removeEventListener("cookieconsent", callback);
+}
+
+function getSnapshot() {
+  return localStorage.getItem(STORAGE_KEY) === "accepted";
+}
+
+function getServerSnapshot() {
+  return false;
+}
+
 export default function GoogleAnalytics() {
-  const [enabled, setEnabled] = useState(false);
-
-  useEffect(() => {
-    if (localStorage.getItem(STORAGE_KEY) === "accepted") {
-      setEnabled(true);
-    }
-
-    function onConsent(e: Event) {
-      const detail = (e as CustomEvent<string>).detail;
-      setEnabled(detail === "accepted");
-    }
-
-    document.addEventListener("cookieconsent", onConsent);
-    return () => document.removeEventListener("cookieconsent", onConsent);
-  }, []);
+  const enabled = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   if (!enabled) return null;
 

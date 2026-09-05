@@ -16,16 +16,25 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Variable.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --bg: #030303;
-  --bg-alt: #0a0a0a;
+  --bg: #000000;
   --surface: rgba(255, 255, 255, 0.04);
   --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.35);
   --text: #f5f5f5;
   --text-muted: #9a9a9a;
-  --accent-1: #93c5fd;
-  --accent-2: #e0f2fe;
+  --accent-1: #e5e5e5;
+  --accent-2: #ffffff;
   --gradient: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  --glow: rgba(255, 255, 255, 0.5);
 }
 
 * {
@@ -39,17 +48,21 @@ html {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: "Montserrat Bold", ui-sans-serif, system-ui, sans-serif;
+  font-family: "Satoshi", ui-sans-serif, system-ui, sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
 }
 
 h1, h2, h3, h4 {
-  font-family: "Montserrat Bold", sans-serif;
-  font-weight: 700;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
   letter-spacing: -0.01em;
   line-height: 1.1;
+}
+
+.hero-heading-line {
+  line-height: 1;
 }
 
 .font-creo {
@@ -88,6 +101,62 @@ h1, h2, h3, h4 {
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   animation: grain-shift 1s steps(4) infinite;
+}
+
+/* Subtle radial dark vignette between the smoke background and the hero
+   text, so contrast/legibility never depends on where the wave happens to
+   be at any given moment. */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 70% 60% at 50% 45%,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.25) 45%,
+    transparent 75%
+  );
+}
+
+/* Fades the top/bottom edges of a smoke-background section smoothly into
+   the page background instead of the smoke cutting off abruptly at the
+   section boundary. Used on both the hero and the footer. */
+.hero-top-fade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, var(--bg) 0%, rgba(4, 4, 4, 0) 45%);
+}
+
+.hero-bottom-fade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(4, 4, 4, 0) 55%, var(--bg) 100%);
+}
+
+/* Soft fade hanging just below the fixed header, so its bottom edge blends
+   into whatever scrolls underneath instead of a hard line. */
+.header-bottom-fade {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 14px;
+  pointer-events: none;
+  background: linear-gradient(rgba(4, 4, 4, 0) 55%, rgb(4, 4, 4) 100%);
+}
+
+.scroll-dot {
+  animation: scroll-dot 1.8s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes scroll-dot {
+  0% { transform: translateY(0); opacity: 1; }
+  70% { transform: translateY(10px); opacity: 0; }
+  71% { transform: translateY(0); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
 }
 
 @keyframes grain-shift {
@@ -188,8 +257,243 @@ h1, h2, h3, h4 {
 }
 
 @keyframes btn-glow-pulse {
-  0%, 100% { box-shadow: 0 0 0px rgba(224, 242, 254, 0); }
-  50% { box-shadow: 0 0 30px rgba(224, 242, 254, 0.55); }
+  0%, 100% { box-shadow: 0 0 0px rgba(255, 255, 255, 0); }
+  50% { box-shadow: 0 0 30px rgba(255, 255, 255, 0.55); }
+}
+
+/* Small uppercase eyebrow badge — bullet dot + label. Pair with Tailwind's
+   inline-flex utility at each call site (not display here) so responsive
+   hidden/flex toggles aren't overridden by this unlayered rule. */
+.pill-badge {
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Hero eyebrow only — a small, fixed corner glint (top-left), not a full
+   traced border. box-shadow only, so it never touches the fill behind the
+   text. Kept off every other pill-badge. */
+.hero-eyebrow.pill-badge {
+  box-shadow: -3px -3px 7px -4px rgba(255, 255, 255, 0.5);
+}
+
+.pill-badge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text);
+  flex-shrink: 0;
+}
+
+/* Hero eyebrow only — bigger glowing/pulsing bullet, kept off every other
+   pill-badge (About/Services/Process/Stats/Portfolio/FAQ eyebrows, tag
+   marquees, etc.) which stay the plain static dot above. */
+.hero-eyebrow.pill-badge::before {
+  width: 9px;
+  height: 9px;
+  background: radial-gradient(circle at 32% 28%, #ffffff 0%, #f4f4f4 30%, #d6d6d6 65%, #b4b4b4 100%);
+  box-shadow:
+    0 0 10px 2px rgba(255, 255, 255, 0.65),
+    0 0 20px 6px rgba(255, 255, 255, 0.25);
+  animation: badge-pulse 2s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.85; }
+}
+
+/* Solid pill button — black fill, thin light border. Pair with Tailwind's
+   inline-flex utility at each call site (not display here) so responsive
+   hidden/flex toggles aren't overridden by this unlayered rule. */
+.btn-pill {
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 1rem 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  color: var(--text);
+  transition: border-color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-pill:hover {
+  border-color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
+}
+
+/* Outline pill button with a soft ambient glow. Pair with Tailwind's
+   inline-flex utility at each call site (not display here) so responsive
+   hidden/flex toggles aren't overridden by this unlayered rule. */
+.btn-pill-glow {
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 1rem 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: var(--text);
+  box-shadow: 0 0 30px -6px var(--glow);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-pill-glow:hover {
+  border-color: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 0 45px -4px var(--glow);
+  transform: translateY(-2px);
+}
+
+/* Content-CTA buttons (hero/footer/contact) — moderately rounded rectangle,
+   NOT a full pill; matches the reference's primary/secondary button shape.
+   Pair with Tailwind's inline-flex utility at each call site (not display
+   here) so responsive hidden/flex toggles aren't overridden by this
+   unlayered rule. */
+.btn-cta {
+  position: relative;
+  isolation: isolate;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.875rem;
+  padding: 1rem 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-cta:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
+}
+
+/* Conic-gradient ring, fixed (no rotation) — bright glints anchored at the
+   top-right and bottom-left corners only, transparent everywhere else.
+   Built as a separate masked pseudo-element (not a layered background) so
+   it can NEVER bleed across the button's own fill/text — the mask
+   physically excludes everything but the 1px ring. */
+.btn-cta::after,
+.btn-cta-glow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  padding: 1px;
+  pointer-events: none;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 20deg,
+    rgba(255, 255, 255, 0.65) 45deg,
+    transparent 70deg,
+    transparent 200deg,
+    rgba(255, 255, 255, 0.5) 225deg,
+    transparent 250deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  transition: opacity 0.3s ease;
+}
+
+.btn-cta:hover::after,
+.btn-cta-glow:hover::after {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 20deg,
+    rgba(255, 255, 255, 1) 45deg,
+    transparent 70deg,
+    transparent 200deg,
+    rgba(255, 255, 255, 0.9) 225deg,
+    transparent 250deg,
+    transparent 360deg
+  );
+}
+
+.btn-cta-glow {
+  position: relative;
+  isolation: isolate;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.875rem;
+  padding: 1rem 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid transparent;
+  box-shadow: 0 0 22px -4px var(--glow);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.btn-cta-glow:hover {
+  box-shadow: 0 0 34px -3px var(--glow);
+  transform: translateY(-2px);
+}
+
+/* Client-logo marquee (hero strip) */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 28s linear infinite;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Fixed progressive blur at the bottom edge of the viewport — content
+   softly dissolves as it scrolls under it, instead of a hard cutoff. */
+.bottom-fade-blur {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 140px;
+  pointer-events: none;
+  z-index: 40;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  mask-image: linear-gradient(to top, black, transparent);
+  -webkit-mask-image: linear-gradient(to top, black, transparent);
+}
+
+/* Cursor-follower glow dot */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e6e6e6;
+  pointer-events: none;
+  z-index: 200;
+  will-change: transform;
 }
 
 /* Legal content (privacy policy) */

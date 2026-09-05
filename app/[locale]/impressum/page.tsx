@@ -22,7 +22,7 @@ export async function generateMetadata({
     title,
     description,
     robots: { index: false, follow: true },
-    alternates: buildAlternates(locale, "/impressum"),
+    alternates: buildAlternates(locale, "/impressum", ["de"]),
     ...buildOpenGraph(locale, "/impressum", title, description),
   };
 }

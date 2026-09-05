@@ -6,6 +6,9 @@ import { PROJECTS, getProject, categoryFor } from "@/lib/portfolio";
 import { isLocale, getDict, DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
 import { buildAlternates } from "@/lib/alternates";
 import { buildOpenGraph } from "@/lib/opengraph";
+import { buildBreadcrumbJsonLd } from "@/lib/structuredData";
+
+const SITE_URL = "https://creolab-design.hr";
 
 export function generateStaticParams() {
   return PROJECTS.map((p) => ({ slug: p.slug }));
@@ -22,7 +25,7 @@ export async function generateMetadata({
   if (!project) return {};
 
   const category = categoryFor(project, locale);
-  const title = `${project.name} — CREOLAB`;
+  const title = `${project.name}: ${category} | CreoLab`;
   const description = `${category}: ${project.name}. ${
     locale === "en"
       ? "See the project in the CREOLAB portfolio."
@@ -50,9 +53,18 @@ export default async function ProjectPage({
   if (!project) notFound();
 
   const category = categoryFor(project, locale);
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "CreoLab", url: `${SITE_URL}/${locale}` },
+    { name: t.pages.portfolio.eyebrow, url: `${SITE_URL}/${locale}/portfolio` },
+    { name: project.name, url: `${SITE_URL}/${locale}/portfolio/${slug}` },
+  ]);
 
   return (
     <main className="px-6 pt-40 pb-32">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div className="mx-auto max-w-5xl">
         <Link
           href={`/${locale}/portfolio`}
@@ -72,14 +84,14 @@ export default async function ProjectPage({
           {project.gallery.map((src, i) => (
             <div
               key={src}
-              className={`shine-card glass relative overflow-hidden rounded-2xl ${
+              className={`glass relative overflow-hidden rounded-2xl ${
                 project.gallery.length === 1 || i === 0 ? "sm:col-span-2" : ""
               }`}
             >
               <div className="relative aspect-[4/3] w-full">
                 <Image
                   src={src}
-                  alt={`${project.name} — ${category}`}
+                  alt={project.galleryAlt[i]}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
@@ -91,10 +103,7 @@ export default async function ProjectPage({
         </div>
 
         <div className="mt-16 text-center">
-          <Link
-            href={`/${locale}/kontakt`}
-            className="btn-glow inline-block rounded-full bg-gradient-to-br from-[#93c5fd] to-[#e0f2fe] px-8 py-4 text-sm font-semibold text-black transition-transform hover:-translate-y-0.5"
-          >
+          <Link href={`/${locale}/kontakt`} className="inline-flex btn-cta">
             {t.ctaProject}
           </Link>
         </div>

@@ -1,28 +1,34 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import Link from "next/link";
 import { getDict, type Locale } from "@/lib/i18n";
 
 const STORAGE_KEY = "creolab-aura-cookie-consent";
 
-export default function CookieBanner({ locale }: { locale: Locale }) {
-  const [visible, setVisible] = useState(false);
-  const t = getDict(locale);
+function subscribe(callback: () => void) {
+  document.addEventListener("cookieconsent", callback);
+  return () => document.removeEventListener("cookieconsent", callback);
+}
 
-  useEffect(() => {
-    if (!localStorage.getItem(STORAGE_KEY)) {
-      setVisible(true);
-    }
-  }, []);
+function getSnapshot() {
+  return localStorage.getItem(STORAGE_KEY);
+}
+
+function getServerSnapshot() {
+  return "pending";
+}
+
+export default function CookieBanner({ locale }: { locale: Locale }) {
+  const consent = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const t = getDict(locale);
 
   function choose(value: string) {
     localStorage.setItem(STORAGE_KEY, value);
     document.dispatchEvent(new CustomEvent("cookieconsent", { detail: value }));
-    setVisible(false);
   }
 
-  if (!visible) return null;
+  if (consent !== null) return null;
 
   return (
     <div className="glass fixed bottom-5 left-1/2 z-50 flex w-[calc(100%-2.5rem)] max-w-2xl -translate-x-1/2 flex-col items-center gap-4 rounded-2xl p-6 text-center sm:flex-row sm:justify-between sm:text-left">
@@ -41,11 +47,7 @@ export default function CookieBanner({ locale }: { locale: Locale }) {
         >
           {t.cookie.reject}
         </button>
-        <button
-          type="button"
-          onClick={() => choose("accepted")}
-          className="rounded-full bg-gradient-to-br from-[#93c5fd] to-[#e0f2fe] px-5 py-2.5 text-sm font-semibold text-black transition-transform hover:-translate-y-0.5"
-        >
+        <button type="button" onClick={() => choose("accepted")} className="inline-flex btn-cta px-5 py-2.5 text-sm">
           {t.cookie.accept}
         </button>
       </div>

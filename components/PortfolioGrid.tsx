@@ -35,7 +35,7 @@ export default function PortfolioGrid({ locale }: { locale: Locale }) {
         <Link
           key={p.slug}
           href={`/${locale}/portfolio/${p.slug}`}
-          className="portfolio-card shine-card glass group block overflow-hidden rounded-2xl transition-transform duration-300 hover:-translate-y-1"
+          className="portfolio-card glass group block overflow-hidden rounded-2xl transition-transform duration-300 hover:-translate-y-1"
         >
           <div className="relative aspect-[4/3] w-full overflow-hidden">
             <Image

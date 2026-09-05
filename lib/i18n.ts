@@ -12,7 +12,6 @@ type FaqItem = {
   p?: string;
   listType?: "ul" | "ol";
   items?: { label: string; text: string }[];
-  plain: string;
 };
 
 type Dict = {
@@ -32,6 +31,7 @@ type Dict = {
     sub: string;
     ctaPrimary: string;
     ctaSecondary: string;
+    scrollHint: string;
   };
   about: {
     eyebrow: string;
@@ -48,14 +48,14 @@ type Dict = {
     web: { title: string; desc: string };
     social: { title: string; desc: string };
   };
-  stats: { completed: string; services: string; personalized: string; response: string };
+  stats: { eyebrow: string; heading: string; completed: string; services: string; personalized: string; response: string };
   process: {
     eyebrow: string;
     heading: string;
     steps: { title: string; desc: string }[];
   };
-  portfolioPreview: { eyebrow: string; heading: string; viewAll: string };
-  faq: { eyebrow: string; heading: string; items: FaqItem[] };
+  portfolioPreview: { eyebrow: string; heading: string; viewAll: string; viewCasestudy: string; bookCall: string };
+  faq: { eyebrow: string; heading: string; sub: string; items: FaqItem[] };
   footer: {
     ctaHeadingPlain: string;
     ctaHeadingGradient: string;
@@ -73,6 +73,7 @@ type Dict = {
     mobileBtn: string;
     hours: string;
     hoursValue: string;
+    addressTitle: string;
     follow: string;
     followDesc: string;
   };
@@ -109,6 +110,7 @@ const DICT: Record<Locale, Dict> = {
       sub: "CREOLAB je specijaliziran za grafički dizajn, izradu web stranica i social media marketing.",
       ctaPrimary: "Pogledajte portfolio",
       ctaSecondary: "Kontaktirajte nas",
+      scrollHint: "Pomaknite se za radove",
     },
     about: {
       eyebrow: "O nama",
@@ -143,6 +145,8 @@ const DICT: Record<Locale, Dict> = {
       social: { title: "Društvene mreže", desc: "Profili, oglasi i sadržaj koji donosi rezultate." },
     },
     stats: {
+      eyebrow: "U brojkama",
+      heading: "Rezultati koji govore sami za sebe.",
       completed: "Završenih projekata",
       services: "Usluge pod jednim krovom",
       personalized: "Personaliziran pristup",
@@ -162,10 +166,13 @@ const DICT: Record<Locale, Dict> = {
       eyebrow: "Izdvojeni radovi",
       heading: "Radovi koji govore sami za sebe.",
       viewAll: "Pogledajte sve radove",
+      viewCasestudy: "Pogledajte rad",
+      bookCall: "Zakažite poziv",
     },
     faq: {
       eyebrow: "Česta pitanja",
       heading: "Odgovori na najčešća pitanja.",
+      sub: "Pronađite odgovore na najčešća pitanja o našem procesu, uslugama i suradnji.",
       items: [
         {
           q: "Koje usluge nudite u sklopu grafičkog dizajna, weba i društvenih mreža?",
@@ -176,17 +183,14 @@ const DICT: Record<Locale, Dict> = {
             { label: "Društvene mreže & Sadržaj", text: "strateško vođenje profila, vođenje oglasnih kampanja (Ads) te foto i video produkcija na terenu." },
             { label: "Web dizajn", text: "izrada modernih i funkcionalnih web stranica prilagođenih vašem poslovanju." },
           ],
-          plain: "Nudimo cjelovita digitalna i vizualna rješenja: Grafički dizajn i branding, društvene mreže i sadržaj te web dizajn.",
         },
         {
           q: "Nudite li gotove pakete ili radite ponude na upit?",
           p: "Svakom klijentu pristupamo individualno. Definirane strukture usluga služe nam kao smjernica, ali je svaka ponuda 100% personalizirana i prilagođena vašem budžetu, ciljevima i potrebama.",
-          plain: "Svakom klijentu pristupamo individualno. Svaka ponuda je 100% personalizirana i prilagođena vašem budžetu, ciljevima i potrebama.",
         },
         {
           q: "Koliko prosječno traje proces izrade?",
           p: "Okvirni rokovi ovise o složenosti projekta. Izrada logotipa ili vizualnog identiteta obično traje od nekoliko radnih dana do dva tjedna. Rokovi za izradu web stranice definiraju se uvodnim dogovorom.",
-          plain: "Okvirni rokovi ovise o složenosti projekta — od nekoliko radnih dana do dva tjedna za logo/identitet, a rokovi za web stranicu definiraju se uvodnim dogovorom.",
         },
         {
           q: "Kako izgleda proces suradnje nakon što vam se javim?",
@@ -198,22 +202,18 @@ const DICT: Record<Locale, Dict> = {
             { label: "Izrada & Dorada", text: "finiziranje dizajna kroz definiran broj izmjena." },
             { label: "Lansiranje", text: "isporuka finalnih datoteka i puštanje projekta u rad." },
           ],
-          plain: "Naš proces ima 4 koraka: upoznavanje i analiza, koncept, izrada i dorada te lansiranje.",
         },
         {
           q: "Što ako ne budem zadovoljan/na prvim predloženim konceptom?",
           p: "Prije početka rada radimo detaljnu analizu kako bismo smanjili mogućnost promašaja vizije. Ako prvi koncept ne ispuni očekivanja, kroz otvorenu komunikaciju dorađujemo rješenje ili izrađujemo novi koncept dok ne dođemo do željene vizije.",
-          plain: "Kroz otvorenu komunikaciju dorađujemo rješenje ili izrađujemo novi koncept dok ne dođemo do željene vizije.",
         },
         {
           q: "Koliko je rundi izmjena (revizija) uključeno u cijenu?",
           p: "Broj izmjena definira se službenom ponudom. Standardno uključujemo od 1 do 4 kruga revizija ovisno o opsegu projekta, dok za najopsežnije projekte nudimo neograničen broj dorada do potpunog zadovoljstva.",
-          plain: "Standardno uključujemo od 1 do 4 kruga revizija ovisno o opsegu projekta, a za najopsežnije projekte nudimo neograničen broj dorada.",
         },
         {
           q: "Koji su vaši uvjeti plaćanja za projekte?",
           p: "Radimo po principu uplate akontacije (pologa) prije početka izrade projekta. Preostali iznos uplaćuje se po odobrenju finalnog rješenja, a prije slanja izvoznih datoteka i lansiranja weba.",
-          plain: "Radimo po principu akontacije prije početka izrade, a preostali iznos po odobrenju finalnog rješenja.",
         },
         {
           q: "U kojim formatima dobivam gotove dizajnerske materijale?",
@@ -223,22 +223,18 @@ const DICT: Record<Locale, Dict> = {
             { label: "Za tisak", text: "vektorski formati visoke kvalitete s tehničkom pripremom (PDF, AI, EPS)." },
             { label: "Za digitalno korištenje", text: "visoka rezolucija u PNG (prozirna pozadina) i JPG formatima za web i mreže." },
           ],
-          plain: "Za tisak isporučujemo vektorske formate (PDF, AI, EPS), a za digitalno korištenje visoku rezoluciju u PNG i JPG formatima.",
         },
         {
           q: "Kome pripadaju autorska prava na dizajn nakon završetka projekta?",
           p: "Nakon što je račun u potpunosti isplaćen, sva autorska prava i puno vlasništvo nad odobrenim finalnim dizajnom i materijalima prelaze na vas.",
-          plain: "Nakon potpune isplate računa, sva autorska prava i vlasništvo nad finalnim dizajnom prelaze na vas.",
         },
         {
           q: "Moram li sam/a osigurati tekstove i slike ili vi radite i taj dio?",
           p: "Nudimo potpunu uslugu. Ako nemate spremne materijale, mi možemo preuzeti pisanje tekstova (SEO copywriting) te terensko fotografiranje i video snimanje. Ako već imate spremne materijale, rado ćemo ih uklopiti.",
-          plain: "Nudimo potpunu uslugu — pisanje tekstova, fotografiranje i video snimanje, ili uklapamo vaše postojeće materijale.",
         },
         {
           q: "Radite li redizajn postojećeg logotipa i osvježavanje brenda?",
           p: "Da! Ako je vaš postojeći logo zastario ili više ne predstavlja vašu tvrtku na pravi način, nudimo profesionalan redizajn logotipa. Zadržavamo prepoznatljivost vašeg brenda uz modernizaciju oblika, tipografije i boja, čineći ga spremnim za sve digitalne i tiskane medije.",
-          plain: "Da, nudimo profesionalan redizajn logotipa koji modernizira oblik, tipografiju i boje uz zadržavanje prepoznatljivosti brenda.",
         },
       ],
     },
@@ -264,6 +260,7 @@ const DICT: Record<Locale, Dict> = {
       mobileBtn: "Mobitel",
       hours: "Radno vrijeme",
       hoursValue: "Pon – Pet: 08:00 – 16:00",
+      addressTitle: "Adresa",
       follow: "Pratite nas",
       followDesc: "Pogledajte naše najnovije radove i objave na društvenim mrežama.",
     },
@@ -283,19 +280,19 @@ const DICT: Record<Locale, Dict> = {
     },
     meta: {
       home: {
-        title: "Grafički Dizajn, Izrada Web Stranica i Marketing | CreoLab Požega",
+        title: "Grafički dizajner i izrada web stranica | CreoLab Požega",
         description:
-          "Trebate izradu ili redizajn logotipa, modernu web stranicu ili vođenje društvenih mreža? CreoLab nudi profesionalne usluge dizajna i marketinških rješenja. Zatražite ponudu!",
+          "CreoLab iz Požege radi logotipe, vizualni identitet, izradu web stranica i vođenje društvenih mreža za obrte i tvrtke. Zatražite besplatnu ponudu.",
       },
       portfolio: {
-        title: "Portfolio — CREOLAB",
+        title: "Portfolio: logo dizajn i brendiranje | CreoLab Požega",
         description:
-          "Stvarni projekti CREOLAB-a — logo dizajn, brendiranje, ambalaža, dizajn etiketa i drugo za klijente iz cijele Hrvatske.",
+          "Pogledajte 16 projekata CreoLaba: logotipi, vizualni identiteti, ambalaža, etikete i web stranice za vinarije, obrte i tvrtke diljem Hrvatske.",
       },
       kontakt: {
-        title: "Kontakt — CREOLAB",
+        title: "Kontakt | Grafički dizajn i izrada weba, Požega",
         description:
-          "Kontaktirajte CREOLAB za grafički dizajn, web dizajn i social media marketing u Požegi.",
+          "Kontaktirajte CreoLab u Požegi za ponudu: grafički dizajn, izrada web stranica i društvene mreže. Nazovite +385 91 979 8969 ili pišite na email.",
       },
       privatnost: {
         title: "Politika privatnosti — CREOLAB",
@@ -327,6 +324,7 @@ const DICT: Record<Locale, Dict> = {
       sub: "CREOLAB specializes in graphic design, web development and social media marketing.",
       ctaPrimary: "View Portfolio",
       ctaSecondary: "Contact Us",
+      scrollHint: "Scroll down to see projects",
     },
     about: {
       eyebrow: "About Us",
@@ -361,6 +359,8 @@ const DICT: Record<Locale, Dict> = {
       social: { title: "Social Media", desc: "Profiles, ads and content that deliver results." },
     },
     stats: {
+      eyebrow: "By the numbers",
+      heading: "Results that speak for themselves.",
       completed: "Completed projects",
       services: "Services under one roof",
       personalized: "Personalized approach",
@@ -380,10 +380,13 @@ const DICT: Record<Locale, Dict> = {
       eyebrow: "Featured Work",
       heading: "Work that speaks for itself.",
       viewAll: "View All Work",
+      viewCasestudy: "View Casestudy",
+      bookCall: "Book a Call",
     },
     faq: {
       eyebrow: "FAQ",
       heading: "Answers to frequently asked questions.",
+      sub: "Find answers to common questions about our process, services and collaboration.",
       items: [
         {
           q: "What services do you offer in graphic design, web and social media?",
@@ -394,17 +397,14 @@ const DICT: Record<Locale, Dict> = {
             { label: "Social media & content", text: "strategic profile management, running ad campaigns, and on-location photo and video production." },
             { label: "Web design", text: "modern, functional websites tailored to your business." },
           ],
-          plain: "We offer complete digital and visual solutions: graphic design and branding, social media and content, and web design.",
         },
         {
           q: "Do you offer fixed packages or custom quotes?",
           p: "We take an individual approach with every client. Our defined service structures serve as a guideline, but every quote is 100% personalized and tailored to your budget, goals and needs.",
-          plain: "We take an individual approach with every client. Every quote is 100% personalized and tailored to your budget, goals and needs.",
         },
         {
           q: "How long does the design process usually take?",
           p: "Timelines depend on the complexity of the project. Designing a logo or visual identity usually takes anywhere from a few working days to two weeks. Website timelines are defined in the initial consultation.",
-          plain: "Timelines depend on complexity — a few working days to two weeks for a logo/identity, while website timelines are set in the initial consultation.",
         },
         {
           q: "What does the process look like after I contact you?",
@@ -416,22 +416,18 @@ const DICT: Record<Locale, Dict> = {
             { label: "Design & refinement", text: "finalizing the design through a defined number of revisions." },
             { label: "Launch", text: "delivery of final files and project go-live." },
           ],
-          plain: "Our process has 4 steps: discovery and analysis, concept, design and refinement, and launch.",
         },
         {
           q: "What if I'm not happy with the first proposed concept?",
           p: "Before starting work, we carry out a detailed analysis to reduce the chance of missing your vision. If the first concept doesn't meet expectations, we refine the solution or create a new concept through open communication until we reach the result you want.",
-          plain: "Through open communication we refine the solution or create a new concept until we reach the result you want.",
         },
         {
           q: "How many rounds of revisions are included in the price?",
           p: "The number of revisions is defined in the official quote. We typically include 1 to 4 rounds of revisions depending on project scope, while for the most extensive projects we offer unlimited revisions until you're fully satisfied.",
-          plain: "We typically include 1 to 4 rounds of revisions depending on project scope, and unlimited revisions for the most extensive projects.",
         },
         {
           q: "What are your payment terms for projects?",
           p: "We work on a deposit basis, paid before work on the project begins. The remaining amount is paid once the final solution is approved, and before export files are sent or the website goes live.",
-          plain: "We work on a deposit basis before work begins, with the remainder paid once the final solution is approved.",
         },
         {
           q: "What formats do I receive the finished design files in?",
@@ -441,22 +437,18 @@ const DICT: Record<Locale, Dict> = {
             { label: "For print", text: "high-quality vector formats with technical prepress (PDF, AI, EPS)." },
             { label: "For digital use", text: "high resolution PNG (transparent background) and JPG formats for web and social media." },
           ],
-          plain: "For print we deliver vector formats (PDF, AI, EPS), and for digital use high-resolution PNG and JPG formats.",
         },
         {
           q: "Who owns the copyright to the design after the project is finished?",
           p: "Once the invoice is paid in full, all copyright and full ownership of the approved final design and materials transfer to you.",
-          plain: "Once the invoice is paid in full, all copyright and ownership of the final design transfer to you.",
         },
         {
           q: "Do I need to provide my own copy and images, or do you handle that too?",
           p: "We offer a full-service option. If you don't have materials ready, we can take care of copywriting (SEO copywriting) as well as on-location photography and video. If you already have materials ready, we're happy to work with them.",
-          plain: "We offer a full-service option — copywriting, photography and video, or we work with your existing materials.",
         },
         {
           q: "Do you redesign existing logos and refresh brand identities?",
           p: "Yes! If your current logo feels outdated or no longer represents your business the right way, we offer professional logo redesign. We preserve your brand's recognizability while modernizing its shape, typography and colors, making it ready for every digital and print medium.",
-          plain: "Yes, we offer professional logo redesign that modernizes shape, typography and color while keeping your brand recognizable.",
         },
       ],
     },
@@ -482,6 +474,7 @@ const DICT: Record<Locale, Dict> = {
       mobileBtn: "Mobile",
       hours: "Business Hours",
       hoursValue: "Mon – Fri: 8:00 AM – 4:00 PM",
+      addressTitle: "Address",
       follow: "Follow Us",
       followDesc: "Check out our latest work and posts on social media.",
     },
@@ -501,17 +494,17 @@ const DICT: Record<Locale, Dict> = {
     },
     meta: {
       home: {
-        title: "CREOLAB — Design and marketing that build your brand",
+        title: "Graphic Design & Web Development | CreoLab Croatia",
         description:
-          "CREOLAB, based in Požega, Croatia, builds visual identities, websites and digital experiences for brands that don't want to look ordinary.",
+          "CreoLab is a graphic design and web development studio in Požega, Croatia. Logos, visual identity, websites and social media for growing brands.",
       },
       portfolio: {
-        title: "Portfolio — CREOLAB",
+        title: "Portfolio: Logo Design & Branding | CreoLab Croatia",
         description:
           "Real projects by CREOLAB — logo design, branding, packaging, label design and more for clients across Croatia.",
       },
       kontakt: {
-        title: "Contact — CREOLAB",
+        title: "Contact | Graphic Design & Web Development, Croatia",
         description: "Contact CREOLAB for graphic design, web design and social media marketing in Požega, Croatia.",
       },
       privatnost: {
@@ -544,6 +537,7 @@ const DICT: Record<Locale, Dict> = {
       sub: "CREOLAB ist spezialisiert auf Grafikdesign, Webentwicklung und Social-Media-Marketing.",
       ctaPrimary: "Portfolio ansehen",
       ctaSecondary: "Kontaktieren Sie uns",
+      scrollHint: "Scrollen Sie zu den Projekten",
     },
     about: {
       eyebrow: "Über uns",
@@ -578,6 +572,8 @@ const DICT: Record<Locale, Dict> = {
       social: { title: "Social Media", desc: "Profile, Anzeigen und Inhalte, die Ergebnisse liefern." },
     },
     stats: {
+      eyebrow: "In Zahlen",
+      heading: "Ergebnisse, die für sich sprechen.",
       completed: "Abgeschlossene Projekte",
       services: "Leistungen unter einem Dach",
       personalized: "Individueller Ansatz",
@@ -597,10 +593,13 @@ const DICT: Record<Locale, Dict> = {
       eyebrow: "Ausgewählte Arbeiten",
       heading: "Arbeiten, die für sich sprechen.",
       viewAll: "Alle Arbeiten ansehen",
+      viewCasestudy: "Projekt ansehen",
+      bookCall: "Termin vereinbaren",
     },
     faq: {
       eyebrow: "Häufige Fragen",
       heading: "Antworten auf häufig gestellte Fragen.",
+      sub: "Antworten auf häufige Fragen zu unserem Prozess, unseren Leistungen und der Zusammenarbeit.",
       items: [
         {
           q: "Welche Leistungen bieten Sie im Bereich Grafikdesign, Web und Social Media an?",
@@ -611,17 +610,14 @@ const DICT: Record<Locale, Dict> = {
             { label: "Social Media & Content", text: "strategische Profilbetreuung, Durchführung von Werbekampagnen (Ads) sowie Foto- und Videoproduktion vor Ort." },
             { label: "Webdesign", text: "Erstellung moderner und funktionaler Websites, zugeschnitten auf Ihr Unternehmen." },
           ],
-          plain: "Wir bieten umfassende digitale und visuelle Lösungen: Grafikdesign und Branding, Social Media und Content sowie Webdesign.",
         },
         {
           q: "Bieten Sie fertige Pakete an oder erstellen Sie individuelle Angebote?",
           p: "Wir gehen auf jeden Kunden individuell ein. Unsere definierten Leistungsstrukturen dienen als Orientierung, doch jedes Angebot ist zu 100% personalisiert und an Ihr Budget, Ihre Ziele und Bedürfnisse angepasst.",
-          plain: "Wir gehen auf jeden Kunden individuell ein. Jedes Angebot ist zu 100% personalisiert und an Ihr Budget, Ihre Ziele und Bedürfnisse angepasst.",
         },
         {
           q: "Wie lange dauert der Gestaltungsprozess im Durchschnitt?",
           p: "Die Fristen hängen von der Komplexität des Projekts ab. Die Erstellung eines Logos oder einer visuellen Identität dauert in der Regel wenige Werktage bis zu zwei Wochen. Die Fristen für eine Website werden im Erstgespräch festgelegt.",
-          plain: "Die Fristen hängen von der Komplexität ab — wenige Werktage bis zwei Wochen für Logo/Identität, Website-Fristen werden im Erstgespräch festgelegt.",
         },
         {
           q: "Wie läuft die Zusammenarbeit ab, nachdem ich mich bei Ihnen gemeldet habe?",
@@ -633,22 +629,18 @@ const DICT: Record<Locale, Dict> = {
             { label: "Umsetzung & Feinschliff", text: "Finalisierung des Designs durch eine festgelegte Anzahl an Überarbeitungen." },
             { label: "Launch", text: "Lieferung der finalen Dateien und Start des Projekts." },
           ],
-          plain: "Unser Prozess hat 4 Schritte: Kennenlernen und Analyse, Konzept, Umsetzung und Feinschliff sowie Launch.",
         },
         {
           q: "Was passiert, wenn mir das erste vorgeschlagene Konzept nicht gefällt?",
           p: "Vor Arbeitsbeginn führen wir eine detaillierte Analyse durch, um das Risiko einer verfehlten Vision zu minimieren. Entspricht das erste Konzept nicht Ihren Erwartungen, überarbeiten wir die Lösung oder entwickeln durch offene Kommunikation ein neues Konzept, bis wir die gewünschte Vision erreichen.",
-          plain: "Durch offene Kommunikation überarbeiten wir die Lösung oder entwickeln ein neues Konzept, bis wir die gewünschte Vision erreichen.",
         },
         {
           q: "Wie viele Überarbeitungsrunden sind im Preis enthalten?",
           p: "Die Anzahl der Überarbeitungen wird im offiziellen Angebot festgelegt. Standardmäßig sind je nach Projektumfang 1 bis 4 Überarbeitungsrunden enthalten, während wir bei den umfangreichsten Projekten unbegrenzte Überarbeitungen bis zur vollständigen Zufriedenheit anbieten.",
-          plain: "Standardmäßig sind 1 bis 4 Überarbeitungsrunden enthalten, bei den umfangreichsten Projekten unbegrenzte Überarbeitungen.",
         },
         {
           q: "Welche Zahlungsbedingungen gelten für Projekte?",
           p: "Wir arbeiten nach dem Prinzip einer Anzahlung vor Projektbeginn. Der Restbetrag wird nach Freigabe der finalen Lösung fällig, bevor die Exportdateien versendet werden oder die Website live geht.",
-          plain: "Wir arbeiten mit einer Anzahlung vor Projektbeginn, der Restbetrag wird nach Freigabe der finalen Lösung fällig.",
         },
         {
           q: "In welchen Formaten erhalte ich die fertigen Designmaterialien?",
@@ -658,22 +650,18 @@ const DICT: Record<Locale, Dict> = {
             { label: "Für den Druck", text: "hochwertige Vektorformate mit technischer Druckvorstufe (PDF, AI, EPS)." },
             { label: "Für die digitale Nutzung", text: "hochauflösende PNG- (transparenter Hintergrund) und JPG-Formate für Web und soziale Netzwerke." },
           ],
-          plain: "Für den Druck liefern wir Vektorformate (PDF, AI, EPS), für die digitale Nutzung hochauflösende PNG- und JPG-Formate.",
         },
         {
           q: "Wem gehören die Urheberrechte am Design nach Projektabschluss?",
           p: "Nach vollständiger Bezahlung der Rechnung gehen sämtliche Urheberrechte und das volle Eigentum am genehmigten finalen Design und den Materialien auf Sie über.",
-          plain: "Nach vollständiger Bezahlung gehen sämtliche Urheberrechte und das Eigentum am finalen Design auf Sie über.",
         },
         {
           q: "Muss ich selbst Texte und Bilder bereitstellen, oder übernehmen Sie das auch?",
           p: "Wir bieten einen Rundum-Service an. Falls Sie keine fertigen Materialien haben, übernehmen wir gerne das Texten (SEO-Copywriting) sowie Foto- und Videoaufnahmen vor Ort. Wenn Sie bereits fertige Materialien haben, binden wir diese gerne ein.",
-          plain: "Wir bieten einen Rundum-Service — Texten, Foto- und Videoaufnahmen, oder wir binden Ihre vorhandenen Materialien ein.",
         },
         {
           q: "Führen Sie ein Redesign bestehender Logos und eine Auffrischung des Markenauftritts durch?",
           p: "Ja! Wenn Ihr bestehendes Logo veraltet wirkt oder Ihr Unternehmen nicht mehr richtig repräsentiert, bieten wir ein professionelles Logo-Redesign an. Wir bewahren den Wiedererkennungswert Ihrer Marke und modernisieren gleichzeitig Form, Typografie und Farben – bereit für alle digitalen und gedruckten Medien.",
-          plain: "Ja, wir bieten professionelles Logo-Redesign, das Form, Typografie und Farben modernisiert und dabei den Wiedererkennungswert Ihrer Marke bewahrt.",
         },
       ],
     },
@@ -699,6 +687,7 @@ const DICT: Record<Locale, Dict> = {
       mobileBtn: "Mobil",
       hours: "Öffnungszeiten",
       hoursValue: "Mo – Fr: 08:00 – 16:00 Uhr",
+      addressTitle: "Adresse",
       follow: "Folgen Sie uns",
       followDesc: "Sehen Sie sich unsere neuesten Arbeiten und Beiträge in den sozialen Medien an.",
     },
@@ -718,17 +707,17 @@ const DICT: Record<Locale, Dict> = {
     },
     meta: {
       home: {
-        title: "CREOLAB — Design und Marketing, die Ihre Marke aufbauen",
+        title: "Grafikdesign & Webentwicklung | CreoLab Kroatien",
         description:
-          "CREOLAB aus Požega, Kroatien, schafft visuelle Identitäten, Websites und digitale Erlebnisse für Marken, die nicht gewöhnlich wirken wollen.",
+          "CreoLab ist ein Studio für Grafikdesign und Webentwicklung in Požega, Kroatien. Logos, Corporate Design, Websites und Social Media für Ihre Marke.",
       },
       portfolio: {
-        title: "Portfolio — CREOLAB",
+        title: "Portfolio: Logodesign & Branding | CreoLab Kroatien",
         description:
           "Echte Projekte von CREOLAB — Logo-Design, Branding, Verpackung, Etikettendesign und mehr für Kunden in ganz Kroatien.",
       },
       kontakt: {
-        title: "Kontakt — CREOLAB",
+        title: "Kontakt | Grafikdesign & Webentwicklung, Kroatien",
         description: "Kontaktieren Sie CREOLAB für Grafikdesign, Webdesign und Social-Media-Marketing in Požega, Kroatien.",
       },
       privatnost: {

@@ -4,7 +4,7 @@ export default function CardCarousel({
   images,
   cycleSeconds,
 }: {
-  images: string[];
+  images: { src: string; alt: string }[];
   cycleSeconds?: number;
 }) {
   const cycle = cycleSeconds ?? images.length * 4;
@@ -28,11 +28,11 @@ export default function CardCarousel({
           ${fadeOutEnd.toFixed(2)}% { opacity: 0; }
         }
       `}</style>
-      {images.map((src, i) => (
+      {images.map(({ src, alt }, i) => (
         <Image
           key={src}
           src={src}
-          alt=""
+          alt={alt}
           fill
           sizes="(max-width: 768px) 100vw, 400px"
           style={{

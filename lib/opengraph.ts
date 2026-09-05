@@ -5,7 +5,7 @@ const DEFAULT_IMAGE = "/web-dizajn/01-naslovnica.jpg";
 
 const OG_LOCALE: Record<Locale, string> = {
   hr: "hr_HR",
-  en: "en_US",
+  en: "en_GB",
   de: "de_DE",
 };
 
@@ -26,7 +26,7 @@ export function buildOpenGraph(
       siteName: SITE_NAME,
       locale: OG_LOCALE[locale],
       type: "website" as const,
-      images: [{ url: image }],
+      images: [{ url: image, alt: title }],
     },
     twitter: {
       card: "summary_large_image" as const,

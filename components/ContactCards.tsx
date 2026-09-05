@@ -35,35 +35,34 @@ export default function ContactCards({ locale }: { locale: Locale }) {
   return (
     <div ref={gridRef} className="grid gap-6 sm:grid-cols-2">
       {PEOPLE.map((p) => (
-        <div key={p.name} className="contact-card shine-card glass overflow-hidden rounded-2xl p-8">
-          <h3 className="mb-2 text-sm uppercase tracking-wider text-[var(--text-muted)]">{p.title}</h3>
+        <div key={p.name} className="contact-card glass overflow-hidden rounded-2xl p-8">
+          <h2 className="mb-2 text-sm uppercase tracking-wider text-[var(--text-muted)]">{p.title}</h2>
           <p className="mb-4 text-xl">{p.name}</p>
           <div className="flex gap-3">
-            <a
-              href={`mailto:${p.mail}`}
-              className="rounded-full border border-[var(--border)] px-5 py-2.5 text-sm font-medium transition-colors hover:bg-white/10"
-            >
+            <a href={`mailto:${p.mail}`} className="inline-flex btn-cta-glow px-5 py-2.5 text-sm">
               {t.contact.mailBtn}
             </a>
-            <a
-              href={`tel:${p.phone}`}
-              className="rounded-full bg-gradient-to-br from-[#93c5fd] to-[#e0f2fe] px-5 py-2.5 text-sm font-semibold text-black transition-transform hover:-translate-y-0.5"
-            >
+            <a href={`tel:${p.phone}`} className="inline-flex btn-cta px-5 py-2.5 text-sm">
               {t.contact.mobileBtn}
             </a>
           </div>
         </div>
       ))}
 
-      <div className="contact-card shine-card glass overflow-hidden rounded-2xl p-8 sm:col-span-2">
-        <h3 className="mb-2 text-sm uppercase tracking-wider text-[var(--text-muted)]">{t.contact.hours}</h3>
+      <div className="contact-card glass overflow-hidden rounded-2xl p-8">
+        <h2 className="mb-2 text-sm uppercase tracking-wider text-[var(--text-muted)]">{t.contact.hours}</h2>
         <p className="text-xl">{t.contact.hoursValue}</p>
       </div>
 
-      <div className="contact-card shine-card glass overflow-hidden rounded-2xl p-8 sm:col-span-2">
-        <h3 className="mb-2 text-sm uppercase tracking-wider text-[var(--text-muted)]">
+      <div className="contact-card glass overflow-hidden rounded-2xl p-8">
+        <h2 className="mb-2 text-sm uppercase tracking-wider text-[var(--text-muted)]">{t.contact.addressTitle}</h2>
+        <p className="text-xl">Marije Jurić Zagorke 9, 34000 Požega</p>
+      </div>
+
+      <div className="contact-card glass overflow-hidden rounded-2xl p-8 sm:col-span-2">
+        <h2 className="mb-2 text-sm uppercase tracking-wider text-[var(--text-muted)]">
           {t.contact.follow}
-        </h3>
+        </h2>
         <p className="mb-4 text-[var(--text-muted)]">{t.contact.followDesc}</p>
         <div className="flex gap-3">
           <a
