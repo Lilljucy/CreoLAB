@@ -57,6 +57,7 @@ export default function ContactCards({ locale }: { locale: Locale }) {
       <div className="contact-card glass overflow-hidden rounded-2xl p-8">
         <h2 className="mb-2 text-sm uppercase tracking-wider text-[var(--text-muted)]">{t.contact.addressTitle}</h2>
         <p className="text-xl">Marije Jurić Zagorke 9, 34000 Požega</p>
+        <p className="mt-1 text-sm text-[var(--text-muted)]">OIB: 78349582424</p>
       </div>
 
       <div className="contact-card glass overflow-hidden rounded-2xl p-8 sm:col-span-2">

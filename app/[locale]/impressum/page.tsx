@@ -54,6 +54,8 @@ export default async function ImpressumPage({ params }: { params: Promise<{ loca
               34000 Požega
               <br />
               Kroatien
+              <br />
+              OIB: 78349582424
             </p>
           </div>
 
