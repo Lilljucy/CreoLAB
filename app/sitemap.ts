@@ -38,6 +38,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.3,
   });
 
+  for (const path of ["/dizajn-etiketa-za-vino", "/izrada-web-stranica", "/graficki-dizajn"]) {
+    entries.push({
+      url: `${BASE_URL}/hr${path}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    });
+  }
+
   for (const locale of LOCALES) {
     for (const project of PROJECTS) {
       entries.push({

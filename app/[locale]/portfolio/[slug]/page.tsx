@@ -26,13 +26,16 @@ export async function generateMetadata({
 
   const category = categoryFor(project, locale);
   const title = `${project.name}: ${category} | CreoLab`;
-  const description = `${category}: ${project.name}. ${
-    locale === "en"
-      ? "See the project in the CREOLAB portfolio."
-      : locale === "de"
-        ? "Sehen Sie sich das Projekt im CREOLAB-Portfolio an."
-        : "Pogledajte projekt u CREOLAB portfoliju."
-  }`;
+  const story = project.story?.[locale];
+  const description = story
+    ? story.challenge.slice(0, 150).replace(/\s+\S*$/, "") + "…"
+    : `${category}: ${project.name}. ${
+        locale === "en"
+          ? "See the project in the CREOLAB portfolio."
+          : locale === "de"
+            ? "Sehen Sie sich das Projekt im CREOLAB-Portfolio an."
+            : "Pogledajte projekt u CREOLAB portfoliju."
+      }`;
   return {
     title,
     description,
@@ -53,11 +56,16 @@ export default async function ProjectPage({
   if (!project) notFound();
 
   const category = categoryFor(project, locale);
+  const story = project.story?.[locale];
   const breadcrumbJsonLd = buildBreadcrumbJsonLd([
     { name: "CreoLab", url: `${SITE_URL}/${locale}` },
     { name: t.pages.portfolio.eyebrow, url: `${SITE_URL}/${locale}/portfolio` },
     { name: project.name, url: `${SITE_URL}/${locale}/portfolio/${slug}` },
   ]);
+
+  const index = PROJECTS.findIndex((p) => p.slug === slug);
+  const prevProject = PROJECTS[(index - 1 + PROJECTS.length) % PROJECTS.length];
+  const nextProject = PROJECTS[(index + 1) % PROJECTS.length];
 
   return (
     <main className="px-6 pt-40 pb-32">
@@ -80,6 +88,29 @@ export default async function ProjectPage({
           <h1 className="text-[clamp(2.2rem,5vw,4rem)]">{project.name}</h1>
         </div>
 
+        {story && (
+          <div className="mb-16 grid gap-6 sm:grid-cols-3">
+            <div className="glass rounded-2xl p-6">
+              <h2 className="mb-2 text-sm uppercase tracking-wider text-[var(--text-muted)]">
+                {t.portfolioDetail.challenge}
+              </h2>
+              <p className="text-sm text-[var(--text-muted)]">{story.challenge}</p>
+            </div>
+            <div className="glass rounded-2xl p-6">
+              <h2 className="mb-2 text-sm uppercase tracking-wider text-[var(--text-muted)]">
+                {t.portfolioDetail.approach}
+              </h2>
+              <p className="text-sm text-[var(--text-muted)]">{story.approach}</p>
+            </div>
+            <div className="glass rounded-2xl p-6">
+              <h2 className="mb-2 text-sm uppercase tracking-wider text-[var(--text-muted)]">
+                {t.portfolioDetail.result}
+              </h2>
+              <p className="text-sm text-[var(--text-muted)]">{story.result}</p>
+            </div>
+          </div>
+        )}
+
         <div className="grid gap-6 sm:grid-cols-2">
           {project.gallery.map((src, i) => (
             <div
@@ -100,6 +131,23 @@ export default async function ProjectPage({
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-16 flex flex-col gap-4 border-t border-[var(--border)] pt-8 sm:flex-row sm:justify-between">
+          <Link
+            href={`/${locale}/portfolio/${prevProject.slug}`}
+            className="group flex flex-col text-left text-sm text-[var(--text-muted)] transition-colors hover:text-[var(--text)]"
+          >
+            <span className="mb-1 text-xs uppercase tracking-wider">&larr; {t.portfolioDetail.prev}</span>
+            <span className="text-[var(--text)]">{prevProject.name}</span>
+          </Link>
+          <Link
+            href={`/${locale}/portfolio/${nextProject.slug}`}
+            className="group flex flex-col text-left text-sm text-[var(--text-muted)] transition-colors hover:text-[var(--text)] sm:text-right"
+          >
+            <span className="mb-1 text-xs uppercase tracking-wider">{t.portfolioDetail.next} &rarr;</span>
+            <span className="text-[var(--text)]">{nextProject.name}</span>
+          </Link>
         </div>
 
         <div className="mt-16 text-center">

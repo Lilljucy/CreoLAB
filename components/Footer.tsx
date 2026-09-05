@@ -59,6 +59,20 @@ export default function Footer({ locale }: { locale: Locale }) {
           </a>
         </div>
 
+        {locale === "hr" && (
+          <div className="mb-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 border-t border-[var(--border)] pt-6 text-sm text-[var(--text-muted)]">
+            <Link href="/hr/graficki-dizajn" className="transition-colors hover:text-[var(--text)]">
+              Grafički dizajn
+            </Link>
+            <Link href="/hr/izrada-web-stranica" className="transition-colors hover:text-[var(--text)]">
+              Izrada web stranica
+            </Link>
+            <Link href="/hr/dizajn-etiketa-za-vino" className="transition-colors hover:text-[var(--text)]">
+              Dizajn etiketa za vino
+            </Link>
+          </div>
+        )}
+
         <div className="flex flex-col items-center justify-between gap-6 border-t border-[var(--border)] pt-8 md:flex-row">
           <Logo size={24} />
           <p className="text-sm text-[var(--text-muted)]">

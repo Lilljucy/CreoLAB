@@ -90,6 +90,7 @@ type Dict = {
   };
   backToPortfolio: string;
   ctaProject: string;
+  portfolioDetail: { challenge: string; approach: string; result: string; prev: string; next: string };
 };
 
 const DICT: Record<Locale, Dict> = {
@@ -306,6 +307,13 @@ const DICT: Record<Locale, Dict> = {
     },
     backToPortfolio: "Natrag na portfolio",
     ctaProject: "Pokrenimo sličan projekt",
+    portfolioDetail: {
+      challenge: "Izazov",
+      approach: "Pristup",
+      result: "Rezultat",
+      prev: "Prethodni projekt",
+      next: "Sljedeći projekt",
+    },
   },
   en: {
     nav: {
@@ -519,6 +527,13 @@ const DICT: Record<Locale, Dict> = {
     },
     backToPortfolio: "Back to portfolio",
     ctaProject: "Let's start a similar project",
+    portfolioDetail: {
+      challenge: "Challenge",
+      approach: "Approach",
+      result: "Result",
+      prev: "Previous project",
+      next: "Next project",
+    },
   },
   de: {
     nav: {
@@ -731,6 +746,13 @@ const DICT: Record<Locale, Dict> = {
     },
     backToPortfolio: "Zurück zum Portfolio",
     ctaProject: "Lassen Sie uns ein ähnliches Projekt starten",
+    portfolioDetail: {
+      challenge: "Herausforderung",
+      approach: "Ansatz",
+      result: "Ergebnis",
+      prev: "Vorheriges Projekt",
+      next: "Nächstes Projekt",
+    },
   },
 };
 
