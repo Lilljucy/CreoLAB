@@ -216,16 +216,12 @@ export const PROJECTS: Project[] = [
       "/portfolio-full/soldo-vinarija/01-logo-dizajn.jpg",
       "/portfolio-full/soldo-vinarija/03-dizajn-etikete.jpg",
       "/portfolio-full/soldo-vinarija/04-dizajn-etikete.jpg",
-      "/portfolio-full/soldo-vinarija/05-dizajn-etikete.jpg",
-      "/portfolio-full/soldo-vinarija/06-dizajn-etikete.jpg",
     ],
     galleryAlt: [
       "Logo vinarije Soldo utisnut zlatotiskom na tamnom papiru",
       "Logo vinarije Soldo na pozadini vinograda u zalasku sunca",
       "Boca vina Soldo Graševina osvijetljena toplim svjetlom",
       "Boca vina Soldo Graševina na bijeloj pozadini",
-      "Boca ružičastog vina Soldo Rosé uz bazen",
-      "Boca vina Soldo Graševina i čaša vina ispred božićnog drvca",
     ],
     galleryFocus: { 1: "right" },
     story: {
@@ -426,6 +422,7 @@ export const PROJECTS: Project[] = [
     img: "/portfolio/caffe-bar-vanilla.jpg",
     gallery: ["/portfolio-full/caffe-bar-vanilla/01-dizajn-cjenika.jpg"],
     galleryAlt: ["Božićni cjenik Caffe bara Vanilla s ilustracijama krumpirića"],
+    galleryFocus: { 0: "top" },
     story: {
       hr: {
         challenge:
