@@ -6,6 +6,7 @@ import Stats from "@/components/Stats";
 import Process from "@/components/Process";
 import PortfolioPreview from "@/components/PortfolioPreview";
 import FAQ from "@/components/FAQ";
+import HomeExtras from "@/components/HomeExtras";
 import { isLocale, getDict, DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
 import { buildAlternates } from "@/lib/alternates";
 import { buildOpenGraph } from "@/lib/opengraph";
@@ -40,6 +41,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         dangerouslySetInnerHTML={{ __html: JSON.stringify(PROFESSIONAL_SERVICE_JSON_LD) }}
       />
       <Hero locale={locale} />
+      <HomeExtras locale={locale} />
       <PortfolioPreview locale={locale} />
       <About locale={locale} />
       <Process locale={locale} />
