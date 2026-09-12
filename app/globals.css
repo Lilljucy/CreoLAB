@@ -8,6 +8,26 @@
   font-display: swap;
 }
 
+/* Hero emblem: logo emerges from a soft fog, blurred to sharp, no scale/zoom. */
+.hero-emblem-fog {
+  background: radial-gradient(circle, rgba(244,235,218,0.45), rgba(244,235,218,0.12) 45%, transparent 72%);
+  filter: blur(22px);
+  opacity: 0;
+  animation: hero-fog 3s ease-out 2.7s forwards;
+}
+.hero-emblem-inner {
+  opacity: 0;
+  filter: blur(15px);
+  animation: hero-emblem-in 2.4s ease-out 3s forwards;
+}
+@keyframes hero-fog { 0% { opacity: 0; } 40% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes hero-emblem-in { 0% { opacity: 0; filter: blur(15px); } 100% { opacity: 1; filter: blur(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .hero-emblem-fog { display: none; }
+  .hero-emblem-inner { opacity: 1; filter: none; animation: none; }
+}
+@media (max-width: 860px) { .hero-emblem { display: none; } }
+
 :root {
   --bg: #F4EEE2;
   --surface: #FBF7EE;

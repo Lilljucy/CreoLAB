@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import IntroLogo from "./IntroLogo";
+import Logo from "./Logo";
 import { getDict, type Locale } from "@/lib/i18n";
 import { SOCIAL_CLIENTS } from "@/lib/clients";
 
@@ -30,7 +31,7 @@ export default function Hero({ locale }: { locale: Locale }) {
     <section
       id="top"
       ref={containerRef}
-      className="relative flex min-h-[85vh] flex-col items-center justify-center overflow-hidden px-6 pt-28 pb-10"
+      className="relative min-h-[85vh] overflow-hidden pt-20"
     >
       <Image
         src="/portfolio-full/ember-kamin/01-katalog-dizajn.jpg"
@@ -51,29 +52,39 @@ export default function Hero({ locale }: { locale: Locale }) {
         </div>
       )}
 
-      <div className="relative z-10 mx-auto max-w-4xl text-center">
-        <span className="hero-eyebrow inline-flex pill-badge mb-8">{t.hero.eyebrow}</span>
-
-        <h1 className="mb-8 text-[clamp(2.5rem,7vw,6rem)]">
-          <span className="hero-heading-line block text-[var(--cream-on-dark)]">{t.hero.line1}</span>
-          <span className="hero-heading-line block text-[var(--cream-on-dark)]">{t.hero.line2}</span>
-        </h1>
-
-        <p className="hero-sub mx-auto mb-12 max-w-xl text-balance text-lg text-[var(--cream-on-dark)] opacity-90">
-          {t.hero.sub}
-        </p>
-
-        <div className="flex flex-wrap items-center justify-center gap-4">
-          <a href={`/${locale}/portfolio`} className="hero-cta inline-flex btn-cta">
-            {t.hero.ctaPrimary}
-          </a>
-          <a href={`/${locale}/kontakt`} className="hero-cta inline-flex btn-cta-glow">
-            {t.hero.ctaSecondary}
-          </a>
+      {/* Emblem that emerges from a soft fog, centred between the two quadrants */}
+      <div className="hero-emblem pointer-events-none absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
+        <div className="hero-emblem-fog absolute -inset-16 rounded-full" aria-hidden />
+        <div className="hero-emblem-inner relative">
+          <Logo size={72} variant="dark" stacked />
         </div>
       </div>
 
-      <div className="relative z-10 mt-16 flex w-full max-w-md items-center gap-4 text-xs uppercase tracking-[0.15em] text-[var(--cream-on-dark)] opacity-80">
+      <div className="relative z-10 grid min-h-[85vh] px-6 pb-10 md:grid-cols-2 md:px-10">
+        <div className="flex items-center py-10 md:py-0">
+          <h1 className="text-[clamp(2.5rem,6vw,5rem)] leading-[1.05]">
+            <span className="hero-heading-line block text-[var(--cream-on-dark)]">{t.hero.line1}</span>
+            <span className="hero-heading-line block text-[var(--cream-on-dark)]">{t.hero.line2}</span>
+          </h1>
+        </div>
+
+        <div className="flex flex-col justify-end gap-6 py-10 text-right md:py-0">
+          <span className="hero-eyebrow inline-flex self-end pill-badge">{t.hero.eyebrow}</span>
+          <p className="hero-sub ml-auto max-w-sm text-balance text-lg text-[var(--cream-on-dark)] opacity-90">
+            {t.hero.sub}
+          </p>
+          <div className="flex flex-wrap items-center justify-end gap-4">
+            <a href={`/${locale}/portfolio`} className="hero-cta inline-flex btn-cta">
+              {t.hero.ctaPrimary}
+            </a>
+            <a href={`/${locale}/kontakt`} className="hero-cta inline-flex btn-cta-glow">
+              {t.hero.ctaSecondary}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div className="relative z-10 mx-auto mb-8 flex w-full max-w-md items-center gap-4 px-6 text-xs uppercase tracking-[0.15em] text-[var(--cream-on-dark)] opacity-80">
         <span className="h-px flex-1 bg-[rgba(244,235,218,0.35)]" />
         <span className="flex items-center gap-2 whitespace-nowrap">
           <svg viewBox="0 0 16 26" className="h-5 w-3" fill="none">
@@ -85,7 +96,7 @@ export default function Hero({ locale }: { locale: Locale }) {
         <span className="h-px flex-1 bg-[rgba(244,235,218,0.35)]" />
       </div>
 
-      <div className="relative z-10 mt-10 w-full max-w-5xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+      <div className="relative z-10 mx-auto mb-10 w-full max-w-5xl overflow-hidden px-6 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
         <div className="marquee-track">
           {[...SOCIAL_CLIENTS, ...SOCIAL_CLIENTS].map((client, i) => (
             <span

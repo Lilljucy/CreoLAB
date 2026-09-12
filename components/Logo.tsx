@@ -7,21 +7,33 @@ const ICON_POLYGONS = [
   "273.28,213.66 362.31,302.69 362.31,124.62",
 ];
 
-export default function Logo({ size = 32 }: { size?: number }) {
+export default function Logo({
+  size = 32,
+  variant = "light",
+  stacked = false,
+}: {
+  size?: number;
+  variant?: "light" | "dark";
+  stacked?: boolean;
+}) {
+  const iconFill = variant === "dark" ? "var(--cream-on-dark)" : "var(--terracotta)";
+  const creoColor = variant === "dark" ? "text-[var(--cream-on-dark)]" : "text-[var(--text)]";
+  const labColor = variant === "dark" ? "text-[#C9B79A]" : "text-[var(--text-muted)]";
+
   return (
-    <div className="flex items-center gap-2.5">
+    <div className={stacked ? "flex flex-col items-center gap-3" : "flex items-center gap-2.5"}>
       <svg
         viewBox="0 0 374.31 463.35"
         style={{ width: size, height: size * (463.35 / 374.31) }}
         className="shrink-0"
       >
         {ICON_POLYGONS.map((points, i) => (
-          <polygon key={i} points={points} fill="var(--terracotta)" />
+          <polygon key={i} points={points} fill={iconFill} />
         ))}
       </svg>
       <span className="flex items-baseline leading-none" style={{ fontSize: size * 0.62 }}>
-        <span className="font-creo text-[var(--text)]">CREO</span>
-        <span className={`${montserratLight.className} font-light text-[var(--text-muted)]`}>LAB</span>
+        <span className={`font-creo ${creoColor}`}>CREO</span>
+        <span className={`${montserratLight.className} font-light ${labColor}`}>LAB</span>
       </span>
     </div>
   );
