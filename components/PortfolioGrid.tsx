@@ -16,13 +16,13 @@ export default function PortfolioGrid({ locale }: { locale: Locale }) {
 
   useGSAP(
     () => {
-      gsap.from(".portfolio-card", {
+      gsap.from(".pf-card", {
         opacity: 0,
         y: 24,
-        scale: 0.96,
+        scale: 0.97,
         duration: 0.5,
-        stagger: { each: 0.06, grid: "auto" },
-        ease: "back.out(1.3)",
+        stagger: { each: 0.05, grid: "auto" },
+        ease: "power2.out",
         scrollTrigger: { trigger: gridRef.current, start: "top 85%" },
       });
     },
@@ -30,27 +30,21 @@ export default function PortfolioGrid({ locale }: { locale: Locale }) {
   );
 
   return (
-    <div ref={gridRef} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div ref={gridRef} className="pf-grid">
       {PROJECTS.map((p) => (
-        <Link
-          key={p.slug}
-          href={`/${locale}/portfolio/${p.slug}`}
-          className="portfolio-card glass group block overflow-hidden rounded-2xl transition-transform duration-300 hover:-translate-y-1"
-        >
-          <div className="relative aspect-[4/3] w-full overflow-hidden">
+        <Link key={p.slug} href={`/${locale}/portfolio/${p.slug}`} className="pf-card">
+          <div className="pf-img">
             <Image
               src={p.img}
               alt={`${p.name} — ${categoryFor(p, locale)}`}
               fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              sizes="(max-width: 680px) 50vw, (max-width: 980px) 33vw, 25vw"
+              className="object-cover"
             />
           </div>
-          <div className="p-5">
-            <span className="mb-1 block text-xs uppercase tracking-wider text-[var(--text-muted)]">
-              {categoryFor(p, locale)}
-            </span>
-            <h3 className="text-lg">{p.name}</h3>
+          <div className="pf-body">
+            <div className="pf-cat">{categoryFor(p, locale)}</div>
+            <div className="pf-name">{p.name}</div>
           </div>
         </Link>
       ))}

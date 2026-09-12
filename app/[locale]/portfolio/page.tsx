@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PortfolioGrid from "@/components/PortfolioGrid";
+import ContactBand from "@/components/ContactBand";
 import { isLocale, getDict, DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
 import { buildAlternates } from "@/lib/alternates";
 import { buildOpenGraph } from "@/lib/opengraph";
@@ -27,21 +28,21 @@ export default async function PortfolioPage({ params }: { params: Promise<{ loca
   const t = getDict(locale);
 
   return (
-    <main className="px-6 pt-40 pb-32">
-      <div className="mx-auto max-w-6xl">
-        <div className="mb-16 text-center">
-          <span className="mb-4 inline-block text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]">
-            {t.pages.portfolio.eyebrow}
-          </span>
-          <h1 className="mb-6 text-[clamp(2.2rem,5vw,4rem)]">
-            {t.pages.portfolio.h1Plain}
-            <span className="text-gradient">{t.pages.portfolio.h1Gradient}</span>
-          </h1>
-          <p className="mx-auto max-w-xl text-[var(--text-muted)]">{t.pages.portfolio.sub}</p>
+    <main>
+      <section className="hero-simple">
+        <div className="hero-swirl" aria-hidden />
+        <div className="wrap">
+          <span className="hero-label">{t.pages.portfolio.eyebrow}</span>
+          <h1 style={{ marginTop: 14 }}>{t.pages.portfolio.h1Plain}{t.pages.portfolio.h1Gradient}</h1>
+          <p className="lede">{t.pages.portfolio.sub}</p>
         </div>
-
-        <PortfolioGrid locale={locale} />
-      </div>
+      </section>
+      <section>
+        <div className="wrap">
+          <PortfolioGrid locale={locale} />
+        </div>
+      </section>
+      <ContactBand locale={locale} heading={t.contactBand.portfolio.heading} lede={t.contactBand.portfolio.lede} />
     </main>
   );
 }

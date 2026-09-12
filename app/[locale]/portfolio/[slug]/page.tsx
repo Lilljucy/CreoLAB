@@ -7,6 +7,7 @@ import { isLocale, getDict, DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
 import { buildAlternates } from "@/lib/alternates";
 import { buildOpenGraph } from "@/lib/opengraph";
 import { buildBreadcrumbJsonLd } from "@/lib/structuredData";
+import ContactBand from "@/components/ContactBand";
 
 const SITE_URL = "https://creolab-design.hr";
 
@@ -68,101 +69,78 @@ export default async function ProjectPage({
   const nextProject = PROJECTS[(index + 1) % PROJECTS.length];
 
   return (
-    <main className="px-6 pt-40 pb-32">
+    <main>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <div className="mx-auto max-w-5xl">
-        <Link
-          href={`/${locale}/portfolio`}
-          className="mb-10 inline-flex items-center gap-2 text-sm text-[var(--text-muted)] transition-colors hover:text-[var(--text)]"
-        >
-          &larr; {t.backToPortfolio}
-        </Link>
-
-        <div className="mb-16">
-          <span className="mb-4 inline-block text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]">
-            {category}
-          </span>
-          <h1 className="text-[clamp(2.2rem,5vw,4rem)]">{project.name}</h1>
+      <section className="hero-simple" style={{ paddingBlock: "28px 0 22px" }}>
+        <div className="hero-swirl" aria-hidden />
+        <div className="wrap" style={{ textAlign: "left" }}>
+          <div className="breadcrumb">
+            <Link href={`/${locale}/portfolio`}>&larr; {t.pages.portfolio.eyebrow}</Link>
+          </div>
+          <span className="hero-label">{category}</span>
+          <h1 style={{ marginTop: 10, textAlign: "left" }}>{project.name}</h1>
         </div>
+      </section>
 
-        {story && (
-          <div className="mb-16 grid gap-6 sm:grid-cols-3">
-            <div className="glass rounded-2xl p-6">
-              <h2 className="mb-2 text-sm uppercase tracking-wider text-[var(--text-muted)]">
-                {t.portfolioDetail.challenge}
-              </h2>
-              <p className="text-sm text-[var(--text-muted)]">{story.challenge}</p>
-            </div>
-            <div className="glass rounded-2xl p-6">
-              <h2 className="mb-2 text-sm uppercase tracking-wider text-[var(--text-muted)]">
-                {t.portfolioDetail.approach}
-              </h2>
-              <p className="text-sm text-[var(--text-muted)]">{story.approach}</p>
-            </div>
-            <div className="glass rounded-2xl p-6">
-              <h2 className="mb-2 text-sm uppercase tracking-wider text-[var(--text-muted)]">
-                {t.portfolioDetail.result}
-              </h2>
-              <p className="text-sm text-[var(--text-muted)]">{story.result}</p>
+      {story && (
+        <section>
+          <div className="wrap">
+            <div className="story-grid">
+              <div className="card">
+                <span className="eyebrow">{t.portfolioDetail.challenge}</span>
+                <p>{story.challenge}</p>
+              </div>
+              <div className="card">
+                <span className="eyebrow">{t.portfolioDetail.approach}</span>
+                <p>{story.approach}</p>
+              </div>
+              <div className="card">
+                <span className="eyebrow">{t.portfolioDetail.result}</span>
+                <p>{story.result}</p>
+              </div>
             </div>
           </div>
-        )}
+        </section>
+      )}
 
-        <div
-          className={
-            project.gallery.length === 1
-              ? "flex justify-center"
-              : "grid gap-6 sm:grid-cols-2"
-          }
-        >
-          {project.gallery.map((src, i) => (
-            <div
-              key={src}
-              className={`glass relative overflow-hidden rounded-2xl ${
-                project.gallery.length === 1 ? "w-full sm:w-1/2" : ""
-              }`}
-            >
-              <div className="relative aspect-[4/3] w-full">
+      <section>
+        <div className="wrap">
+          <div className="detail-gallery">
+            {project.gallery.map((src, i) => (
+              <div className="cell" key={src}>
                 <Image
                   src={src}
                   alt={project.galleryAlt[i]}
                   fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover"
+                  sizes="(max-width: 700px) 100vw, 50vw"
                   style={project.galleryFocus?.[i] ? { objectPosition: project.galleryFocus[i] } : undefined}
                   priority={i === 0}
                 />
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
+      </section>
 
-        <div className="mt-16 flex flex-col gap-4 border-t border-[var(--border)] pt-8 sm:flex-row sm:justify-between">
-          <Link
-            href={`/${locale}/portfolio/${prevProject.slug}`}
-            className="group flex flex-col text-left text-sm text-[var(--text-muted)] transition-colors hover:text-[var(--text)]"
-          >
-            <span className="mb-1 text-xs uppercase tracking-wider">&larr; {t.portfolioDetail.prev}</span>
-            <span className="text-[var(--text)]">{prevProject.name}</span>
-          </Link>
-          <Link
-            href={`/${locale}/portfolio/${nextProject.slug}`}
-            className="group flex flex-col text-left text-sm text-[var(--text-muted)] transition-colors hover:text-[var(--text)] sm:text-right"
-          >
-            <span className="mb-1 text-xs uppercase tracking-wider">{t.portfolioDetail.next} &rarr;</span>
-            <span className="text-[var(--text)]">{nextProject.name}</span>
-          </Link>
+      <section style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="prevnext">
+            <Link href={`/${locale}/portfolio/${prevProject.slug}`}>
+              <span className="pn-label">&larr; {t.portfolioDetail.prev}</span>
+              <span className="pn-name">{prevProject.name}</span>
+            </Link>
+            <Link href={`/${locale}/portfolio/${nextProject.slug}`} className="next">
+              <span className="pn-label">{t.portfolioDetail.next} &rarr;</span>
+              <span className="pn-name">{nextProject.name}</span>
+            </Link>
+          </div>
         </div>
+      </section>
 
-        <div className="mt-16 text-center">
-          <Link href={`/${locale}/kontakt`} className="inline-flex btn-cta">
-            {t.ctaProject}
-          </Link>
-        </div>
-      </div>
+      <ContactBand locale={locale} heading={t.contactBand.project.heading} lede={t.contactBand.project.lede} />
     </main>
   );
 }

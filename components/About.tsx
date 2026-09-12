@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Logo from "./Logo";
 import { getDict, type Locale } from "@/lib/i18n";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -26,57 +27,42 @@ export default function About({ locale }: { locale: Locale }) {
     { scope: sectionRef }
   );
 
-  const cards = [
-    { title: t.about.mission.title, text: t.about.mission.text },
-    { title: t.about.vision.title, text: t.about.vision.text },
-  ];
-
   return (
-    <section id="about" ref={sectionRef} className="relative px-6 pt-16 pb-16">
-      <div className="mx-auto max-w-4xl">
-        <div className="about-reveal mb-16 text-center">
-          <h2 className="mb-8 text-[clamp(2rem,4vw,3rem)]">{t.about.eyebrow}</h2>
-          <div className="flex flex-col gap-4 text-left text-[var(--text-muted)]">
-            <p>{t.about.heading}</p>
+    <section id="about" ref={sectionRef}>
+      <div className="wrap">
+        <div className="about-grid">
+          <div className="about-reveal">
+            <span className="eyebrow">{t.about.eyebrow}</span>
+            <h2 style={{ fontSize: "clamp(1.6rem,3vw,2.2rem)", fontWeight: 500, margin: "10px 0 18px", maxWidth: "26ch" }}>
+              {t.about.heading}
+            </h2>
             {t.about.paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p className="about-lede" key={i}>
+                {p}
+              </p>
             ))}
-          </div>
-        </div>
-
-        <div className="about-reveal mb-10 h-px w-full bg-[var(--border)]" />
-
-        <div className="grid gap-6 sm:grid-cols-2">
-          {cards.map((card) => (
-            <div key={card.title} className="about-reveal glass rounded-2xl p-6">
-              <h3 className="mb-2 text-lg">{card.title}</h3>
-              <p className="text-sm text-[var(--text-muted)]">{card.text}</p>
+            <div className="about-cards">
+              <div className="card">
+                <h3>{t.about.mission.title}</h3>
+                <p>{t.about.mission.text}</p>
+              </div>
+              <div className="card">
+                <h3>{t.about.vision.title}</h3>
+                <p>{t.about.vision.text}</p>
+              </div>
             </div>
-          ))}
-        </div>
-
-        <div className="about-reveal glass mt-6 rounded-2xl p-6">
-          <h3 className="mb-3 text-lg">{t.about.values.title}</h3>
-          <div className="mb-5 flex flex-wrap gap-2">
-            {t.about.values.items.map((item) => {
-              const [label] = item.split(": ");
-              return (
-                <span key={label} className="inline-flex pill-badge">
-                  {label}
-                </span>
-              );
-            })}
+            <div className="about-values">
+              <h3>{t.about.values.title}</h3>
+              <ul>
+                {t.about.values.items.map((v) => (
+                  <li key={v}>{v}</li>
+                ))}
+              </ul>
+            </div>
           </div>
-          <ul className="flex flex-col gap-2 text-sm text-[var(--text-muted)]">
-            {t.about.values.items.map((item) => {
-              const [label, ...rest] = item.split(": ");
-              return (
-                <li key={label}>
-                  <strong className="text-[var(--text)]">{label}:</strong> {rest.join(": ")}
-                </li>
-              );
-            })}
-          </ul>
+          <div className="about-reveal about-logo-panel">
+            <Logo size={110} stacked />
+          </div>
         </div>
       </div>
     </section>

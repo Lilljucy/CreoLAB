@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Hero from "@/components/Hero";
-import About from "@/components/About";
-import Services from "@/components/Services";
-import Stats from "@/components/Stats";
-import Process from "@/components/Process";
+import ServicesBand from "@/components/ServicesBand";
+import { TrustRow, CompareSection, StatMosaicSection, ClusterSection } from "@/components/HomeExtras";
 import PortfolioPreview from "@/components/PortfolioPreview";
+import About from "@/components/About";
+import Process from "@/components/Process";
+import Stats from "@/components/Stats";
 import FAQ from "@/components/FAQ";
-import HomeExtras from "@/components/HomeExtras";
+import ContactBand from "@/components/ContactBand";
 import { isLocale, getDict, DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
 import { buildAlternates } from "@/lib/alternates";
 import { buildOpenGraph } from "@/lib/opengraph";
@@ -33,6 +34,7 @@ export async function generateMetadata({
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: rawLocale } = await params;
   const locale: Locale = isLocale(rawLocale) ? rawLocale : DEFAULT_LOCALE;
+  const t = getDict(locale);
 
   return (
     <main>
@@ -41,13 +43,17 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         dangerouslySetInnerHTML={{ __html: JSON.stringify(PROFESSIONAL_SERVICE_JSON_LD) }}
       />
       <Hero locale={locale} />
-      <HomeExtras locale={locale} />
+      <ServicesBand locale={locale} />
+      <TrustRow locale={locale} />
       <PortfolioPreview locale={locale} />
       <About locale={locale} />
       <Process locale={locale} />
-      <Services locale={locale} />
       <Stats locale={locale} />
+      <CompareSection locale={locale} />
+      <StatMosaicSection locale={locale} />
+      <ClusterSection locale={locale} />
       <FAQ locale={locale} />
+      <ContactBand locale={locale} heading={t.contactBand.home.heading} lede={t.contactBand.home.lede} />
     </main>
   );
 }

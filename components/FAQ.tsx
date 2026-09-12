@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -41,51 +40,37 @@ export default function FAQ({ locale }: { locale: Locale }) {
   );
 
   return (
-    <section id="faq" ref={sectionRef} className="relative px-6 pt-16 pb-16">
-      <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-2 md:items-start">
-        <div className="md:sticky md:top-32">
-          <span className="inline-flex pill-badge mb-4">{t.faq.eyebrow}</span>
-          <h2 className="mb-4 text-[clamp(2rem,4vw,3rem)]">{t.faq.heading}</h2>
-          <p className="mb-8 text-[var(--text-muted)]">{t.faq.sub}</p>
-
-          <div className="relative mb-6 hidden aspect-[4/3] overflow-hidden rounded-2xl md:block">
-            <Image src="/portfolio/platinum-grupa.jpg" alt="" fill sizes="40vw" className="object-cover" />
-          </div>
-
-          <div className="flex flex-wrap gap-2">
-            <span className="inline-flex pill-badge">{t.services.graphic.title}</span>
-            <span className="inline-flex pill-badge">{t.services.web.title}</span>
-            <span className="inline-flex pill-badge">{t.services.social.title}</span>
-          </div>
+    <section id="faq" ref={sectionRef}>
+      <div className="wrap">
+        <div className="section-head">
+          <span className="eyebrow">{t.faq.eyebrow}</span>
+          <h2>{t.faq.heading}</h2>
+          <p>{t.faq.sub}</p>
         </div>
 
-        <div className="flex flex-col gap-4">
+        <div className="faq-list">
           {t.faq.items.map((item) => {
             const ListTag = item.listType === "ol" ? "ol" : "ul";
             return (
-              <details key={item.q} className="faq-item glass group rounded-2xl px-6 py-2 open:pb-6">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left text-lg font-semibold">
+              <details key={item.q} className="faq-item">
+                <summary>
                   {item.q}
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[var(--border)] text-xl transition-transform duration-300 group-open:rotate-45">
-                    +
-                  </span>
+                  <span className="plus">+</span>
                 </summary>
-                <div className="text-[var(--text-muted)]">
-                  {item.items ? (
-                    <>
-                      <p>{item.intro}</p>
-                      <ListTag className="mt-3 flex flex-col gap-2 pl-5">
-                        {item.items.map((li) => (
-                          <li key={li.label}>
-                            <strong className="text-[var(--text)]">{li.label}</strong> — {li.text}
-                          </li>
-                        ))}
-                      </ListTag>
-                    </>
-                  ) : (
-                    <p>{item.p}</p>
-                  )}
-                </div>
+                {item.items ? (
+                  <>
+                    <p className="intro">{item.intro}</p>
+                    <ListTag className="sub">
+                      {item.items.map((li) => (
+                        <li key={li.label}>
+                          <strong>{li.label}</strong> — {li.text}
+                        </li>
+                      ))}
+                    </ListTag>
+                  </>
+                ) : (
+                  <p className="a">{item.p}</p>
+                )}
               </details>
             );
           })}

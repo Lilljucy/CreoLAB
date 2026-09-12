@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import ContactCards from "@/components/ContactCards";
+import ContactBand from "@/components/ContactBand";
 import { isLocale, getDict, DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
 import { buildAlternates } from "@/lib/alternates";
 import { buildOpenGraph } from "@/lib/opengraph";
@@ -27,21 +27,16 @@ export default async function KontaktPage({ params }: { params: Promise<{ locale
   const t = getDict(locale);
 
   return (
-    <main className="px-6 pt-40 pb-32">
-      <div className="mx-auto max-w-4xl">
-        <div className="mb-16 text-center">
-          <span className="mb-4 inline-block text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]">
-            {t.pages.kontakt.eyebrow}
-          </span>
-          <h1 className="mb-6 text-[clamp(2.2rem,5vw,4rem)]">
-            {t.pages.kontakt.h1Plain}
-            <span className="text-gradient">{t.pages.kontakt.h1Gradient}</span>
-          </h1>
-          <p className="mx-auto max-w-xl text-[var(--text-muted)]">{t.pages.kontakt.sub}</p>
+    <main>
+      <section className="hero-simple" style={{ paddingBlock: "32px 0" }}>
+        <div className="hero-swirl" aria-hidden />
+        <div className="wrap">
+          <span className="hero-label">{t.heroSimple.kontakt.label}</span>
+          <h1 style={{ marginTop: 14 }}>{t.heroSimple.kontakt.h1}</h1>
+          <p className="lede">{t.heroSimple.kontakt.lede}</p>
         </div>
-
-        <ContactCards locale={locale} />
-      </div>
+      </section>
+      <ContactBand locale={locale} heading={t.contactBand.kontakt.heading} lede={t.contactBand.kontakt.lede} />
     </main>
   );
 }
