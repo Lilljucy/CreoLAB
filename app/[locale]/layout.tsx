@@ -6,7 +6,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
-import CustomCursor from "@/components/CustomCursor";
 import ContactTracking from "@/components/ContactTracking";
 import { LOCALES, isLocale, getDict, DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
 
@@ -53,7 +52,6 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`h-full ${fraunces.variable} ${archivo.variable} ${spaceMono.variable}`}>
       <body className="min-h-full">
-        <CustomCursor />
         <ContactTracking />
         <div className="bottom-fade-blur" aria-hidden />
         <SmoothScroll>

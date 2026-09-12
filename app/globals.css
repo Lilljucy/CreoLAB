@@ -419,20 +419,6 @@ h1, h2, h3, h4 {
   -webkit-mask-image: linear-gradient(to top, black, transparent);
 }
 
-/* Cursor-follower glow dot */
-.cursor-dot {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--terracotta);
-  pointer-events: none;
-  z-index: 200;
-  will-change: transform;
-}
-
 /* Legal content (privacy policy) */
 .legal-content h2 {
   font-size: 1.4rem;
