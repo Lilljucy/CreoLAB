@@ -116,7 +116,10 @@ export default async function ProjectPage({
                   alt={project.galleryAlt[i]}
                   fill
                   sizes="(max-width: 700px) 100vw, 50vw"
-                  style={project.galleryFocus?.[i] ? { objectPosition: project.galleryFocus[i] } : undefined}
+                  style={{
+                    objectFit: project.galleryFit?.[i] ?? "cover",
+                    ...(project.galleryFocus?.[i] ? { objectPosition: project.galleryFocus[i] } : undefined),
+                  }}
                   priority={i === 0}
                 />
               </div>

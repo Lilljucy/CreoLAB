@@ -40,6 +40,7 @@ export default function PortfolioGrid({ locale }: { locale: Locale }) {
               fill
               sizes="(max-width: 680px) 50vw, (max-width: 980px) 33vw, 25vw"
               className="object-cover"
+              style={p.imgFit === "contain" ? { objectFit: "contain" } : undefined}
             />
           </div>
           <div className="pf-body">

@@ -49,7 +49,7 @@ export default function ContactBand({
               </div>
             </div>
             <div className="contact-extra">
-              <div>
+              <div className="contact-extra-left">
                 <a
                   className="btn btn-outline-light"
                   href="https://wa.me/385919798969"
@@ -58,9 +58,7 @@ export default function ContactBand({
                 >
                   WhatsApp
                 </a>
-                <span className="addr" style={{ marginLeft: 16 }}>
-                  {t.contact.address}
-                </span>
+                <span className="addr">{t.contact.address}</span>
               </div>
               <div className="social">
                 <a

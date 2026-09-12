@@ -7,9 +7,11 @@ export type Project = {
   name: string;
   category: Record<Locale, string>;
   img: string;
+  imgFit?: "cover" | "contain";
   gallery: string[];
   galleryAlt: string[];
   galleryFocus?: Record<number, string>;
+  galleryFit?: Record<number, "cover" | "contain">;
   story?: Partial<Record<Locale, ProjectStory>>;
 };
 
@@ -420,9 +422,10 @@ export const PROJECTS: Project[] = [
     name: "Caffe Bar Vanilla",
     category: { hr: "Dizajn cjenika", en: "Menu Design", de: "Speisekartendesign" },
     img: "/portfolio/caffe-bar-vanilla.jpg",
+    imgFit: "contain",
     gallery: ["/portfolio-full/caffe-bar-vanilla/01-dizajn-cjenika.jpg"],
     galleryAlt: ["Božićni cjenik Caffe bara Vanilla s ilustracijama krumpirića"],
-    galleryFocus: { 0: "top" },
+    galleryFit: { 0: "contain" },
     story: {
       hr: {
         challenge:
