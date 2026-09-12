@@ -39,12 +39,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   });
 
   for (const path of ["/dizajn-etiketa-za-vino", "/izrada-web-stranica", "/graficki-dizajn"]) {
-    entries.push({
-      url: `${BASE_URL}/hr${path}`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    });
+    for (const locale of LOCALES) {
+      entries.push({
+        url: `${BASE_URL}/${locale}${path}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.9,
+        alternates: { languages: languageAlternates(path) },
+      });
+    }
   }
 
   for (const locale of LOCALES) {

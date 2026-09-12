@@ -1,16 +1,33 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { notFound } from "next/navigation";
-import { isLocale, getDict, DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
+import { isLocale, getDict, LOCALES, DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
 import { buildAlternates } from "@/lib/alternates";
 import { buildOpenGraph } from "@/lib/opengraph";
 import CardCarousel from "@/components/CardCarousel";
 import ContactBand from "@/components/ContactBand";
 
 const SITE_URL = "https://creolab-design.hr";
-const TITLE = "Izrada web stranica | CreoLab Požega";
-const DESCRIPTION =
-  "Izrada modernih, brzih i responzivnih web stranica za obrte i tvrtke u Požegi i diljem Hrvatske. Dizajn, razvoj i SEO temelji. Zatražite ponudu.";
+
+const META: Record<Locale, { title: string; description: string; country: string }> = {
+  hr: {
+    title: "Izrada web stranica | CreoLab Požega",
+    description:
+      "Izrada modernih, brzih i responzivnih web stranica za obrte i tvrtke u Požegi i diljem Hrvatske. Dizajn, razvoj i SEO temelji. Zatražite ponudu.",
+    country: "Hrvatska",
+  },
+  en: {
+    title: "Web Design | CreoLab Croatia",
+    description:
+      "Modern, fast and responsive websites for businesses in Požega and across Croatia. Design, development and SEO foundations. Request a quote.",
+    country: "Croatia",
+  },
+  de: {
+    title: "Webdesign | CreoLab Kroatien",
+    description:
+      "Moderne, schnelle und responsive Websites für Betriebe in Požega und ganz Kroatien. Design, Entwicklung und SEO-Grundlagen. Angebot anfordern.",
+    country: "Kroatien",
+  },
+};
 
 const CREOLAB_IMAGES = [
   { src: "/web-dizajn/01-naslovnica.jpg", alt: "Naslovnica web stranice CreoLab s glavnim pozivom na akciju" },
@@ -27,7 +44,7 @@ const SOLDO_IMAGES = [
 ];
 
 export function generateStaticParams() {
-  return [{ locale: "hr" }];
+  return LOCALES.map((locale) => ({ locale }));
 }
 
 export async function generateMetadata({
@@ -37,27 +54,15 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale: rawLocale } = await params;
   const locale: Locale = isLocale(rawLocale) ? rawLocale : DEFAULT_LOCALE;
+  const m = META[locale];
 
   return {
-    title: TITLE,
-    description: DESCRIPTION,
-    alternates: buildAlternates(locale, "/izrada-web-stranica", ["hr"]),
-    ...buildOpenGraph(locale, "/izrada-web-stranica", TITLE, DESCRIPTION, "/web-dizajn/01-naslovnica.jpg"),
+    title: m.title,
+    description: m.description,
+    alternates: buildAlternates(locale, "/izrada-web-stranica"),
+    ...buildOpenGraph(locale, "/izrada-web-stranica", m.title, m.description, "/web-dizajn/01-naslovnica.jpg"),
   };
 }
-
-const SERVICE_JSON_LD = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  name: "Izrada web stranica",
-  serviceType: "Izrada web stranica",
-  provider: { "@id": `${SITE_URL}/#organization` },
-  areaServed: [
-    { "@type": "City", name: "Požega" },
-    { "@type": "Country", name: "Hrvatska" },
-  ],
-  description: DESCRIPTION,
-};
 
 export default async function IzradaWebStranicaPage({
   params,
@@ -65,11 +70,24 @@ export default async function IzradaWebStranicaPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale: rawLocale } = await params;
-  if (rawLocale !== "hr") notFound();
-  const locale: Locale = "hr";
+  const locale: Locale = isLocale(rawLocale) ? rawLocale : DEFAULT_LOCALE;
+  const m = META[locale];
   const t = getDict(locale);
   const s = t.heroSimple.web;
   const faqs = t.servicePage.faqsWeb;
+
+  const SERVICE_JSON_LD = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: s.h1,
+    serviceType: "Izrada web stranica",
+    provider: { "@id": `${SITE_URL}/#organization` },
+    areaServed: [
+      { "@type": "City", name: "Požega" },
+      { "@type": "Country", name: m.country },
+    ],
+    description: m.description,
+  };
 
   const FAQ_JSON_LD = {
     "@context": "https://schema.org",

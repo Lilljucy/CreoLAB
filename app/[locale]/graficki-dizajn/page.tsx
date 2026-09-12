@@ -1,22 +1,39 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
-import { isLocale, getDict, DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
+import { isLocale, getDict, LOCALES, DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
 import { buildAlternates } from "@/lib/alternates";
 import { buildOpenGraph } from "@/lib/opengraph";
 import { PROJECTS, categoryFor } from "@/lib/portfolio";
 import ContactBand from "@/components/ContactBand";
 
 const SITE_URL = "https://creolab-design.hr";
-const TITLE = "Grafički dizajn | CreoLab Požega";
-const DESCRIPTION =
-  "Grafički dizajn za obrte i tvrtke u Požegi i diljem Hrvatske — logotip, vizualni identitet, tisak i ambalaža. Pogledajte portfolio i zatražite ponudu.";
+
+const META: Record<Locale, { title: string; description: string; country: string }> = {
+  hr: {
+    title: "Grafički dizajn | CreoLab Požega",
+    description:
+      "Grafički dizajn za obrte i tvrtke u Požegi i diljem Hrvatske — logotip, vizualni identitet, tisak i ambalaža. Pogledajte portfolio i zatražite ponudu.",
+    country: "Hrvatska",
+  },
+  en: {
+    title: "Graphic Design | CreoLab Croatia",
+    description:
+      "Graphic design for businesses in Požega and across Croatia — logo, visual identity, print and packaging. View the portfolio and request a quote.",
+    country: "Croatia",
+  },
+  de: {
+    title: "Grafikdesign | CreoLab Kroatien",
+    description:
+      "Grafikdesign für Betriebe in Požega und ganz Kroatien — Logo, visuelle Identität, Druck und Verpackung. Portfolio ansehen und Angebot anfordern.",
+    country: "Kroatien",
+  },
+};
 
 const RELATED_SLUGS = ["platinum-grupa", "omega-knjigovodstvo", "dopa-projekt", "vismotus", "adria-motors", "sax-win"];
 
 export function generateStaticParams() {
-  return [{ locale: "hr" }];
+  return LOCALES.map((locale) => ({ locale }));
 }
 
 export async function generateMetadata({
@@ -26,27 +43,15 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale: rawLocale } = await params;
   const locale: Locale = isLocale(rawLocale) ? rawLocale : DEFAULT_LOCALE;
+  const m = META[locale];
 
   return {
-    title: TITLE,
-    description: DESCRIPTION,
-    alternates: buildAlternates(locale, "/graficki-dizajn", ["hr"]),
-    ...buildOpenGraph(locale, "/graficki-dizajn", TITLE, DESCRIPTION, "/portfolio/platinum-grupa.jpg"),
+    title: m.title,
+    description: m.description,
+    alternates: buildAlternates(locale, "/graficki-dizajn"),
+    ...buildOpenGraph(locale, "/graficki-dizajn", m.title, m.description, "/portfolio/platinum-grupa.jpg"),
   };
 }
-
-const SERVICE_JSON_LD = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  name: "Grafički dizajn",
-  serviceType: "Grafički dizajn i izrada logotipa",
-  provider: { "@id": `${SITE_URL}/#organization` },
-  areaServed: [
-    { "@type": "City", name: "Požega" },
-    { "@type": "Country", name: "Hrvatska" },
-  ],
-  description: DESCRIPTION,
-};
 
 export default async function GrafickiDizajnPage({
   params,
@@ -54,11 +59,24 @@ export default async function GrafickiDizajnPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale: rawLocale } = await params;
-  if (rawLocale !== "hr") notFound();
-  const locale: Locale = "hr";
+  const locale: Locale = isLocale(rawLocale) ? rawLocale : DEFAULT_LOCALE;
+  const m = META[locale];
   const t = getDict(locale);
   const s = t.heroSimple.graficki;
   const faqs = t.servicePage.faqsGraficki;
+
+  const SERVICE_JSON_LD = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: s.h1,
+    serviceType: "Grafički dizajn i izrada logotipa",
+    provider: { "@id": `${SITE_URL}/#organization` },
+    areaServed: [
+      { "@type": "City", name: "Požega" },
+      { "@type": "Country", name: m.country },
+    ],
+    description: m.description,
+  };
 
   const FAQ_JSON_LD = {
     "@context": "https://schema.org",

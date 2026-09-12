@@ -8,13 +8,11 @@ export default function Footer({ locale }: { locale: Locale }) {
   return (
     <footer id="contact">
       <div className="wrap">
-        {locale === "hr" && (
-          <div className="footer-top">
-            <Link href="/hr/graficki-dizajn">{t.services.graphic.title}</Link>
-            <Link href="/hr/izrada-web-stranica">{t.services.web.title}</Link>
-            <Link href="/hr/dizajn-etiketa-za-vino">{t.services.labels.title}</Link>
-          </div>
-        )}
+        <div className="footer-top">
+          <Link href={`/${locale}/graficki-dizajn`}>{t.services.graphic.title}</Link>
+          <Link href={`/${locale}/izrada-web-stranica`}>{t.services.web.title}</Link>
+          <Link href={`/${locale}/dizajn-etiketa-za-vino`}>{t.services.labels.title}</Link>
+        </div>
 
         <div className="footer-row">
           <Link className="logo" href={`/${locale}`}>

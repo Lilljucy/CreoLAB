@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
-import { isLocale, getDict, DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
+import { isLocale, getDict, LOCALES, DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
 import { buildAlternates } from "@/lib/alternates";
 import { buildOpenGraph } from "@/lib/opengraph";
 import { PROJECTS, categoryFor } from "@/lib/portfolio";
@@ -10,9 +9,30 @@ import CardCarousel from "@/components/CardCarousel";
 import ContactBand from "@/components/ContactBand";
 
 const SITE_URL = "https://creolab-design.hr";
-const TITLE = "Dizajn etiketa za vino | CreoLab Slavonija";
-const DESCRIPTION =
-  "Dizajn etiketa za vino, rakiju i vinjak za vinarije i OPG-ove u Slavoniji i diljem Hrvatske — od koncepta do tiskovne pripreme. Zatražite ponudu.";
+
+const META: Record<Locale, { title: string; description: string; country: string; region: string }> = {
+  hr: {
+    title: "Dizajn etiketa za vino | CreoLab Slavonija",
+    description:
+      "Dizajn etiketa za vino, rakiju i vinjak za vinarije i OPG-ove u Slavoniji i diljem Hrvatske — od koncepta do tiskovne pripreme. Zatražite ponudu.",
+    country: "Hrvatska",
+    region: "Slavonija",
+  },
+  en: {
+    title: "Wine Label Design | CreoLab Slavonia",
+    description:
+      "Wine, brandy and grape brandy label design for wineries and family farms in Slavonia and across Croatia — from concept to print preparation. Request a quote.",
+    country: "Croatia",
+    region: "Slavonia",
+  },
+  de: {
+    title: "Weinetikettendesign | CreoLab Slawonien",
+    description:
+      "Etikettendesign für Wein, Brand und Tresterbrand für Weinkellereien und Familienbetriebe in Slawonien und ganz Kroatien — vom Konzept bis zur Druckvorstufe. Angebot anfordern.",
+    country: "Kroatien",
+    region: "Slawonien",
+  },
+};
 
 const BOTTLE_IMAGES = [
   { src: "/portfolio-full/soldo-vinarija/03-dizajn-etikete.jpg", alt: "Boca vina Soldo s etiketom u krupnom planu" },
@@ -29,7 +49,7 @@ const BOTTLE_IMAGES = [
 ];
 
 export function generateStaticParams() {
-  return [{ locale: "hr" }];
+  return LOCALES.map((locale) => ({ locale }));
 }
 
 export async function generateMetadata({
@@ -39,27 +59,15 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale: rawLocale } = await params;
   const locale: Locale = isLocale(rawLocale) ? rawLocale : DEFAULT_LOCALE;
+  const m = META[locale];
 
   return {
-    title: TITLE,
-    description: DESCRIPTION,
-    alternates: buildAlternates(locale, "/dizajn-etiketa-za-vino", ["hr"]),
-    ...buildOpenGraph(locale, "/dizajn-etiketa-za-vino", TITLE, DESCRIPTION, "/portfolio/previsic-vinarija.jpg"),
+    title: m.title,
+    description: m.description,
+    alternates: buildAlternates(locale, "/dizajn-etiketa-za-vino"),
+    ...buildOpenGraph(locale, "/dizajn-etiketa-za-vino", m.title, m.description, "/portfolio/previsic-vinarija.jpg"),
   };
 }
-
-const SERVICE_JSON_LD = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  name: "Dizajn etiketa za vino",
-  serviceType: "Dizajn etiketa za vino i žestoka pića",
-  provider: { "@id": `${SITE_URL}/#organization` },
-  areaServed: [
-    { "@type": "AdministrativeArea", name: "Slavonija" },
-    { "@type": "Country", name: "Hrvatska" },
-  ],
-  description: DESCRIPTION,
-};
 
 export default async function DizajnEtiketaZaVinoPage({
   params,
@@ -67,11 +75,24 @@ export default async function DizajnEtiketaZaVinoPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale: rawLocale } = await params;
-  if (rawLocale !== "hr") notFound();
-  const locale: Locale = "hr";
+  const locale: Locale = isLocale(rawLocale) ? rawLocale : DEFAULT_LOCALE;
+  const m = META[locale];
   const t = getDict(locale);
   const s = t.heroSimple.etikete;
   const faqs = t.servicePage.faqsEtikete;
+
+  const SERVICE_JSON_LD = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: s.h1,
+    serviceType: "Dizajn etiketa za vino i žestoka pića",
+    provider: { "@id": `${SITE_URL}/#organization` },
+    areaServed: [
+      { "@type": "AdministrativeArea", name: m.region },
+      { "@type": "Country", name: m.country },
+    ],
+    description: m.description,
+  };
 
   const FAQ_JSON_LD = {
     "@context": "https://schema.org",
