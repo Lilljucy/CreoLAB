@@ -86,7 +86,7 @@ export default function Services({ locale }: { locale: Locale }) {
                   href={client.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-1 bg-white/5 text-center opacity-0 transition-colors hover:bg-white/10"
+                  className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-1 bg-[var(--surface-2)] text-center opacity-0 transition-colors hover:bg-[var(--border)]"
                   style={
                     {
                       animation: "card-carousel-fade 28s infinite",

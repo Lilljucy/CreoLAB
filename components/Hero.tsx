@@ -1,9 +1,9 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import IntroLogo from "./IntroLogo";
-import SmokeBackground from "./SmokeBackground";
 import { getDict, type Locale } from "@/lib/i18n";
 import { SOCIAL_CLIENTS } from "@/lib/clients";
 
@@ -32,14 +32,21 @@ export default function Hero({ locale }: { locale: Locale }) {
       ref={containerRef}
       className="relative flex min-h-[85vh] flex-col items-center justify-center overflow-hidden px-6 pt-28 pb-10"
     >
-      <SmokeBackground className="pointer-events-none absolute inset-0 z-0" />
+      <Image
+        src="/portfolio-full/ember-kamin/01-katalog-dizajn.jpg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="pointer-events-none absolute inset-0 z-0 object-cover"
+        style={{ filter: "blur(6px) saturate(1.05)" }}
+      />
       <div className="hero-overlay z-[5]" aria-hidden />
       <div className="hero-top-fade z-[6]" aria-hidden />
       <div className="hero-bottom-fade z-[6]" aria-hidden />
-      <div className="grain-overlay" aria-hidden />
 
       {showIntro && !introDone && (
-        <div className="intro-overlay fixed inset-0 z-100 flex items-center justify-center bg-[var(--bg)] px-6">
+        <div className="intro-overlay fixed inset-0 z-100 flex items-center justify-center bg-[var(--terracotta-deep)] px-6">
           <IntroLogo onComplete={() => setIntroDone(true)} />
         </div>
       )}
@@ -48,11 +55,11 @@ export default function Hero({ locale }: { locale: Locale }) {
         <span className="hero-eyebrow inline-flex pill-badge mb-8">{t.hero.eyebrow}</span>
 
         <h1 className="mb-8 text-[clamp(2.5rem,7vw,6rem)]">
-          <span className="hero-heading-line block text-[var(--text)]">{t.hero.line1}</span>
-          <span className="hero-heading-line block text-[var(--text)]">{t.hero.line2}</span>
+          <span className="hero-heading-line block text-[var(--cream-on-dark)]">{t.hero.line1}</span>
+          <span className="hero-heading-line block text-[var(--cream-on-dark)]">{t.hero.line2}</span>
         </h1>
 
-        <p className="hero-sub mx-auto mb-12 max-w-xl text-balance text-lg text-[var(--text-muted)]">
+        <p className="hero-sub mx-auto mb-12 max-w-xl text-balance text-lg text-[var(--cream-on-dark)] opacity-90">
           {t.hero.sub}
         </p>
 
@@ -66,8 +73,8 @@ export default function Hero({ locale }: { locale: Locale }) {
         </div>
       </div>
 
-      <div className="relative z-10 mt-16 flex w-full max-w-md items-center gap-4 text-xs uppercase tracking-[0.15em] text-[var(--text-muted)]">
-        <span className="h-px flex-1 bg-[var(--border)]" />
+      <div className="relative z-10 mt-16 flex w-full max-w-md items-center gap-4 text-xs uppercase tracking-[0.15em] text-[var(--cream-on-dark)] opacity-80">
+        <span className="h-px flex-1 bg-[rgba(244,235,218,0.35)]" />
         <span className="flex items-center gap-2 whitespace-nowrap">
           <svg viewBox="0 0 16 26" className="h-5 w-3" fill="none">
             <rect x="1" y="1" width="14" height="24" rx="7" stroke="currentColor" strokeWidth="1.2" />
@@ -75,7 +82,7 @@ export default function Hero({ locale }: { locale: Locale }) {
           </svg>
           {t.hero.scrollHint}
         </span>
-        <span className="h-px flex-1 bg-[var(--border)]" />
+        <span className="h-px flex-1 bg-[rgba(244,235,218,0.35)]" />
       </div>
 
       <div className="relative z-10 mt-10 w-full max-w-5xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
@@ -83,7 +90,7 @@ export default function Hero({ locale }: { locale: Locale }) {
           {[...SOCIAL_CLIENTS, ...SOCIAL_CLIENTS].map((client, i) => (
             <span
               key={`${client.name}-${i}`}
-              className="px-8 text-2xl font-semibold whitespace-nowrap text-[var(--text-muted)] opacity-80 sm:text-3xl"
+              className="px-8 text-2xl font-semibold whitespace-nowrap text-[var(--cream-on-dark)] opacity-80 sm:text-3xl"
             >
               {client.name}
             </span>

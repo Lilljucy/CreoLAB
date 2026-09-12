@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "../globals.css";
+import { fraunces, archivo, spaceMono } from "@/lib/fonts";
 import SmoothScroll from "@/components/SmoothScroll";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -50,7 +51,7 @@ export default async function LocaleLayout({
   const locale: Locale = isLocale(rawLocale) ? rawLocale : DEFAULT_LOCALE;
 
   return (
-    <html lang={locale} className="h-full">
+    <html lang={locale} className={`h-full ${fraunces.variable} ${archivo.variable} ${spaceMono.variable}`}>
       <body className="min-h-full">
         <CustomCursor />
         <ContactTracking />

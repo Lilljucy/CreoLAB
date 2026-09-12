@@ -16,12 +16,12 @@ export default function Logo({ size = 32 }: { size?: number }) {
         className="shrink-0"
       >
         {ICON_POLYGONS.map((points, i) => (
-          <polygon key={i} points={points} fill="#f5f5f5" />
+          <polygon key={i} points={points} fill="var(--terracotta)" />
         ))}
       </svg>
       <span className="flex items-baseline leading-none" style={{ fontSize: size * 0.62 }}>
-        <span className="font-creo text-[#f5f5f5]">CREO</span>
-        <span className={`${montserratLight.className} font-light text-[#9a9a9a]`}>LAB</span>
+        <span className="font-creo text-[var(--text)]">CREO</span>
+        <span className={`${montserratLight.className} font-light text-[var(--text-muted)]`}>LAB</span>
       </span>
     </div>
   );

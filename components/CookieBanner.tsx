@@ -43,7 +43,7 @@ export default function CookieBanner({ locale }: { locale: Locale }) {
         <button
           type="button"
           onClick={() => choose("rejected")}
-          className="rounded-full border border-[var(--border)] px-5 py-2.5 text-sm font-medium transition-colors hover:bg-white/10"
+          className="rounded-full border border-[var(--border)] px-5 py-2.5 text-sm font-medium transition-colors hover:bg-[var(--surface-2)]"
         >
           {t.cookie.reject}
         </button>

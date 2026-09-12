@@ -61,7 +61,7 @@ export default function Process({ locale }: { locale: Locale }) {
           <div className="flex flex-col gap-4">
             {STEPS.map((s) => (
               <div key={s.no} className="step-item glass relative rounded-2xl p-6">
-                <span className="absolute top-4 right-4 flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-xs font-semibold text-[var(--text)]">
+                <span className="absolute top-4 right-4 flex h-8 w-8 items-center justify-center rounded-full bg-[var(--surface-2)] text-xs font-semibold text-[var(--text)]">
                   {s.no}
                 </span>
                 <h3 className="mb-3 pr-10 text-lg">{s.title}</h3>

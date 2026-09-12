@@ -88,7 +88,10 @@ export default function IntroLogo({ onComplete }: { onComplete: () => void }) {
             key={i}
             className="intro-piece"
             points={points}
-            fill="#f5f5f5"
+            fill="var(--ochre)"
+            stroke="var(--ochre)"
+            strokeWidth={11}
+            strokeLinejoin="round"
             style={{ transformBox: "fill-box", transformOrigin: "50% 50%" }}
           />
         ))}
@@ -98,7 +101,7 @@ export default function IntroLogo({ onComplete }: { onComplete: () => void }) {
           <span
             key={i}
             className={`intro-letter inline-block ${
-              i < 4 ? "font-creo text-[#f5f5f5]" : `${montserratLight.className} font-light text-[#9a9a9a]`
+              i < 4 ? "font-creo text-[var(--cream-on-dark)]" : `${montserratLight.className} font-light text-[#C9B79A]`
             }`}
           >
             {ch}
