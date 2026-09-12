@@ -26,7 +26,7 @@
 .hero-copy { max-width: 36ch; }
 .hero-copy p { font-size: 15px; opacity: 0.95; margin-bottom: 20px; }
 @media (max-width: 860px) {
-  .hero-grid { grid-template-columns: 1fr; min-height: auto; }
+  .hero-grid { grid-template-columns: 1fr; min-height: auto; padding-top: 4px; }
   .hero-q { padding: 26px; }
   .hq-tr, .hq-br { text-align: left; align-items: flex-start; justify-content: flex-start; }
   .hq-left { grid-row: auto; align-items: flex-start; }
@@ -52,7 +52,20 @@
   .hero-emblem-fog { display: none; }
   .hero-emblem-inner { opacity: 1; filter: none; animation: none; }
 }
-@media (max-width: 860px) { .hero-emblem { display: none; } }
+/* On mobile there's no room for the emblem to float centred over a
+   two-column grid, so it drops into normal flow above the stacked text
+   instead of disappearing. */
+@media (max-width: 860px) {
+  .hero-emblem {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    display: flex;
+    justify-content: center;
+    padding-block: 28px 4px;
+  }
+}
 
 :root {
   --bg: #F4EEE2;

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Logo from "./Logo";
 import { LOCALES, getDict, localizePath, type Locale } from "@/lib/i18n";
 
@@ -10,6 +10,7 @@ export default function Header({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const t = getDict(locale);
   const [open, setOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
 
   const NAV = [
     { href: `/${locale}`, label: t.nav.home, active: pathname === `/${locale}` },
@@ -24,8 +25,23 @@ export default function Header({ locale }: { locale: Locale }) {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+    function handleOutside(e: MouseEvent | TouchEvent) {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleOutside);
+    document.addEventListener("touchstart", handleOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleOutside);
+      document.removeEventListener("touchstart", handleOutside);
+    };
+  }, [open]);
+
   return (
-    <header className="site-header">
+    <header className="site-header" ref={headerRef}>
       <div className="wrap header-inner">
         <Link className="logo" href={`/${locale}`} aria-label="CREOLAB" onClick={() => setOpen(false)}>
           <Logo size={22} />
