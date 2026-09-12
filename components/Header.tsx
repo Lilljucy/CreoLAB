@@ -107,7 +107,7 @@ export default function Header({ locale }: { locale: Locale }) {
 
       <div
         id="mobile-menu"
-        className={`overflow-hidden border-t border-[var(--border)] bg-[var(--bg)] transition-[max-height,opacity] duration-300 ease-in-out md:hidden ${
+        className={`overflow-hidden border-t border-[rgba(244,235,218,0.25)] bg-[var(--terracotta)] transition-[max-height,opacity] duration-300 ease-in-out md:hidden ${
           open ? "max-h-[26rem] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
@@ -117,23 +117,23 @@ export default function Header({ locale }: { locale: Locale }) {
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className={`rounded-lg px-2 py-3 text-base transition-colors hover:bg-[var(--surface-2)] hover:text-[var(--text)] ${
-                item.active ? "text-[var(--terracotta-deep)] font-semibold" : "text-[var(--text-muted)]"
+              className={`rounded-lg px-2 py-3 text-base transition-colors hover:bg-[rgba(244,235,218,0.12)] hover:text-[var(--cream-on-dark)] ${
+                item.active ? "text-[var(--cream-on-dark)] font-semibold" : "text-[var(--cream-on-dark)] opacity-80"
               }`}
             >
               {item.label}
             </Link>
           ))}
         </nav>
-        <div className="flex items-center justify-between gap-4 border-t border-[var(--border)] px-6 py-4">
-          <div className="flex items-center gap-1.5 text-xs uppercase tracking-wider text-[var(--text-muted)]">
+        <div className="flex items-center justify-between gap-4 border-t border-[rgba(244,235,218,0.25)] px-6 py-4">
+          <div className="flex items-center gap-1.5 text-xs uppercase tracking-wider text-[var(--cream-on-dark)] opacity-80">
             {LOCALES.map((l, i) => (
               <span key={l} className="flex items-center gap-1.5">
                 {i > 0 && <span aria-hidden>/</span>}
                 <Link
                   href={localizePath(pathname, l)}
                   onClick={() => setOpen(false)}
-                  className={l === locale ? "text-[var(--text)]" : "transition-colors hover:text-[var(--text)]"}
+                  className={l === locale ? "text-[var(--cream-on-dark)] opacity-100" : "transition-opacity hover:opacity-100"}
                 >
                   {l.toUpperCase()}
                 </Link>
@@ -146,7 +146,7 @@ export default function Header({ locale }: { locale: Locale }) {
             rel="noopener noreferrer"
             aria-label={t.nav.whatsappLabel}
             onClick={() => setOpen(false)}
-            className="flex h-9 w-9 items-center justify-center text-[var(--text)] transition-opacity hover:opacity-70"
+            className="flex h-9 w-9 items-center justify-center text-[var(--cream-on-dark)] transition-opacity hover:opacity-70"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
               <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.09c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.11.11-1.79-.11-.41-.13-.94-.3-1.62-.6-2.86-1.24-4.72-4.1-4.86-4.29-.14-.19-1.16-1.55-1.16-2.95 0-1.4.73-2.09.99-2.37.26-.28.57-.35.76-.35h.55c.18 0 .41-.01.64.49.24.55.81 1.9.88 2.04.07.14.11.3.02.49-.09.19-.14.3-.28.46-.14.16-.29.36-.42.48-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.68-.79.86-1.06.18-.28.36-.23.6-.14.24.09 1.53.72 1.79.85.26.14.44.21.5.32.07.12.07.68-.17 1.36Z" />
