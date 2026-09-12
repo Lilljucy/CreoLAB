@@ -12,7 +12,7 @@ function subscribe(callback: () => void) {
 }
 
 function getSnapshot() {
-  return localStorage.getItem(STORAGE_KEY) === "accepted";
+  return sessionStorage.getItem(STORAGE_KEY) === "accepted";
 }
 
 function getServerSnapshot() {

@@ -37,10 +37,10 @@ const PRIVACY: Record<Locale, PrivacyContent> = {
       {
         heading: "3. Kolačići (cookies)",
         paragraphs: [
-          "Kolačići su male tekstualne datoteke koje se pohranjuju na vašem uređaju. Za pamćenje vašeg odabira u baneru za kolačiće stranica koristi lokalnu pohranu (localStorage) vašeg preglednika — to nije kolačić u tehničkom smislu i ne zahtijeva privolu.",
-          "Ova stranica koristi Google Analytics radi razumijevanja posjećenosti (broj posjetitelja, najposjećenije stranice, izvori prometa). Kolačići Google Analyticsa postavljaju se isključivo ako u baneru odaberete „Prihvaćam” — dok ne date privolu, ti se kolačići ne učitavaju, a odabirom „Samo nužni” ostaju trajno isključeni.",
+          "Kolačići su male tekstualne datoteke koje se pohranjuju na vašem uređaju. Za pamćenje vašeg odabira u baneru za kolačiće stranica koristi privremenu pohranu sesije (sessionStorage) vašeg preglednika — to nije kolačić u tehničkom smislu i ne zahtijeva privolu. Vaš se odabir pamti dok je preglednik otvoren, a nakon zatvaranja preglednika banner će se ponovno prikazati pri sljedećem posjetu.",
+          "Ova stranica koristi Google Analytics radi razumijevanja posjećenosti (broj posjetitelja, najposjećenije stranice, izvori prometa). Kolačići Google Analyticsa postavljaju se isključivo ako u baneru odaberete „Prihvaćam” — dok ne date privolu, ti se kolačići ne učitavaju, a odabirom „Samo nužni” ostaju isključeni za trajanje te posjete.",
           "Kolačići koje pritom Google Analytics postavlja su _ga (razlikovanje posjetitelja, traje do 2 godine) i _ga_XXXXXXX (pamćenje stanja sesije unutar alata, traje do 2 godine). Podatke obrađuje Google Ireland Limited, a mogu se prenositi i izvan Europskog gospodarskog prostora (npr. u SAD) na temelju standardnih ugovornih klauzula Europske komisije. Više informacija potražite u Googleovoj politici privatnosti (policies.google.com/privacy).",
-          "Svoj odabir možete promijeniti u bilo kojem trenutku brisanjem podataka o odabiru iz lokalne pohrane (localStorage) vašeg preglednika ili brisanjem kolačića preglednika, nakon čega će vam se baner ponovno prikazati.",
+          "Svoj odabir možete promijeniti u bilo kojem trenutku zatvaranjem i ponovnim otvaranjem preglednika, nakon čega će vam se baner ponovno prikazati.",
         ],
       },
       {
@@ -101,10 +101,10 @@ const PRIVACY: Record<Locale, PrivacyContent> = {
       {
         heading: "3. Cookies",
         paragraphs: [
-          "Cookies are small text files stored on your device. To remember your choice in the cookie banner, this website uses your browser's local storage (localStorage) — this is not a cookie in the technical sense and does not require consent.",
-          "This website uses Google Analytics to understand site traffic (number of visitors, most visited pages, traffic sources). Google Analytics cookies are only set if you click \"Accept\" in the banner — until you give consent, these cookies are not loaded, and choosing \"Necessary only\" keeps them permanently disabled.",
+          "Cookies are small text files stored on your device. To remember your choice in the cookie banner, this website uses your browser's session storage (sessionStorage) — this is not a cookie in the technical sense and does not require consent. Your choice is remembered while your browser stays open, and the banner will be shown again on your next visit after you close it.",
+          "This website uses Google Analytics to understand site traffic (number of visitors, most visited pages, traffic sources). Google Analytics cookies are only set if you click \"Accept\" in the banner — until you give consent, these cookies are not loaded, and choosing \"Necessary only\" keeps them disabled for the rest of that visit.",
           "The cookies Google Analytics sets are _ga (distinguishing visitors, lasts up to 2 years) and _ga_XXXXXXX (remembering session state within the tool, lasts up to 2 years). This data is processed by Google Ireland Limited and may be transferred outside the European Economic Area (e.g. to the US) under the European Commission's Standard Contractual Clauses. See Google's privacy policy (policies.google.com/privacy) for more information.",
-          "You can change your choice at any time by clearing your consent selection from your browser's local storage or by clearing your browser's cookies, after which the banner will be shown again.",
+          "You can change your choice at any time by closing and reopening your browser, after which the banner will be shown again.",
         ],
       },
       {
@@ -165,10 +165,10 @@ const PRIVACY: Record<Locale, PrivacyContent> = {
       {
         heading: "3. Cookies",
         paragraphs: [
-          "Cookies sind kleine Textdateien, die auf Ihrem Gerät gespeichert werden. Um Ihre Auswahl im Cookie-Banner zu speichern, nutzt diese Website den lokalen Speicher (localStorage) Ihres Browsers — dies ist im technischen Sinne kein Cookie und erfordert keine Einwilligung.",
-          "Diese Website nutzt Google Analytics, um den Website-Traffic zu verstehen (Besucherzahl, meistbesuchte Seiten, Traffic-Quellen). Cookies von Google Analytics werden ausschließlich gesetzt, wenn Sie im Banner auf „Akzeptieren” klicken — bis Sie Ihre Einwilligung erteilen, werden diese Cookies nicht geladen, und mit „Nur notwendige” bleiben sie dauerhaft deaktiviert.",
+          "Cookies sind kleine Textdateien, die auf Ihrem Gerät gespeichert werden. Um Ihre Auswahl im Cookie-Banner zu speichern, nutzt diese Website den Sitzungsspeicher (sessionStorage) Ihres Browsers — dies ist im technischen Sinne kein Cookie und erfordert keine Einwilligung. Ihre Auswahl bleibt gespeichert, solange der Browser geöffnet ist; nach dem Schließen des Browsers wird Ihnen der Banner bei Ihrem nächsten Besuch erneut angezeigt.",
+          "Diese Website nutzt Google Analytics, um den Website-Traffic zu verstehen (Besucherzahl, meistbesuchte Seiten, Traffic-Quellen). Cookies von Google Analytics werden ausschließlich gesetzt, wenn Sie im Banner auf „Akzeptieren” klicken — bis Sie Ihre Einwilligung erteilen, werden diese Cookies nicht geladen, und mit „Nur notwendige” bleiben sie für den Rest dieses Besuchs deaktiviert.",
           "Die dabei von Google Analytics gesetzten Cookies sind _ga (Unterscheidung von Besuchern, Laufzeit bis zu 2 Jahre) und _ga_XXXXXXX (Speicherung des Sitzungsstatus innerhalb des Tools, Laufzeit bis zu 2 Jahre). Diese Daten werden von Google Ireland Limited verarbeitet und können auch außerhalb des Europäischen Wirtschaftsraums (z. B. in die USA) übermittelt werden, gestützt auf die Standardvertragsklauseln der Europäischen Kommission. Weitere Informationen finden Sie in der Datenschutzerklärung von Google (policies.google.com/privacy).",
-          "Sie können Ihre Auswahl jederzeit ändern, indem Sie die gespeicherte Einwilligung aus dem lokalen Speicher (localStorage) Ihres Browsers oder die Cookies Ihres Browsers löschen — der Banner wird Ihnen dann erneut angezeigt.",
+          "Sie können Ihre Auswahl jederzeit ändern, indem Sie Ihren Browser schließen und erneut öffnen — der Banner wird Ihnen dann erneut angezeigt.",
         ],
       },
       {

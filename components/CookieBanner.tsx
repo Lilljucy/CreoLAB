@@ -12,7 +12,7 @@ function subscribe(callback: () => void) {
 }
 
 function getSnapshot() {
-  return localStorage.getItem(STORAGE_KEY);
+  return sessionStorage.getItem(STORAGE_KEY);
 }
 
 function getServerSnapshot() {
@@ -24,7 +24,7 @@ export default function CookieBanner({ locale }: { locale: Locale }) {
   const t = getDict(locale);
 
   function choose(value: string) {
-    localStorage.setItem(STORAGE_KEY, value);
+    sessionStorage.setItem(STORAGE_KEY, value);
     document.dispatchEvent(new CustomEvent("cookieconsent", { detail: value }));
   }
 
