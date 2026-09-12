@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node --check demo-build.mjs)",
+      "Bash(git push *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(curl -s \"https://creolab-design.hr/hr\")",
+      "Bash(npm run *)",
+      "Bash(node scripts/shot-cluster.mjs)",
+      "Bash(node scripts/shot-cluster2.mjs)",
+      "Bash(rm -f scratch-*.png scripts/shot-*.mjs)"
+    ]
+  }
+}
