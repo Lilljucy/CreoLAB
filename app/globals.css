@@ -27,7 +27,9 @@
 .hero-copy p { font-size: 15px; opacity: 0.95; margin-bottom: 20px; }
 @media (max-width: 860px) {
   .hero-grid { grid-template-columns: 1fr; min-height: auto; padding-top: 4px; }
-  .hero-q { padding: 26px; }
+  .hero-q { padding: 0 26px; }
+  .hq-left { padding-top: 8px; }
+  .hq-br { padding-bottom: 32px; }
   .hq-tr, .hq-br { text-align: left; align-items: flex-start; justify-content: flex-start; }
   .hq-left { grid-row: auto; align-items: flex-start; }
 }
@@ -95,6 +97,8 @@
 
 html {
   background: var(--bg);
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -103,7 +107,9 @@ body {
   font-family: var(--font-body), "Archivo", ui-sans-serif, system-ui, sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
   overflow-x: clip;
+  max-width: 100vw;
 }
 
 h1, h2, h3, h4 {

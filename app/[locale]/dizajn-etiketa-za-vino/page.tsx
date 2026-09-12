@@ -16,7 +16,16 @@ const DESCRIPTION =
 
 const BOTTLE_IMAGES = [
   { src: "/portfolio-full/soldo-vinarija/03-dizajn-etikete.jpg", alt: "Boca vina Soldo s etiketom u krupnom planu" },
+  { src: "/portfolio-full/bilokapic-destilerija/02-dizajn-ambalaze.jpg", alt: "Boca vinjaka Bilokapić s drvenim čepom i crnom etiketom" },
+  { src: "/portfolio-full/previsic-vinarija/02-dizajn-etikete.jpg", alt: "Boce vina Previšić Merlot i Graševina u nizu" },
+  { src: "/portfolio-full/soldo-vinarija/04-dizajn-etikete.jpg", alt: "Boca vina Soldo Graševina na bijeloj pozadini" },
+  { src: "/portfolio-full/bilokapic-destilerija/03-dizajn-ambalaze.jpg", alt: "Boca vinjaka Bilokapić destilerije položena u kadru" },
+  { src: "/portfolio-full/previsic-vinarija/03-dizajn-etikete.jpg", alt: "Boca vina Previšić Merlot uz košaru s grožđem" },
   { src: "/portfolio-full/soldo-vinarija/05-dizajn-etikete.jpg", alt: "Boca ružičastog vina Soldo Rosé s etiketom" },
+  { src: "/portfolio-full/bilokapic-destilerija/04-dizajn-ambalaze.jpg", alt: "Detalj etikete i drvenog čepa na boci vinjaka Bilokapić" },
+  { src: "/portfolio-full/soldo-vinarija/06-dizajn-etikete.jpg", alt: "Boca vina Soldo Graševina i čaša vina" },
+  { src: "/portfolio-full/bilokapic-destilerija/05-dizajn-ambalaze.jpg", alt: "Boca šljivovice Bilokapić s ilustracijom šljive na etiketi" },
+  { src: "/portfolio-full/bilokapic-destilerija/06-dizajn-ambalaze.jpg", alt: "Boca lozovače Bilokapić s ilustracijom grožđa na etiketi" },
 ];
 
 export function generateStaticParams() {
@@ -90,7 +99,7 @@ export default async function DizajnEtiketaZaVinoPage({
 
       <section className="hero-simple">
         <div className="sc" style={{ position: "absolute", inset: 0, border: "none", borderRadius: 0 }}>
-          <CardCarousel images={BOTTLE_IMAGES} cycleSeconds={10} />
+          <CardCarousel images={BOTTLE_IMAGES} cycleSeconds={33} />
         </div>
         <div className="hero-scrim" aria-hidden />
         <div className="hero-swirl" aria-hidden />
