@@ -12,9 +12,9 @@ export default function Header({ locale }: { locale: Locale }) {
   const [open, setOpen] = useState(false);
 
   const NAV = [
-    { href: `/${locale}`, label: t.nav.home },
-    { href: `/${locale}/portfolio`, label: t.nav.work },
-    { href: `/${locale}/kontakt`, label: t.nav.contact },
+    { href: `/${locale}`, label: t.nav.home, active: pathname === `/${locale}` },
+    { href: `/${locale}/portfolio`, label: t.nav.work, active: pathname.startsWith(`/${locale}/portfolio`) },
+    { href: `/${locale}/kontakt`, label: t.nav.contact, active: pathname.startsWith(`/${locale}/kontakt`) },
   ];
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function Header({ locale }: { locale: Locale }) {
 
         <nav className="site-nav">
           {NAV.map((item) => (
-            <Link key={item.href} href={item.href} className="navlink">
+            <Link key={item.href} href={item.href} className={`navlink${item.active ? " active" : ""}`}>
               {item.label}
             </Link>
           ))}
@@ -101,7 +101,9 @@ export default function Header({ locale }: { locale: Locale }) {
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="rounded-lg px-2 py-3 text-base text-[var(--text-muted)] transition-colors hover:bg-[var(--surface-2)] hover:text-[var(--text)]"
+              className={`rounded-lg px-2 py-3 text-base transition-colors hover:bg-[var(--surface-2)] hover:text-[var(--text)] ${
+                item.active ? "text-[var(--terracotta-deep)] font-semibold" : "text-[var(--text-muted)]"
+              }`}
             >
               {item.label}
             </Link>

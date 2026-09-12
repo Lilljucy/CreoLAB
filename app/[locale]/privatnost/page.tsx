@@ -29,45 +29,47 @@ export default async function PrivatnostPage({ params }: { params: Promise<{ loc
   const content = getPrivacy(locale);
 
   return (
-    <main className="px-6 pt-40 pb-32">
-      <div className="mx-auto max-w-3xl">
-        <div className="mb-16 text-center">
-          <span className="mb-4 inline-block text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]">
-            {content.eyebrow}
-          </span>
-          <h1 className="break-words text-[clamp(2.2rem,5vw,4rem)]">
+    <main>
+      <section className="hero-simple" style={{ paddingBlock: "32px 0" }}>
+        <div className="hero-swirl" aria-hidden />
+        <div className="wrap">
+          <span className="hero-label">{content.eyebrow}</span>
+          <h1 style={{ marginTop: 14 }}>
             {content.h1Plain}
-            <span className="text-gradient">{content.h1Gradient}</span>
+            {content.h1Gradient}
           </h1>
         </div>
+      </section>
+      <section>
+        <div className="wrap" style={{ maxWidth: 760 }}>
+          <div className="legal-content">
+            <p>
+              <em>{content.updated}</em>
+            </p>
 
-        <div className="legal-content">
-          <p>
-            <em>{content.updated}</em>
-          </p>
-
-          {content.sections.map((section) => (
-            <div key={section.heading}>
-              <h2>{section.heading}</h2>
-              {section.paragraphs.map((p, i) => (
-                <p key={i}>{renderWithLinks(p)}</p>
-              ))}
-              {section.rights && (
-                <>
-                  <ul>
-                    {section.rights.map((r) => (
-                      <li key={r.label}>
-                        <strong>{r.label}</strong> — {r.text}
-                      </li>
-                    ))}
-                  </ul>
-                  {section.rightsOutro && <p>{renderWithLinks(section.rightsOutro)}</p>}
-                </>
-              )}
-            </div>
-          ))}
+            {content.sections.map((section) => (
+              <div key={section.heading}>
+                <h2>{section.heading}</h2>
+                {section.paragraphs.map((p, i) => (
+                  <p key={i}>{renderWithLinks(p)}</p>
+                ))}
+                {section.rights && (
+                  <>
+                    <ul>
+                      {section.rights.map((r) => (
+                        <li key={r.label}>
+                          <strong>{r.label}</strong> — {r.text}
+                        </li>
+                      ))}
+                    </ul>
+                    {section.rightsOutro && <p>{renderWithLinks(section.rightsOutro)}</p>}
+                  </>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
     </main>
   );
 }

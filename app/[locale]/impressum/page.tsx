@@ -32,17 +32,16 @@ export default async function ImpressumPage({ params }: { params: Promise<{ loca
   if (rawLocale !== "de") notFound();
 
   return (
-    <main className="px-6 pt-40 pb-32">
-      <div className="mx-auto max-w-3xl">
-        <div className="mb-16 text-center">
-          <span className="mb-4 inline-block text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]">
-            Rechtliches
-          </span>
-          <h1 className="break-words text-[clamp(2.2rem,5vw,4rem)]">
-            Impress<span className="text-gradient">um</span>
-          </h1>
+    <main>
+      <section className="hero-simple" style={{ paddingBlock: "32px 0" }}>
+        <div className="hero-swirl" aria-hidden />
+        <div className="wrap">
+          <span className="hero-label">Rechtliches</span>
+          <h1 style={{ marginTop: 14 }}>Impressum</h1>
         </div>
-
+      </section>
+      <section>
+        <div className="wrap" style={{ maxWidth: 760 }}>
         <div className="legal-content">
           <div>
             <h2>Angaben gemäß § 5 TMG</h2>
@@ -119,7 +118,8 @@ export default async function ImpressumPage({ params }: { params: Promise<{ loca
             </p>
           </div>
         </div>
-      </div>
+        </div>
+      </section>
     </main>
   );
 }
