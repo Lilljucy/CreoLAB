@@ -28,7 +28,7 @@
 @media (max-width: 860px) {
   .hero-grid { grid-template-columns: 1fr; min-height: auto; padding-top: 4px; }
   .hero-q { padding: 0 26px; }
-  .hq-left { padding-top: 8px; }
+  .hq-left { padding-top: 28px; }
   .hq-br { padding-bottom: 32px; }
   .hq-tr, .hq-br { text-align: left; align-items: flex-start; justify-content: flex-start; }
   .hq-left { grid-row: auto; align-items: flex-start; }
