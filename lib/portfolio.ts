@@ -565,7 +565,7 @@ export const PROJECTS: Project[] = [
   },
 ];
 
-export const FEATURED_SLUGS = ["bilokapic-destilerija", "vismotus", "platinum-grupa", "vinarija-knezevic"];
+export const FEATURED_SLUGS = ["soldo-vinarija", "vismotus", "platinum-grupa", "bilokapic-destilerija"];
 
 export function getProject(slug: string) {
   return PROJECTS.find((p) => p.slug === slug);

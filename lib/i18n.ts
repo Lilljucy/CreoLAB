@@ -143,7 +143,7 @@ const DICT: Record<Locale, Dict> = {
     hero: {
       left: "Jači<br />nastup.",
       right: "Jasniji<br />brend.",
-      copy: "Spajamo kreativni dizajn i strateško razmišljanje kako bismo obrtima i tvrtkama pomogli izgraditi brend kojem se vraćaju kupci i partneri.",
+      copy: "Spajamo kreativni dizajn i strateško razmišljanje kako bi obrtima i tvrtkama pomogli izgraditi brend kojem se vraćaju kupci i partneri.",
       cta: "Zakažite razgovor",
     },
     about: {
@@ -209,7 +209,7 @@ const DICT: Record<Locale, Dict> = {
       items: [
         { title: "Grafički dizajn", desc: "Logotip, vizualni identitet i priprema za tisak koji jednako dobro djeluju na vizitki i na fasadi." },
         { title: "Izrada web stranica", desc: "Brze, responzivne stranice s SEO temeljima ugrađenima od prvog dana rada, ne dodanima naknadno." },
-        { title: "Dizajn etiketa", desc: "Etikete koje na polici nose priču vinarije, od zlatotiska do zakonski obveznih podataka." },
+        { title: "Dizajn etiketa", desc: "Etikete koje na polici nose priču, od zlatotiska do zakonski obveznih podataka." },
       ],
     },
     faq: {
