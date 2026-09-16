@@ -543,7 +543,7 @@ const DICT: Record<Locale, Dict> = {
       items: [
         { title: "Graphic design", desc: "Logos, visual identity and print preparation that work just as well on a business card as on a shopfront." },
         { title: "Web design", desc: "Fast, responsive sites with SEO foundations built in from day one, not bolted on afterwards." },
-        { title: "Label design", desc: "Labels that carry a winery's story on the shelf, from foil stamping to the legally required details." },
+        { title: "Label design", desc: "Labels that carry a story on the shelf, from foil stamping to the legally required details." },
       ],
     },
     faq: {
@@ -876,7 +876,7 @@ const DICT: Record<Locale, Dict> = {
       items: [
         { title: "Grafikdesign", desc: "Logo, visuelle Identität und Druckvorstufe, die auf der Visitenkarte genauso gut funktionieren wie an der Fassade." },
         { title: "Webdesign", desc: "Schnelle, responsive Websites mit SEO-Grundlagen, die von Anfang an eingebaut sind, nicht nachträglich ergänzt werden." },
-        { title: "Etikettendesign", desc: "Etiketten, die im Regal die Geschichte einer Weinkellerei erzählen, von der Goldprägung bis zu den gesetzlich vorgeschriebenen Angaben." },
+        { title: "Etikettendesign", desc: "Etiketten, die im Regal eine Geschichte erzählen, von der Goldprägung bis zu den gesetzlich vorgeschriebenen Angaben." },
       ],
     },
     faq: {
