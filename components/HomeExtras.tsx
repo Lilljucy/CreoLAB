@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { getDict, type Locale } from "@/lib/i18n";
-import { PROJECTS, getProject } from "@/lib/portfolio";
+import { PROJECTS, getProject, nameFor } from "@/lib/portfolio";
 
 const MOSAIC_SLUGS = PROJECTS.map((p) => p.slug).filter(
   (s) => !["soldo-vinarija", "udruga-igrac", "caffe-bar-vanilla", "adria-motors"].includes(s)
@@ -95,7 +95,7 @@ export function StatMosaicSection({ locale }: { locale: Locale }) {
             const p = getProject(slug)!;
             return (
               <div className="cell" key={slug}>
-                <Image src={p.img} alt={p.name} fill sizes="12vw" className="object-cover" />
+                <Image src={p.img} alt={nameFor(p, locale)} fill sizes="12vw" className="object-cover" />
               </div>
             );
           })}
@@ -121,7 +121,7 @@ export function ClusterSection({ locale }: { locale: Locale }) {
             return (
               <div className={`circle ${c}`} style={{ width: size, height: size }} key={slug}>
                 <div className="circle-inner" style={{ position: "relative", width: "100%", height: "100%" }}>
-                  <Image src={p.img} alt={p.name} fill sizes="150px" className="object-cover" />
+                  <Image src={p.img} alt={nameFor(p, locale)} fill sizes="150px" className="object-cover" />
                 </div>
               </div>
             );

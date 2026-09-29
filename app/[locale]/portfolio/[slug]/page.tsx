@@ -3,7 +3,7 @@ import { altFor } from "@/lib/altI18n";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { PROJECTS, getProject, categoryFor } from "@/lib/portfolio";
+import { PROJECTS, getProject, categoryFor, nameFor } from "@/lib/portfolio";
 import { isLocale, getDict, DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
 import { buildAlternates } from "@/lib/alternates";
 import { buildOpenGraph } from "@/lib/opengraph";
@@ -27,11 +27,11 @@ export async function generateMetadata({
   if (!project) return {};
 
   const category = categoryFor(project, locale);
-  const title = `${project.name}: ${category} | CreoLab`;
+  const title = `${nameFor(project, locale)}: ${category} | CreoLab`;
   const story = project.story?.[locale];
   const description = story
     ? ("summary" in story ? story.summary : story.challenge).slice(0, 150).replace(/\s+\S*$/, "") + "…"
-    : `${category}: ${project.name}. ${
+    : `${category}: ${nameFor(project, locale)}. ${
         locale === "en"
           ? "See the project in the CREOLAB portfolio."
           : locale === "de"
@@ -62,7 +62,7 @@ export default async function ProjectPage({
   const breadcrumbJsonLd = buildBreadcrumbJsonLd([
     { name: "CreoLab", url: `${SITE_URL}/${locale}` },
     { name: t.pages.portfolio.eyebrow, url: `${SITE_URL}/${locale}/portfolio` },
-    { name: project.name, url: `${SITE_URL}/${locale}/portfolio/${slug}` },
+    { name: nameFor(project, locale), url: `${SITE_URL}/${locale}/portfolio/${slug}` },
   ]);
 
   const index = PROJECTS.findIndex((p) => p.slug === slug);
@@ -82,7 +82,7 @@ export default async function ProjectPage({
             <Link href={`/${locale}/portfolio`}>&larr; {t.pages.portfolio.eyebrow}</Link>
           </div>
           <span className="hero-label">{category}</span>
-          <h1 style={{ marginTop: 10, textAlign: "left" }}>{project.name}</h1>
+          <h1 style={{ marginTop: 10, textAlign: "left" }}>{nameFor(project, locale)}</h1>
         </div>
       </section>
 
@@ -140,11 +140,11 @@ export default async function ProjectPage({
           <div className="prevnext">
             <Link href={`/${locale}/portfolio/${prevProject.slug}`}>
               <span className="pn-label">&larr; {t.portfolioDetail.prev}</span>
-              <span className="pn-name">{prevProject.name}</span>
+              <span className="pn-name">{nameFor(prevProject, locale)}</span>
             </Link>
             <Link href={`/${locale}/portfolio/${nextProject.slug}`} className="next">
               <span className="pn-label">{t.portfolioDetail.next} &rarr;</span>
-              <span className="pn-name">{nextProject.name}</span>
+              <span className="pn-name">{nameFor(nextProject, locale)}</span>
             </Link>
           </div>
         </div>

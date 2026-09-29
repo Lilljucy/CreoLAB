@@ -4,7 +4,7 @@ import Link from "next/link";
 import { isLocale, getDict, LOCALES, DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
 import { buildAlternates } from "@/lib/alternates";
 import { buildOpenGraph } from "@/lib/opengraph";
-import { PROJECTS, categoryFor } from "@/lib/portfolio";
+import { PROJECTS, categoryFor, nameFor } from "@/lib/portfolio";
 import ContactBand from "@/components/ContactBand";
 
 const SITE_URL = "https://creolab-design.hr";
@@ -134,11 +134,11 @@ export default async function GrafickiDizajnPage({
             {related.map((p) => (
               <Link key={p.slug} href={`/${locale}/portfolio/${p.slug}`} className="pf-card">
                 <div className="pf-img">
-                  <Image src={p.img} alt={`${p.name} — ${categoryFor(p, locale)}`} fill sizes="33vw" className="object-cover" />
+                  <Image src={p.img} alt={`${nameFor(p, locale)} — ${categoryFor(p, locale)}`} fill sizes="33vw" className="object-cover" />
                 </div>
                 <div className="pf-body">
                   <div className="pf-cat">{categoryFor(p, locale)}</div>
-                  <div className="pf-name">{p.name}</div>
+                  <div className="pf-name">{nameFor(p, locale)}</div>
                 </div>
               </Link>
             ))}

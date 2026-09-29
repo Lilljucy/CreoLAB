@@ -17,6 +17,22 @@ export type Project = {
   story?: Partial<Record<Locale, ProjectStory>>;
 };
 
+const NAMES: Record<string, { en: string; de: string }> = {
+  "bilokapic-destilerija": { en: "Bilokapić Distillery", de: "Bilokapić Destillerie" },
+  "vinarija-knezevic": { en: "Knežević Winery", de: "Weingut Knežević" },
+  "ember-kamin": { en: "Ember Fireplaces", de: "Ember Kamine" },
+  "soldo-vinarija": { en: "Soldo Winery", de: "Weingut Soldo" },
+  "omega-knjigovodstvo": { en: "Omega Bookkeeping", de: "Omega Buchhaltung" },
+  "previsic-vinarija": { en: "Previšić Winery", de: "Weingut Previšić" },
+  "mitrovic-vinarija": { en: "Mitrović Winery", de: "Weingut Mitrović" },
+  "udruga-igrac": { en: "Igrač Association", de: "Verein Igrač" },
+  "majstorovic-vinarija": { en: "Majstorović Winery", de: "Weingut Majstorović" },
+};
+
+export function nameFor(project: Project, locale: Locale): string {
+  return locale === "hr" ? project.name : NAMES[project.slug]?.[locale] ?? project.name;
+}
+
 export function categoryFor(project: Project, locale: Locale): string {
   return project.category[locale];
 }
@@ -148,7 +164,7 @@ export const PROJECTS: Project[] = [
       },
       en: {
         challenge:
-          "Vinarija Knežević produces premium wines and needed labels that would instantly convey character and quality on the shelf, instead of the generic look typical of smaller family producers. The challenge wasn't only aesthetic – for a small winery, the label is often the only moment a buyer learns anything about the brand before purchase, so it had to carry a story, not just a name and alcohol percentage. It also had to clearly differentiate between varieties while all labels still read as part of the same, recognisable product family.",
+          "Knežević Winery produces premium wines and needed labels that would instantly convey character and quality on the shelf, instead of the generic look typical of smaller family producers. The challenge wasn't only aesthetic – for a small winery, the label is often the only moment a buyer learns anything about the brand before purchase, so it had to carry a story, not just a name and alcohol percentage. It also had to clearly differentiate between varieties while all labels still read as part of the same, recognisable product family.",
         approach:
           "At the heart of the visual identity we wove an unbreakable bond between tradition, family and a deep love of wine. We shaped the logotype as a handwritten signature of the family surname Knežević, bringing in a personal, intimate note, while a unique detail gives the whole story its soul: the notes inside the bottle silhouette are a visual depiction of the opening bars of a song sung by the owner's uncle, Franjo Knežević — the man the owner was named after. Every drop of wine thus carries a piece of the family heritage. To carry that story consistently onto the packaging, each variety got its own ribbon colour on the label, while the black background remained the shared constant giving the whole line a sense of superior elegance and refinement.",
         result:
@@ -279,7 +295,7 @@ export const PROJECTS: Project[] = [
       },
       en: {
         challenge:
-          "Vinarija Soldo needed a modernisation and redesign of its existing logo and labels for its 13 wine varieties, aiming to create a unified identity that would tie such a wide range together while feeling fresher and more modern than traditional, often cluttered winery labels full of ornament and small print. The goal was a label recognisable even from a distance on the shelf, not only up close. We also had to make sure the refreshed identity could be applied easily across all varieties, with each bottle keeping its own recognisable character.",
+          "Soldo Winery needed a modernisation and redesign of its existing logo and labels for its 13 wine varieties, aiming to create a unified identity that would tie such a wide range together while feeling fresher and more modern than traditional, often cluttered winery labels full of ornament and small print. The goal was a label recognisable even from a distance on the shelf, not only up close. We also had to make sure the refreshed identity could be applied easily across all varieties, with each bottle keeping its own recognisable character.",
         approach:
           "At the heart of the identity we designed a memorable, redesigned logo in the shape of the letter \"S\" that creates the effect of a full glass and a drop of wine. The key design element is a cleverly executed cut-out on the label in the shape of the logo, through which the wine inside the bottle is visible – so the colour of the wine itself fills the logo, giving it a unique, living look for each of the 13 varieties. We deliberately pared the labels down to the essential information so the clean composition stays striking even from a few metres away, while the typography of the name 'Soldo' provides an elegant, understated signature.",
         result:
@@ -467,11 +483,11 @@ export const PROJECTS: Project[] = [
       },
       en: {
         challenge:
-          "Mitrović Vinarija already had an existing logo, but needed it modernised to communicate its winegrowing tradition and Kutjevo-region origin more convincingly at first glance, while building a professional visual identity for presenting to customers, hospitality partners and trade-fair contacts. Without a fresher, better-suited mark, the visual materials didn't fully keep pace with the winery's ambitions. The mark had to be modernised and made durable enough to serve as a solid foundation for all future materials.",
+          "Mitrović Winery already had an existing logo, but needed it modernised to communicate its winegrowing tradition and Kutjevo-region origin more convincingly at first glance, while building a professional visual identity for presenting to customers, hospitality partners and trade-fair contacts. Without a fresher, better-suited mark, the visual materials didn't fully keep pace with the winery's ambitions. The mark had to be modernised and made durable enough to serve as a solid foundation for all future materials.",
         approach:
           "We designed a modernised, elegant version of the logo with the letter M at its centre, rising out of the vineyard-lined slopes of the Kutjevo wine region, with an added drop symbolising top-quality wine. Everything is rendered in a warm gold on a dark background. We chose a classic serif style for the 'Mitrović Vinarija' typography to complete the sense of permanence, and kept gold as the only accent so the logo stays legible even in small applications such as a bottle stopper or a gift box. We deliberately centred the composition and balanced it symmetrically, so the mark works equally well printed on a business card and on all future promotional materials.",
         result:
-          "Mitrović Vinarija now has a modernised, representative logo ready for use on business cards, future labels and promotional materials, with a clear visual direction for everything the winery develops next. The gold-and-black combination immediately signals premium positioning, giving the winery a solid foundation for building recognition at trade fairs and in direct sales. When the winery expands its range to new varieties, the same visual language can serve as the basis for labels, so every new product remains a recognisable part of the same family story. The winery thus no longer starts from zero, but successfully builds on a refreshed foundation.",
+          "Mitrović Winery now has a modernised, representative logo ready for use on business cards, future labels and promotional materials, with a clear visual direction for everything the winery develops next. The gold-and-black combination immediately signals premium positioning, giving the winery a solid foundation for building recognition at trade fairs and in direct sales. When the winery expands its range to new varieties, the same visual language can serve as the basis for labels, so every new product remains a recognisable part of the same family story. The winery thus no longer starts from zero, but successfully builds on a refreshed foundation.",
       },
       de: {
         challenge:
@@ -697,11 +713,11 @@ export const PROJECTS: Project[] = [
       },
       en: {
         challenge:
-          "Vinarija Majstorović from Kutjevo needed a complete visual identity and label design for its wine line that would tell the story of top quality and deep roots in the tradition of the Kutjevo wine region at first glance. The challenge was to create packaging that stands out strongly on the shelf, exudes elegance and successfully combines historical heritage with a contemporary wine expression.",
+          "Majstorović Winery from Kutjevo needed a complete visual identity and label design for its wine line that would tell the story of top quality and deep roots in the tradition of the Kutjevo wine region at first glance. The challenge was to create packaging that stands out strongly on the shelf, exudes elegance and successfully combines historical heritage with a contemporary wine expression.",
         approach:
           "The foundation of the visual identity is the pleter – the Old Croatian three-strand interlace found on stone monuments since the 9th century – which symbolises continuity, interconnection and heritage. Within that interlace ornament, the silhouette of a wine glass is harmoniously shaped, achieving a perfect blend of Croatian tradition and contemporary winemaking. Rendered in a refined gold on an elegant dark background, it carries a clear association with wine, the ripeness of the grape and the premium exclusivity of the product.",
         result:
-          "Vinarija Majstorović received a recognisable, luxurious and deeply symbolic visual identity. The bottle labels and accompanying materials radiate elegance and authenticity, giving a shopper in a store or a guest in a restaurant a clear impression of a top wine backed by respect for tradition and uncompromising quality.",
+          "Majstorović Winery received a recognisable, luxurious and deeply symbolic visual identity. The bottle labels and accompanying materials radiate elegance and authenticity, giving a shopper in a store or a guest in a restaurant a clear impression of a top wine backed by respect for tradition and uncompromising quality.",
       },
       de: {
         challenge:

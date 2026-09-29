@@ -156,7 +156,7 @@ export default async function IzradaWebStranicaPage({
               </div>
               <figcaption>
                 <a href="https://vinarija-soldo.hr" target="_blank" rel="noopener noreferrer">
-                  Vinarija Soldo
+                  {locale === "en" ? "Soldo Winery" : locale === "de" ? "Weingut Soldo" : "Vinarija Soldo"}
                 </a>
               </figcaption>
             </figure>

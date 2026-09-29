@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { PROJECTS, categoryFor } from "@/lib/portfolio";
+import { PROJECTS, categoryFor, nameFor } from "@/lib/portfolio";
 import type { Locale } from "@/lib/i18n";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -36,7 +36,7 @@ export default function PortfolioGrid({ locale }: { locale: Locale }) {
           <div className="pf-img">
             <Image
               src={p.img}
-              alt={`${p.name} — ${categoryFor(p, locale)}`}
+              alt={`${nameFor(p, locale)} — ${categoryFor(p, locale)}`}
               fill
               sizes="(max-width: 680px) 50vw, (max-width: 980px) 33vw, 25vw"
               className="object-cover"
@@ -45,7 +45,7 @@ export default function PortfolioGrid({ locale }: { locale: Locale }) {
           </div>
           <div className="pf-body">
             <div className="pf-cat">{categoryFor(p, locale)}</div>
-            <div className="pf-name">{p.name}</div>
+            <div className="pf-name">{nameFor(p, locale)}</div>
           </div>
         </Link>
       ))}
