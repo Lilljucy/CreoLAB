@@ -2,9 +2,9 @@ import Image from "next/image";
 import { getDict, type Locale } from "@/lib/i18n";
 import { PROJECTS, getProject, nameFor } from "@/lib/portfolio";
 
-const MOSAIC_SLUGS = PROJECTS.map((p) => p.slug).filter(
-  (s) => !["soldo-vinarija", "udruga-igrac", "caffe-bar-vanilla", "adria-motors"].includes(s)
-);
+const MOSAIC_SLUGS = PROJECTS.map((p) => p.slug)
+  .filter((s) => !["soldo-vinarija", "udruga-igrac", "caffe-bar-vanilla", "adria-motors", "majstorovic-vinarija"].includes(s))
+  .map((s) => (s === "dopa-projekt" ? "majstorovic-vinarija" : s));
 
 const CLUSTER_SLUGS = [
   { slug: "ember-kamin", size: 150, c: "c2" },
