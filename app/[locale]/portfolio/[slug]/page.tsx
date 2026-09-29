@@ -29,7 +29,7 @@ export async function generateMetadata({
   const title = `${project.name}: ${category} | CreoLab`;
   const story = project.story?.[locale];
   const description = story
-    ? story.challenge.slice(0, 150).replace(/\s+\S*$/, "") + "…"
+    ? ("summary" in story ? story.summary : story.challenge).slice(0, 150).replace(/\s+\S*$/, "") + "…"
     : `${category}: ${project.name}. ${
         locale === "en"
           ? "See the project in the CREOLAB portfolio."
@@ -88,20 +88,26 @@ export default async function ProjectPage({
       {story && (
         <section>
           <div className="wrap">
-            <div className="story-grid">
+            {"summary" in story ? (
               <div className="card">
-                <span className="eyebrow">{t.portfolioDetail.challenge}</span>
-                <p>{story.challenge}</p>
+                <p>{story.summary}</p>
               </div>
-              <div className="card">
-                <span className="eyebrow">{t.portfolioDetail.approach}</span>
-                <p>{story.approach}</p>
+            ) : (
+              <div className="story-grid">
+                <div className="card">
+                  <span className="eyebrow">{t.portfolioDetail.challenge}</span>
+                  <p>{story.challenge}</p>
+                </div>
+                <div className="card">
+                  <span className="eyebrow">{t.portfolioDetail.approach}</span>
+                  <p>{story.approach}</p>
+                </div>
+                <div className="card">
+                  <span className="eyebrow">{t.portfolioDetail.result}</span>
+                  <p>{story.result}</p>
+                </div>
               </div>
-              <div className="card">
-                <span className="eyebrow">{t.portfolioDetail.result}</span>
-                <p>{story.result}</p>
-              </div>
-            </div>
+            )}
           </div>
         </section>
       )}
