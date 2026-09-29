@@ -18,7 +18,7 @@ export default function Footer({ locale }: { locale: Locale }) {
           <Link className="logo" href={`/${locale}`}>
             <Logo size={22} />
           </Link>
-          <span className="fmuted">{`© ${new Date().getFullYear()} CreoLab · Požega, Hrvatska`}</span>
+          <span className="fmuted">{`© ${new Date().getFullYear()} CreoLab · ${locale === "hr" ? "Požega, Hrvatska" : locale === "de" ? "Požega, Kroatien" : "Požega, Croatia"}`}</span>
           <div className="footer-social">
             <a
               href="https://www.instagram.com/creo.l.a.b/"

@@ -44,15 +44,15 @@ export const PROFESSIONAL_SERVICE_JSON_LD = {
         itemListElement: [
           {
             "@type": "Offer",
-            itemOffered: { "@type": "Service", name: "Grafički dizajn i izrada logotipa" },
+            itemOffered: { "@type": "Service", name: [{ "@language": "hr", "@value": "Grafički dizajn i izrada logotipa" }, { "@language": "en", "@value": "Graphic design and logo design" }, { "@language": "de", "@value": "Grafikdesign und Logoentwicklung" }] },
           },
           {
             "@type": "Offer",
-            itemOffered: { "@type": "Service", name: "Izrada web stranica" },
+            itemOffered: { "@type": "Service", name: [{ "@language": "hr", "@value": "Izrada web stranica" }, { "@language": "en", "@value": "Website design and development" }, { "@language": "de", "@value": "Webdesign und Webentwicklung" }] },
           },
           {
             "@type": "Offer",
-            itemOffered: { "@type": "Service", name: "Vođenje društvenih mreža" },
+            itemOffered: { "@type": "Service", name: [{ "@language": "hr", "@value": "Vođenje društvenih mreža" }, { "@language": "en", "@value": "Social media management" }, { "@language": "de", "@value": "Social-Media-Betreuung" }] },
           },
         ],
       },

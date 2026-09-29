@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { altFor } from "@/lib/altI18n";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -119,7 +120,7 @@ export default async function ProjectPage({
               <div className="cell" key={src}>
                 <Image
                   src={src}
-                  alt={project.galleryAlt[i]}
+                  alt={altFor(project.galleryAlt[i], locale)}
                   fill
                   sizes="(max-width: 700px) 100vw, 50vw"
                   style={{

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { altFor } from "@/lib/altI18n";
 import Image from "next/image";
 import { isLocale, getDict, LOCALES, DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
 import { buildAlternates } from "@/lib/alternates";
@@ -80,7 +81,7 @@ export default async function IzradaWebStranicaPage({
     "@context": "https://schema.org",
     "@type": "Service",
     name: s.h1,
-    serviceType: "Izrada web stranica",
+    serviceType: locale === "en" ? "Website design and development" : locale === "de" ? "Webdesign und Webentwicklung" : "Izrada web stranica",
     provider: { "@id": `${SITE_URL}/#organization` },
     areaServed: [
       { "@type": "City", name: "Požega" },
@@ -141,7 +142,7 @@ export default async function IzradaWebStranicaPage({
           <div className="showcase-grid">
             <figure>
               <div className="sc">
-                <CardCarousel images={CREOLAB_IMAGES} />
+                <CardCarousel images={CREOLAB_IMAGES.map((i) => ({ ...i, alt: altFor(i.alt, locale) }))} />
               </div>
               <figcaption>
                 <a href="https://creolab-design.hr" target="_blank" rel="noopener noreferrer">
@@ -151,7 +152,7 @@ export default async function IzradaWebStranicaPage({
             </figure>
             <figure>
               <div className="sc">
-                <CardCarousel images={SOLDO_IMAGES} cycleSeconds={25} />
+                <CardCarousel images={SOLDO_IMAGES.map((i) => ({ ...i, alt: altFor(i.alt, locale) }))} cycleSeconds={25} />
               </div>
               <figcaption>
                 <a href="https://vinarija-soldo.hr" target="_blank" rel="noopener noreferrer">
@@ -163,7 +164,7 @@ export default async function IzradaWebStranicaPage({
               <div className="sc">
                 <Image
                   src="/web-dizajn/05-taste-the-journey.jpg"
-                  alt="Anketa Taste the Journey za ocjenjivanje gastronomskog doživljaja"
+                  alt={altFor("Anketa Taste the Journey za ocjenjivanje gastronomskog doživljaja", locale)}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover"

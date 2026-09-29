@@ -69,7 +69,7 @@ export default async function GrafickiDizajnPage({
     "@context": "https://schema.org",
     "@type": "Service",
     name: s.h1,
-    serviceType: "Grafički dizajn i izrada logotipa",
+    serviceType: locale === "en" ? "Graphic design and logo design" : locale === "de" ? "Grafikdesign und Logoentwicklung" : "Grafički dizajn i izrada logotipa",
     provider: { "@id": `${SITE_URL}/#organization` },
     areaServed: [
       { "@type": "City", name: "Požega" },

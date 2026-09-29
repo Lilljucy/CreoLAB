@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { altFor } from "@/lib/altI18n";
 import Image from "next/image";
 import Link from "next/link";
 import { isLocale, getDict, LOCALES, DEFAULT_LOCALE, type Locale } from "@/lib/i18n";
@@ -85,7 +86,7 @@ export default async function DizajnEtiketaZaVinoPage({
     "@context": "https://schema.org",
     "@type": "Service",
     name: s.h1,
-    serviceType: "Dizajn etiketa za vino i žestoka pića",
+    serviceType: locale === "en" ? "Label design for wine and spirits" : locale === "de" ? "Etikettendesign für Wein und Spirituosen" : "Dizajn etiketa za vino i žestoka pića",
     provider: { "@id": `${SITE_URL}/#organization` },
     areaServed: [
       { "@type": "AdministrativeArea", name: m.region },
@@ -120,7 +121,7 @@ export default async function DizajnEtiketaZaVinoPage({
 
       <section className="hero-simple">
         <div className="sc" style={{ position: "absolute", inset: 0, border: "none", borderRadius: 0 }}>
-          <CardCarousel images={BOTTLE_IMAGES} cycleSeconds={33} />
+          <CardCarousel images={BOTTLE_IMAGES.map((i) => ({ ...i, alt: altFor(i.alt, locale) }))} cycleSeconds={33} />
         </div>
         <div className="hero-scrim" aria-hidden />
         <div className="hero-swirl" aria-hidden />
