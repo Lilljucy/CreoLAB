@@ -58,7 +58,6 @@ export default function ContactBand({
                 >
                   WhatsApp
                 </a>
-                <span className="addr">{t.contact.address}</span>
               </div>
               <div className="social">
                 <a

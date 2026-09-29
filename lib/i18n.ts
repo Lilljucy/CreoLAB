@@ -80,7 +80,6 @@ type Dict = {
     roleWeb: string;
     email: string;
     call: string;
-    address: string;
   };
   pages: {
     portfolio: { eyebrow: string; h1Plain: string; h1Gradient: string; sub: string };
@@ -311,7 +310,6 @@ const DICT: Record<Locale, Dict> = {
       roleWeb: "Web razvoj",
       email: "Email",
       call: "Pozovi",
-      address: "Marije Jurić Zagorke 9, 34000 Požega",
     },
     pages: {
       portfolio: {
@@ -645,7 +643,6 @@ const DICT: Record<Locale, Dict> = {
       roleWeb: "Web development",
       email: "Email",
       call: "Call",
-      address: "Marije Jurić Zagorke 9, 34000 Požega, Croatia",
     },
     pages: {
       portfolio: {
@@ -978,7 +975,6 @@ const DICT: Record<Locale, Dict> = {
       roleWeb: "Web-Entwicklung",
       email: "E-Mail",
       call: "Anrufen",
-      address: "Marije Jurić Zagorke 9, 34000 Požega, Kroatien",
     },
     pages: {
       portfolio: {
