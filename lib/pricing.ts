@@ -11,21 +11,24 @@ export type PriceGroup = { title: L10n; items: PriceItem[] };
 
 export const PRICE_UPDATED = "10.09.2026.";
 
-export const priceStrings: Record<Locale, { title: string; note: string; updated: string }> = {
+export const priceStrings: Record<Locale, { title: string; note: string; updated: string; onDay: string }> = {
   hr: {
     title: "Cjenik usluga",
     note: "Cijene su izražene u eurima (€) i informativne su naravi. Konačna cijena određuje se individualnom ponudom.",
     updated: "Cijene na dan",
+    onDay: "na dan",
   },
   en: {
     title: "Price list",
     note: "Prices are stated in euros (€) and are for information purposes. The final price is set in an individual quote.",
     updated: "Prices as of",
+    onDay: "as of",
   },
   de: {
     title: "Preisliste",
     note: "Die Preise sind in Euro (€) angegeben und dienen der Information. Der Endpreis wird in einem individuellen Angebot festgelegt.",
     updated: "Preise Stand",
+    onDay: "Stand",
   },
 };
 

@@ -39,7 +39,12 @@ export default function FooterTop({ locale, links }: { locale: Locale; links: Na
               <ul>
                 {g.items.map((it) => (
                   <li key={it.name.hr}>
-                    <span>{formatPrice(it.price, locale)}</span>
+                    <span className="price-cell">
+                      <b>{formatPrice(it.price, locale)}</b>
+                      <small>
+                        {ps.onDay} {PRICE_UPDATED}
+                      </small>
+                    </span>
                     <span>{it.name[locale]}</span>
                   </li>
                 ))}
