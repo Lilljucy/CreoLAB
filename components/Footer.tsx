@@ -3,6 +3,7 @@ import Logo from "./Logo";
 import { getDict, type Locale } from "@/lib/i18n";
 import FooterTop from "./FooterTop";
 import { priceStrings } from "@/lib/pricing";
+import { CSV_FILENAME } from "@/lib/priceCsv";
 
 export default function Footer({ locale }: { locale: Locale }) {
   const t = getDict(locale);
@@ -51,7 +52,7 @@ export default function Footer({ locale }: { locale: Locale }) {
         <div className="footer-legal">
           <Link href={`/${locale}/privatnost`}>{t.footer.privacy}</Link>
           <Link href={`/${locale}/uvjeti-koristenja`}>{t.footer.terms}</Link>
-          <a href="/cjenik.csv" download="cjenik-creolab.csv">
+          <a href={`/cjenici/${CSV_FILENAME}`} download={CSV_FILENAME}>
             {priceStrings[locale].csvLabel}
           </a>
           {locale === "de" && <Link href={`/${locale}/impressum`}>Impressum</Link>}
