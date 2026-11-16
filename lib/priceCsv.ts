@@ -4,14 +4,19 @@ import { priceGroups } from "./pricing";
 // kao mjera izravne kontrole cijena (NN 101/2026), točka IV. (polja) i VI. (naziv datoteke).
 // Odluka NE propisuje redoslijed stupaca, razdjelnik ni kodiranje.
 
-// Točka VI.: oblik prodajnog objekta, adresa, oznaka objekta, broj pohrane, vremenska oznaka slanja.
-// ⚠ "oznaka" i "broj pohrane" su pretpostavljene vrijednosti — uskladiti s onim što obrt koristi.
-const OBLIK = "usluge";
+// Točka VI. + službeni primjer Ministarstva za uslužni objekt:
+//   servis_Vukovarska 20 Osijek_U-03_015_01.10.2026_07:45
+// oblik objekta _ adresa _ oznaka objekta _ broj pohrane _ datum i vrijeme slanja.
+// Obrt s jednim poslovnim prostorom bez internih oznaka smije koristiti npr. P-01, NP ili 01 (pojašnjenje MINGO).
+// Odstupanja od primjera zbog sigurnih naziva datoteka/URL-a: razmaci u adresi → "-", bez dijakritika,
+// a dvotočka u vremenu zamijenjena crticom (dvotočka nije dopuštena u nazivima datoteka na Windowsu).
+const OBLIK = "servis";
 const ADRESA = "Marije-Juric-Zagorke-9-Pozega";
-const OZNAKA = "1";
-const BROJ_POHRANE = "1";
-// Vrijeme zadnje izmjene/objave cjenika (YYYYMMDD-HHMM). Mijenja se pri svakoj promjeni cijena.
-const TIMESTAMP = "20261116-1156";
+const OZNAKA = "U-01";
+// Redni broj poslane/generirane datoteke u evidenciji obrta (povećati za 1 pri svakoj novoj objavi).
+const BROJ_POHRANE = "001";
+// Datum i vrijeme objave cjenika (DD.MM.YYYY_HH-MM). Mijenja se pri svakoj izmjeni cijena.
+const TIMESTAMP = "16.11.2026_17-14";
 
 export const CSV_FILENAME = [OBLIK, ADRESA, OZNAKA, BROJ_POHRANE, TIMESTAMP].join("_") + ".csv";
 
