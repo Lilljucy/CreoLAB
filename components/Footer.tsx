@@ -1,20 +1,22 @@
 import Link from "next/link";
 import Logo from "./Logo";
 import { getDict, type Locale } from "@/lib/i18n";
-import { priceGroups, priceStrings, formatPrice, PRICE_UPDATED } from "@/lib/pricing";
+import FooterTop from "./FooterTop";
 
 export default function Footer({ locale }: { locale: Locale }) {
   const t = getDict(locale);
-  const ps = priceStrings[locale];
 
   return (
     <footer id="contact">
       <div className="wrap">
-        <div className="footer-top">
-          <Link href={`/${locale}/graficki-dizajn`}>{t.services.graphic.title}</Link>
-          <Link href={`/${locale}/izrada-web-stranica`}>{t.services.web.title}</Link>
-          <Link href={`/${locale}/dizajn-etiketa-za-vino`}>{t.services.labels.title}</Link>
-        </div>
+        <FooterTop
+          locale={locale}
+          links={[
+            { href: `/${locale}/graficki-dizajn`, label: t.services.graphic.title },
+            { href: `/${locale}/izrada-web-stranica`, label: t.services.web.title },
+            { href: `/${locale}/dizajn-etiketa-za-vino`, label: t.services.labels.title },
+          ]}
+        />
 
         <div className="footer-row">
           <Link className="logo" href={`/${locale}`}>
@@ -50,31 +52,6 @@ export default function Footer({ locale }: { locale: Locale }) {
           <Link href={`/${locale}/uvjeti-koristenja`}>{t.footer.terms}</Link>
           {locale === "de" && <Link href={`/${locale}/impressum`}>Impressum</Link>}
         </div>
-
-        <details className="footer-prices">
-          <summary>{ps.title}</summary>
-          <div className="footer-prices-grid">
-            {priceGroups.map((g) => (
-              <section key={g.title.hr}>
-                <h3>{g.title[locale]}</h3>
-                <ul>
-                  {g.items.map((it) => (
-                    <li key={it.name.hr}>
-                      <span>{formatPrice(it.price, locale)}</span>
-                      <span>{it.name[locale]}</span>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            ))}
-          </div>
-          <p className="footer-prices-note">
-            <strong>
-              {ps.updated} {PRICE_UPDATED}
-            </strong>{" "}
-            {ps.note}
-          </p>
-        </details>
       </div>
     </footer>
   );
