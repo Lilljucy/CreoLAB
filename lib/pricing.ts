@@ -74,7 +74,7 @@ export const priceGroups: PriceGroup[] = [
     title: { hr: "Plakati", en: "Posters", de: "Plakate" },
     items: [
       { name: { hr: "Plakat A2/A3/A4", en: "Poster A2/A3/A4", de: "Plakat A2/A3/A4" }, price: 50, date: "10.09.2026.", priceOnDate: 20 },
-      { name: { hr: "Dizajn - jumbo plakat", en: "Jumbo poster design", de: "Jumbo-Plakat-Design" }, price: 120, date: "10.09.2026.", priceOnDate: 100 },
+      { name: { hr: "Dizajn - jumbo plakat", en: "Jumbo poster design", de: "Jumbo-Plakat-Design" }, price: 120, date: "10.09.2026.", priceOnDate: 120 },
       { name: { hr: "Dizajn panoa", en: "Billboard design", de: "Großflächenplakat-Design" }, price: 70, date: "24.09.2026.", priceOnDate: 70 },
       { name: { hr: "Vizual za led ekran", en: "LED screen visual", de: "Visual für LED-Bildschirm" }, price: 70, date: "10.09.2026.", priceOnDate: 70 },
       { name: { hr: "Priprema za tisak", en: "Print preparation", de: "Druckvorbereitung" }, price: 20, date: "10.09.2026.", priceOnDate: 20 },
