@@ -87,12 +87,6 @@ export const priceGroups: PriceGroup[] = [
     ],
   },
   {
-    title: { hr: "Predujam", en: "Advance payment", de: "Anzahlung" },
-    items: [
-      { name: { hr: "Predujam", en: "Advance payment", de: "Anzahlung" }, price: 200, date: "10.09.2026.", priceOnDate: 200 },
-    ],
-  },
-  {
     title: { hr: "Putni troškovi", en: "Travel expenses", de: "Reisekosten" },
     items: [
       { name: { hr: "Putni troškovi", en: "Travel expenses", de: "Reisekosten" }, price: 0.5, date: "08.10.2026.", priceOnDate: 0.5 },

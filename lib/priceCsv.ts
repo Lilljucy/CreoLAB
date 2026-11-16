@@ -15,7 +15,7 @@ const OZNAKA = "U-01";
 // Redni broj poslane/generirane datoteke u evidenciji obrta (povećati za 1 pri svakoj novoj objavi).
 const BROJ_POHRANE = "001";
 // Datum i vrijeme objave cjenika (DD.MM.YYYY_HH-MM). Mijenja se pri svakoj izmjeni cijena.
-const TIMESTAMP = "16.11.2026_17-29";
+const TIMESTAMP = "16.11.2026_17-30";
 
 export const CSV_FILENAME = [OBLIK, ADRESA, OZNAKA, BROJ_POHRANE, TIMESTAMP].join("_") + ".csv";
 
