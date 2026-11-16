@@ -67,7 +67,7 @@ export const priceGroups: PriceGroup[] = [
     title: { hr: "Katalog", en: "Catalogue", de: "Katalog" },
     items: [
       { name: { hr: "Dizajn deplijana", en: "Leaflet design", de: "Faltblatt-Design" }, price: 200, date: "24.09.2026.", priceOnDate: 200 },
-      { name: { hr: "Izrada - katalog proizvoda", en: "Product catalogue", de: "Produktkatalog" }, price: 30, date: "10.09.2026.", priceOnDate: 30 },
+      { name: { hr: "Izrada - katalog proizvoda (po stranici)", en: "Product catalogue (per page)", de: "Produktkatalog (pro Seite)" }, price: 30, date: "10.09.2026.", priceOnDate: 30 },
     ],
   },
   {
@@ -89,7 +89,7 @@ export const priceGroups: PriceGroup[] = [
   {
     title: { hr: "Putni troškovi", en: "Travel expenses", de: "Reisekosten" },
     items: [
-      { name: { hr: "Putni troškovi", en: "Travel expenses", de: "Reisekosten" }, price: 0.5, date: "08.10.2026.", priceOnDate: 0.5 },
+      { name: { hr: "Putni troškovi (po kilometru)", en: "Travel expenses (per kilometre)", de: "Reisekosten (pro Kilometer)" }, price: 0.5, date: "08.10.2026.", priceOnDate: 0.5 },
     ],
   },
 ];
