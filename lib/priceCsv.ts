@@ -9,13 +9,13 @@ import { join } from "node:path";
 // Obrt s jednim poslovnim prostorom bez internih oznaka smije koristiti npr. P-01, NP ili 01 (pojašnjenje MINGO).
 // Odstupanja od primjera zbog sigurnih naziva datoteka/URL-a: razmaci u adresi → "-", bez dijakritika,
 // a dvotočka u vremenu zamijenjena crticom (dvotočka nije dopuštena u nazivima datoteka na Windowsu).
-const OBLIK = "servis";
+const OBLIK = "obrt";
 const ADRESA = "Marije-Juric-Zagorke-9-Pozega";
 const OZNAKA = "U-01";
 // Redni broj poslane/generirane datoteke u evidenciji obrta (povećati za 1 pri svakoj novoj objavi).
 const BROJ_POHRANE = "001";
 // Datum i vrijeme objave cjenika (DD.MM.YYYY_HH-MM). Mijenja se pri svakoj izmjeni cijena.
-const TIMESTAMP = "16.11.2026_17-20";
+const TIMESTAMP = "16.11.2026_17-23";
 
 export const CSV_FILENAME = [OBLIK, ADRESA, OZNAKA, BROJ_POHRANE, TIMESTAMP].join("_") + ".csv";
 
