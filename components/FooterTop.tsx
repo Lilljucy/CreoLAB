@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { priceGroups, priceStrings, formatPrice, PRICE_UPDATED } from "@/lib/pricing";
+import { priceGroups, priceStrings, formatPrice } from "@/lib/pricing";
 import type { Locale } from "@/lib/i18n";
 
 type NavLink = { href: string; label: string };
@@ -42,7 +42,7 @@ export default function FooterTop({ locale, links }: { locale: Locale; links: Na
                     <span className="price-cell">
                       <b>{formatPrice(it.price, locale)}</b>
                       <small>
-                        {ps.onDay} {PRICE_UPDATED}
+                        {ps.onDay} {it.date}
                       </small>
                     </span>
                     <span>{it.name[locale]}</span>
@@ -53,9 +53,6 @@ export default function FooterTop({ locale, links }: { locale: Locale; links: Na
           ))}
         </div>
         <p className="footer-prices-note">
-          <strong>
-            {ps.updated} {PRICE_UPDATED}
-          </strong>{" "}
           {ps.note}
         </p>
       </div>
