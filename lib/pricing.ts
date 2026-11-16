@@ -13,21 +13,21 @@ export type PriceGroup = { title: L10n; items: PriceItem[] };
 export const priceStrings: Record<Locale, { title: string; note: string; priceLabel: string; onDay: string; csvLabel: string }> = {
   hr: {
     title: "Cjenik usluga",
-    note: "Cijene su izražene u eurima (€) i informativne su naravi. Konačna cijena određuje se individualnom ponudom.",
+    note: "Cijene su izražene u eurima (€) i informativne su naravi. Konačna cijena određuje se individualnom ponudom. PDV nije obračunat jer obrt nije u sustavu PDV-a (čl. 90. Zakona o porezu na dodanu vrijednost).",
     priceLabel: "Cijena",
     csvLabel: "Cjenik (CSV)",
     onDay: "Cijena na dan",
   },
   en: {
     title: "Price list",
-    note: "Prices are stated in euros (€) and are for information purposes. The final price is set in an individual quote.",
+    note: "Prices are stated in euros (€) and are for information purposes. The final price is set in an individual quote. VAT is not charged because the business is not in the VAT system (Art. 90 of the Croatian VAT Act).",
     priceLabel: "Price",
     csvLabel: "Price list (CSV)",
     onDay: "Price as of",
   },
   de: {
     title: "Preisliste",
-    note: "Die Preise sind in Euro (€) angegeben und dienen der Information. Der Endpreis wird in einem individuellen Angebot festgelegt.",
+    note: "Die Preise sind in Euro (€) angegeben und dienen der Information. Der Endpreis wird in einem individuellen Angebot festgelegt. Es wird keine Umsatzsteuer berechnet, da der Betrieb nicht im Mehrwertsteuersystem registriert ist (Art. 90 des kroatischen Mehrwertsteuergesetzes).",
     priceLabel: "Preis",
     csvLabel: "Preisliste (CSV)",
     onDay: "Preis Stand",
