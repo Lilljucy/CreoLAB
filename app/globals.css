@@ -532,6 +532,20 @@ main section { padding-block: clamp(24px, 3.5vw, 48px); }
 .footer-legal a { font-size: 12.5px; color: var(--text-muted); text-decoration: none; }
 .footer-legal a:hover { color: var(--terracotta-deep); }
 
+/* Cjenik (zakonska obveza isticanja cijena) — diskretan, sklopiv */
+.footer-prices { margin-top: 18px; text-align: center; }
+.footer-prices summary { display: inline-block; cursor: pointer; font-size: 12.5px; color: var(--text-muted); list-style: none; }
+.footer-prices summary::-webkit-details-marker { display: none; }
+.footer-prices summary::after { content: " +"; }
+.footer-prices[open] summary::after { content: " −"; }
+.footer-prices summary:hover { color: var(--terracotta-deep); }
+.footer-prices-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px 36px; margin-top: 18px; text-align: left; }
+.footer-prices h3 { font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+.footer-prices ul { list-style: none; margin: 0; padding: 0; }
+.footer-prices li { display: flex; align-items: baseline; gap: 14px; font-size: 12.5px; color: var(--text-muted); padding: 5px 0; border-bottom: 1px solid var(--border); }
+.footer-prices li span:first-child { flex: none; width: 82px; white-space: nowrap; font-variant-numeric: tabular-nums; font-weight: 600; }
+.footer-prices-note { margin-top: 16px; font-size: 11.5px; color: var(--text-muted); }
+
 /* Cookie banner */
 .cookie-banner { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 200; max-width: 620px; margin-inline: auto;
   background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 18px 22px; box-shadow: 0 12px 40px -14px rgba(43,35,24,0.35); }

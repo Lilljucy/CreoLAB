@@ -1,9 +1,11 @@
 import Link from "next/link";
 import Logo from "./Logo";
 import { getDict, type Locale } from "@/lib/i18n";
+import { priceGroups, priceStrings, formatPrice, PRICE_UPDATED } from "@/lib/pricing";
 
 export default function Footer({ locale }: { locale: Locale }) {
   const t = getDict(locale);
+  const ps = priceStrings[locale];
 
   return (
     <footer id="contact">
@@ -48,6 +50,31 @@ export default function Footer({ locale }: { locale: Locale }) {
           <Link href={`/${locale}/uvjeti-koristenja`}>{t.footer.terms}</Link>
           {locale === "de" && <Link href={`/${locale}/impressum`}>Impressum</Link>}
         </div>
+
+        <details className="footer-prices">
+          <summary>{ps.title}</summary>
+          <div className="footer-prices-grid">
+            {priceGroups.map((g) => (
+              <section key={g.title.hr}>
+                <h3>{g.title[locale]}</h3>
+                <ul>
+                  {g.items.map((it) => (
+                    <li key={it.name.hr}>
+                      <span>{formatPrice(it.price, locale)}</span>
+                      <span>{it.name[locale]}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))}
+          </div>
+          <p className="footer-prices-note">
+            <strong>
+              {ps.updated} {PRICE_UPDATED}
+            </strong>{" "}
+            {ps.note}
+          </p>
+        </details>
       </div>
     </footer>
   );
